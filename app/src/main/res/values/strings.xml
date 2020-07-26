@@ -17,7 +17,7 @@
     <string name="label_reset_password">Esqueci minha senha</string>
 
     <string name="logo_app_content_desc">Logo app</string>
-    <string name="button_login">Conectar</string>
+    <string name="button_login">Entrar</string>
     <string name="button_create_account">Criar conta</string>
     <string name="button_i_have_account">Já tenho conta</string>
 
