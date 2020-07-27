@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/login_nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/singUpFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.escapetrapp.ui.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_main_nav_graph"
+            app:destination="@id/main_nav_graph" />
+        <action
+            android:id="@+id/action_loginFragment_to_singUpFragment"
+            app:destination="@id/singUpFragment" />
+    </fragment>
+    <include app:graph="@navigation/main_nav_graph" />
+    <fragment
+        android:id="@+id/singUpFragment"
+        android:name="com.example.escapetrapp.ui.singUp.SingUpFragment"
+        android:label="SingUpFragment" />
 </navigation>
