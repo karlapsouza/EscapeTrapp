@@ -7,6 +7,7 @@
 
     <ImageView
         android:id="@+id/ivLogoApp"
+        android:transitionName="logoApp"
         android:layout_width="221dp"
         android:layout_height="237dp"
         android:src="@drawable/ic_world"
@@ -55,5 +56,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivTextEscape"
         app:layout_constraintVertical_bias="0.0" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

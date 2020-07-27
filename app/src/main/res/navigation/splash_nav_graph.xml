@@ -9,7 +9,9 @@
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_login_nav_graph"
-            app:destination="@id/login_nav_graph" />
+            app:destination="@id/login_nav_graph"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_main_nav_graph"
             app:destination="@id/main_nav_graph" />
