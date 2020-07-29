@@ -10,9 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
-
 import com.example.escapetrapp.R
-import kotlinx.android.synthetic.main.fragment_splash.*
 
 /**
  * A simple [Fragment] subclass.
@@ -33,10 +31,9 @@ class SplashFragment : Fragment() {
         startAnimation()
         Handler().postDelayed({
             val extras = FragmentNavigatorExtras( ivLogoApp to "logoApp")
-            NavHostFragment.findNavController(this)
-                .navigate( R.id.action_splashFragment_to_login_nav_graph, null, null, extras
-                )
-    }, 2000) }
+            NavHostFragment.findNavController(this).navigate(R.id.action_splashFragment_to_login_nav_graph, null, null, extras)
+        }, 2000)
+    }
 
     private fun setUpView(view: View) {
         ivLogoApp = view.findViewById(R.id.ivLogoApp)
