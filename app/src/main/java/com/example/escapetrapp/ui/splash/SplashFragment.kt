@@ -11,14 +11,16 @@ import android.widget.ImageView
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
 import com.example.escapetrapp.R
+import com.example.escapetrapp.base.BaseFragment
 
 /**
  * A simple [Fragment] subclass.
  */
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
 
     private lateinit var ivLogoApp: ImageView
+    override val layout = R.layout.fragment_splash
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -40,7 +42,7 @@ class SplashFragment : Fragment() {
     }
 
     private fun startAnimation() {
-        val anim = AnimationUtils.loadAnimation(context, R.anim.anim_form_login)
+        val anim = AnimationUtils.loadAnimation(context, R.anim.anim_splash)
         ivLogoApp.startAnimation(anim)
     }
 }

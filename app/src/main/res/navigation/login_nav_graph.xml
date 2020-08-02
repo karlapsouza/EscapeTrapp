@@ -15,4 +15,5 @@
             app:destination="@id/main_nav_graph" />
     </fragment>
     <include app:graph="@navigation/main_nav_graph" />
+
 </navigation>

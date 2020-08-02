@@ -73,7 +73,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btLogin"
+            android:id="@+id/btAcessLogin"
             android:text="@string/button_login"
             style="@style/button"/>
 

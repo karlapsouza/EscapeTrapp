@@ -27,6 +27,7 @@
 
     <string name="about">Sobre nosso time: Bruna, Karla, Tatiane e Victor</string>
     <string name="version">versão: 1.0</string>
+    <string name="loading_message_processing">Carregando</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

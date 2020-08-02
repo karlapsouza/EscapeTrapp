@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.escapetrapp.R
+import com.example.escapetrapp.base.BaseFragment
 
 /**
  * A simple [Fragment] subclass.
  */
-class AboutFragment : Fragment() {
+class AboutFragment : BaseFragment() {
+    override val layout = R.layout.fragment_about
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
