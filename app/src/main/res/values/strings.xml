@@ -15,6 +15,7 @@
 
     <string name="label_create_account">Criar conta</string>
     <string name="label_reset_password">Esqueci minha senha</string>
+    <string name="label_back">Voltar a tela de login</string>
 
     <string name="logo_app_content_desc">Logo app</string>
     <string name="button_login">Entrar</string>
@@ -22,6 +23,7 @@
     <string name="button_i_have_account">Já tenho conta</string>
 
     <string name="login_subtitle">Faça o login para continuar</string>
+    <string name="forgot_subtitle">Informe o email para troca de senha</string>
 
     <string name="signup_subtitle">Preencha os dados da sua conta</string>
 

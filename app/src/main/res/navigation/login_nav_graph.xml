@@ -13,7 +13,15 @@
         <action
             android:id="@+id/action_loginFragment_to_main_nav_graph"
             app:destination="@id/main_nav_graph" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment2" />
     </fragment>
     <include app:graph="@navigation/main_nav_graph" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment2"
+        android:name="com.example.escapetrapp.ui.forgotPassword.ForgotPasswordFragment"
+        android:label="ForgotPasswordFragment"
+        tools:layout="@layout/fragment_forgot_password"/>
 
 </navigation>
