@@ -5,22 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
 
-/**
- * A simple [Fragment] subclass.
- */
 class SingUpFragment : BaseFragment() {
     override val layout = R.layout.fragment_sign_up
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign_up, container, false)
-    }
+    private lateinit var tvTerms: TextView
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        tvTerms = view.findViewById(R.id.tvTerms)
+
+        tvTerms.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_singUpFragment)
+        }
+    }
 }

@@ -22,11 +22,6 @@ class SplashFragment : BaseFragment() {
     private lateinit var ivLogoApp: ImageView
     override val layout = R.layout.fragment_splash
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_splash, container, false)
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)

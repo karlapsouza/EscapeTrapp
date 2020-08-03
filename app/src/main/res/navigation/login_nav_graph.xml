@@ -15,13 +15,30 @@
             app:destination="@id/main_nav_graph" />
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
-            app:destination="@id/forgotPasswordFragment2" />
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_singUpFragment"
+            app:destination="@id/singUpFragment" />
     </fragment>
     <include app:graph="@navigation/main_nav_graph" />
     <fragment
-        android:id="@+id/forgotPasswordFragment2"
+        android:id="@+id/forgotPasswordFragment"
         android:name="com.example.escapetrapp.ui.forgotPassword.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment"
         tools:layout="@layout/fragment_forgot_password"/>
+    <fragment
+        android:id="@+id/singUpFragment"
+        android:name="com.example.escapetrapp.ui.singUp.SingUpFragment"
+        android:label="SingUpFragment"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_singUpFragment_to_termsFragment"
+            app:destination="@id/termsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsFragment"
+        android:name="com.example.escapetrapp.ui.terms.TermsFragment"
+        android:label="TermsFragment"
+        tools:layout="@layout/fragment_terms"/>
 
 </navigation>

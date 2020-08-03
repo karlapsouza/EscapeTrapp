@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
@@ -22,6 +24,8 @@ class LoginFragment : BaseFragment() {
     private lateinit var btAcessLogin: Button
     private lateinit var etEmailLogin: EditText
     private lateinit var etPasswordLogin: EditText
+    private lateinit var tvResetPassword: TextView
+    private lateinit var tvNewAccount: TextView
 
     private val loginViewModel: LoginViewModel by viewModels()
 
@@ -63,17 +67,26 @@ class LoginFragment : BaseFragment() {
         NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_main_nav_graph)
     }
 
-
     private fun setUpView(view:View) {
         btAcessLogin = view.findViewById(R.id.btAcessLogin)
         etEmailLogin = view.findViewById(R.id.etEmailLogin)
         etPasswordLogin = view.findViewById(R.id.etPasswordLogin)
+        tvResetPassword = view.findViewById(R.id.tvResetPassword)
+        tvNewAccount = view.findViewById(R.id.tvNewAccount)
 
         btAcessLogin.setOnClickListener {
             loginViewModel.singIn(
                 etEmailLogin.text.toString(),
                 etPasswordLogin.text.toString()
             )
+        }
+
+        tvResetPassword.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
+
+        tvNewAccount.setOnClickListener{
+            findNavController().navigate(R.id.action_loginFragment_to_singUpFragment)
         }
     }
 

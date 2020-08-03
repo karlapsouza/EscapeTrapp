@@ -12,6 +12,7 @@
     <string name="label_password">Senha</string>
     <string name="label_accept_terms">Li e aceitos os termos</string>
     <string name="label_about">Sobre o app</string>
+    <string name="label_terms">Termos de uso</string>
 
     <string name="label_create_account">Criar conta</string>
     <string name="label_reset_password">Esqueci minha senha</string>
@@ -19,6 +20,7 @@
 
     <string name="logo_app_content_desc">Logo app</string>
     <string name="button_login">Entrar</string>
+    <string name="button_send_email">Enviar</string>
     <string name="button_create_account">Criar conta</string>
     <string name="button_i_have_account">Já tenho conta</string>
 
@@ -28,6 +30,7 @@
     <string name="signup_subtitle">Preencha os dados da sua conta</string>
 
     <string name="about">Sobre nosso time: Bruna, Karla, Tatiane e Victor</string>
+    <string name="text_terms">Texto em construção</string>
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Carregando</string>
 

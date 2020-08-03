@@ -99,7 +99,7 @@
         android:text="@string/label_reset_password"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/tvNewAccount"
@@ -112,7 +112,7 @@
         android:text="@string/label_create_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toStartOf="@+id/guideline"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
