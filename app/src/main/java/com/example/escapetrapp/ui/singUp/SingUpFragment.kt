@@ -25,7 +25,7 @@ class SingUpFragment : BaseFragment() {
         tvTerms = view.findViewById(R.id.tvTerms)
 
         tvTerms.setOnClickListener{
-            findNavController().navigate(R.id.action_loginFragment_to_singUpFragment)
+            findNavController().navigate(R.id.action_singUpFragment_to_termsFragment)
         }
     }
 }
