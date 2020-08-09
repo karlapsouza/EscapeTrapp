@@ -178,7 +178,7 @@
                 style="@style/button"/>
 
             <TextView
-                android:id="@+id/btLoginSignUp"
+                android:id="@+id/tvLoginSignUp"
                 style="@style/link"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"

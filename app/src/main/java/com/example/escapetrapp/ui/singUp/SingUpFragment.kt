@@ -17,7 +17,6 @@ import com.example.escapetrapp.base.BaseFragment
 import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.models.RequestState
 import com.example.escapetrapp.models.User
-import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class SingUpFragment : BaseFragment() {
     override val layout = R.layout.fragment_sign_up
@@ -32,7 +31,7 @@ class SingUpFragment : BaseFragment() {
     private lateinit var etConfirmPasswordSignUp: EditText
     private lateinit var cbTermsSignUp: LottieAnimationView
     private lateinit var btCreateAccount: Button
-    private lateinit var btLoginSignUp: TextView
+    private lateinit var tvLoginSignUp: TextView
     private var checkBoxDone = false
 
 
@@ -52,7 +51,7 @@ class SingUpFragment : BaseFragment() {
         cbTermsSignUp = view.findViewById(R.id.cbTermsSignUp)
         tvTerms = view.findViewById(R.id.tvTerms)
         btCreateAccount = view.findViewById(R.id.btCreateAccount)
-        btLoginSignUp = view.findViewById(R.id.btLoginSignUp)
+        tvLoginSignUp = view.findViewById(R.id.tvLoginSignUp)
         setUpListener()
     }
 
@@ -62,7 +61,8 @@ class SingUpFragment : BaseFragment() {
             override fun invalido(valorAtual: String?, mensagem: String?) {}
             override fun parcialmenteValido(valorAtual: String?) {}
         }))
-        tvTerms.setOnClickListener { NavHostFragment.findNavController(this)
+        tvTerms.setOnClickListener {
+            NavHostFragment.findNavController(this)
             .navigate(R.id.action_singUpFragment_to_termsFragment) }
         btCreateAccount.setOnClickListener {
             hideKeyboard()
@@ -76,6 +76,9 @@ class SingUpFragment : BaseFragment() {
             newUser,
             etConfirmEmailSignUp.text.toString(),
             etConfirmPasswordSignUp.text.toString())
+        }
+        tvLoginSignUp.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_singUpFragment_to_loginFragment)
         }
         setUpCheckboxListener()
     }
@@ -99,8 +102,9 @@ class SingUpFragment : BaseFragment() {
         when (it) {
             is RequestState.Success -> {
                 hideLoading()
-//                NavHostFragment.findNavController(this)
-//                    .navigate(R.id.action_loginFragment_to_main_nav_graph)
+                showMessage("Cadastro realizado com sucesso!")
+                NavHostFragment.findNavController(this)
+                    .navigate(R.id.action_singUpFragment_to_loginFragment)
             }
             is RequestState.Error -> {
                 hideLoading()
