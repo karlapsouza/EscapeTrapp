@@ -16,8 +16,7 @@ class ForgotPasswordViewModel: ViewModel(){
             FirebaseAuth.getInstance().sendPasswordResetEmail(email) .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     resetPasswordState.value = RequestState.Success("Verifique sua caixa de e-mail")
-                }
-                else {
+                } else {
                     resetPasswordState.value = RequestState.Error(
                         Throwable(
                             task.exception?.message ?: "Não foi possível realizar a requisição"
@@ -25,8 +24,7 @@ class ForgotPasswordViewModel: ViewModel(){
                 }
             }
 
-        }
-        else {
+        } else {
             resetPasswordState.value = RequestState.Error(EmailInvalidException())
         }
     }

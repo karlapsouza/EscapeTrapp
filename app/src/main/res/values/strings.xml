@@ -9,7 +9,9 @@
     <string name="label_username">Nome</string>
     <string name="label_phone">Telefone</string>
     <string name="label_email">E-mail</string>
+    <string name="label_confirm_email">Confirme seu e-mail</string>
     <string name="label_password">Senha</string>
+    <string name="label_confirm_password">Confirme sua senha</string>
     <string name="label_accept_terms">Li e aceitos os termos</string>
     <string name="label_about">Sobre o app</string>
     <string name="label_terms">Termos de uso</string>

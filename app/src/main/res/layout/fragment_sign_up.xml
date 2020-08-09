@@ -92,6 +92,19 @@
 
                 <TextView
                     style="@style/label_edit_text"
+                    android:text="@string/label_confirm_email" />
+
+                <EditText
+                    android:id="@+id/etConfirmEmailSignUp"
+                    style="@style/field_edit_text"
+                    tools:text="seuemail@apps.com.br" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    style="@style/label_edit_text"
                     android:text="@string/label_phone" />
 
                 <EditText
@@ -108,6 +121,19 @@
 
                 <EditText
                     android:id="@+id/etPasswordSignUp"
+                    style="@style/field_edit_text"
+                    android:inputType="textPassword"
+                    tools:text="xxxxxx" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    style="@style/label_edit_text"
+                    android:text="@string/label_confirm_password" />
+
+                <EditText
+                    android:id="@+id/etConfirmPasswordSignUp"
                     style="@style/field_edit_text"
                     android:inputType="textPassword"
                     tools:text="xxxxxx" />

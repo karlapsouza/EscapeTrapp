@@ -2,6 +2,7 @@ package com.example.escapetrapp.ui.login
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.escapetrapp.extensions.isValidEmail
 import com.example.escapetrapp.models.RequestState
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -32,7 +33,7 @@ class LoginViewModel: ViewModel() {
             return false
         }
 
-        if(!email.contains("@") && !email.contains(".com")){
+        if(email.isValidEmail()){
             loginState.value = RequestState.Error(Throwable("E-mail inválido"))
             return false
         }
