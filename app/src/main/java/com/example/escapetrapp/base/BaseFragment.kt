@@ -39,4 +39,5 @@ abstract class BaseFragment : Fragment() {
     fun showMessage(message: String?) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
+
 }

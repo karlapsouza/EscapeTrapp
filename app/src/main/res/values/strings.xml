@@ -36,6 +36,11 @@
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Carregando</string>
 
+    <string name="old_version">Você está usando uma versão muito antiga do app. É necessário atualizar para continuar utilizando</string>
+    <string name="update_app">Atualizar aplicativo</string>
+    <string name="update_later">Atualizar depois</string>
+    <string name="update_version_app_text">Atualize o app</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
