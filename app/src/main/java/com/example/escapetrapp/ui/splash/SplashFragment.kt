@@ -12,6 +12,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.NavHostFragment
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
+import com.example.escapetrapp.utils.firebase.RemoteConfigUtils
 
 /**
  * A simple [Fragment] subclass.
