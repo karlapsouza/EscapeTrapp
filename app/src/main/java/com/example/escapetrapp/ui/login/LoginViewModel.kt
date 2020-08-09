@@ -33,7 +33,7 @@ class LoginViewModel: ViewModel() {
             return false
         }
 
-        if(email.isValidEmail()){
+        if(!email.isValidEmail()){
             loginState.value = RequestState.Error(Throwable("E-mail inválido"))
             return false
         }
