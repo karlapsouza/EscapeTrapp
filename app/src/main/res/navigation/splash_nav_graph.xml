@@ -20,7 +20,18 @@
             app:destination="@id/login_nav_graph"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_update_nav_graph"
+            app:destination="@id/update_nav_graph" />
+        <action
+            android:id="@+id/action_splashFragment_to_updateFragment2"
+            app:destination="@id/updateFragment2" />
     </fragment>
     <include app:graph="@navigation/main_nav_graph" />
     <include app:graph="@navigation/login_nav_graph" />
+    <include app:graph="@navigation/update_nav_graph" />
+    <fragment
+        android:id="@+id/updateFragment2"
+        android:name="com.example.escapetrapp.ui.update.UpdateFragment"
+        android:label="UpdateFragment" />
 </navigation>

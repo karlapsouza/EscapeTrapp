@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.BuildConfig
 import com.example.escapetrapp.R
 import com.example.escapetrapp.utils.firebase.RemoteConfigUtils
+import com.example.escapetrapp.utils.firebase.RemoteConfigKeys
 
 abstract class BaseFragment : Fragment() {
 
@@ -50,14 +51,14 @@ abstract class BaseFragment : Fragment() {
     }
 
     private fun checkMinVersion() {
-        val minVersionApp = RemoteConfigUtils.getFirebaseRemoteConfig().getLong("min_version_app")
-        if (minVersionApp > BuildConfig.VERSION_CODE) {
+        val minVersionApp = RemoteConfigUtils.getFirebaseRemoteConfig().getLong(RemoteConfigKeys.MIN_VERSION_APP)
+        if(minVersionApp > BuildConfig.VERSION_CODE) {
             startUpdateApp()
         }
     }
 
     private fun startUpdateApp() {
-        val navOptions = NavOptions.Builder().setPopUpTo(R.id.updateFragment, true) .build()
+        val navOptions = NavOptions.Builder().setPopUpTo(R.id.updateFragment,true).build()
         findNavController().setGraph(R.navigation.update_nav_graph)
         findNavController().navigate(R.id.updateFragment, null, navOptions)
     }
