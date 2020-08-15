@@ -28,13 +28,10 @@
                 android:layout_width="72dp"
                 android:layout_height="74dp"
                 android:layout_gravity="end"
-                android:shadowRadius="true"
+                android:shadowRadius="0.5"
                 android:text="@string/button_add_travel"
                 app:layout_constraintBaseline_toBaselineOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvLabelTrip"
-                app:layout_constraintStart_toEndtOf="parent"
-                app:layout_constraintStart_toStarttOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/tvLabelTrip"
@@ -50,7 +47,6 @@
                 android:textSize="32sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/btCreateTrip"
-                app:layout_constraintStart_toOf="btCreateTrip"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
