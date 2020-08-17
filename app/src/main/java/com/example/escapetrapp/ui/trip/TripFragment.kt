@@ -60,8 +60,6 @@ class TripFragment : BaseAuthFragment() {
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Viagem cadastrada com sucesso!")
-                    NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_travelFragment_to_travelListFragment)
                 }
                 is RequestState.Error -> {
                     hideLoading()

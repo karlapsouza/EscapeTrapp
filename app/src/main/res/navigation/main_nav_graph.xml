@@ -7,27 +7,28 @@
         android:id="@+id/homeFragment"
         android:name="com.example.escapetrapp.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_travelListFragment"
+            app:destination="@id/travelListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/travelListFragment"
         android:name="com.example.escapetrapp.ui.trip.TripListFragment"
         android:label="fragment_travel_list"
         tools:layout="@layout/fragment_travel_list">
-        <action
-            android:id="@+id/action_travelListFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
         <deepLink
             android:id="@+id/deepLink2"
             app:uri="https://www.escapetrapp.com.br/tripList" />
+        <action
+            android:id="@+id/action_travelListFragment_to_travelFragment"
+            app:destination="@id/travelFragment" />
     </fragment>
     <fragment
         android:id="@+id/travelFragment"
         android:name="com.example.escapetrapp.ui.trip.TripFragment"
         android:label="fragment_travel"
         tools:layout="@layout/fragment_travel">
-        <action
-            android:id="@+id/action_travelFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
         <deepLink
             android:id="@+id/deepLink"
             app:uri="https://www.escapetrapp.com.br/trip" />

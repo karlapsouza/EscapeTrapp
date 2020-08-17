@@ -23,7 +23,7 @@
 
 
             <Button
-                android:id="@+id/btCreateTrip"
+                android:id="@+id/btAddTrip"
                 style="@style/button"
                 android:layout_width="72dp"
                 android:layout_height="74dp"
@@ -46,7 +46,7 @@
                 android:textColor="@color/primaryTextColor"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/btCreateTrip"
+                app:layout_constraintEnd_toStartOf="@+id/btAddTrip"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
