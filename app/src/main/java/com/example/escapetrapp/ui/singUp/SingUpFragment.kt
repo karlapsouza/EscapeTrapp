@@ -102,7 +102,7 @@ class SingUpFragment : BaseFragment() {
         when (it) {
             is RequestState.Success -> {
                 hideLoading()
-                showMessage("Cadastro realizado com sucesso!")
+                showMessage("Usuário cadastro realizado com sucesso!")
                 NavHostFragment.findNavController(this)
                     .navigate(R.id.action_singUpFragment_to_loginFragment)
             }
@@ -110,7 +110,7 @@ class SingUpFragment : BaseFragment() {
                 hideLoading()
                 showMessage(it.trowable.message)
             }
-            is RequestState.Loading -> showLoading("Realizando a autenticação") }
+            is RequestState.Loading -> showLoading("Realizando cadastro de usuário") }
     }) }
 }
 

@@ -38,8 +38,8 @@ class SignUpViewModel:ViewModel(){
 
     private fun saveInFirestore(newUser: User) {
         db.collection("users")
-            .document(FirebaseAuth.getInstance().currentUser?.uid!!) .set(newUser)
-            .addOnSuccessListener { documentReference ->
+            .document(FirebaseAuth.getInstance().currentUser?.uid!!).set(newUser)
+            .addOnSuccessListener {
                 sendEmailVerification() }
             .addOnFailureListener { e -> signUpState.value = RequestState.Error(
                 Throwable(e.message) )
@@ -48,7 +48,7 @@ class SignUpViewModel:ViewModel(){
 
     private fun sendEmailVerification() {
         mAuth.currentUser?.sendEmailVerification()
-        ?.addOnCompleteListener { task ->
+        ?.addOnCompleteListener {
             signUpState.value = RequestState.Success(mAuth.currentUser!!)
         }
     }

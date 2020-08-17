@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.travel.TravelFragment"
+    tools:context=".ui.trip.TripFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -70,7 +70,7 @@
                     android:text="@string/travel_name" />
 
                 <EditText
-                    android:id="@+id/etUserNameSignUp"
+                    android:id="@+id/etTravelName"
                     style="@style/field_edit_text"
                     tools:text="Bate e volta para Bertioga" />
 
@@ -83,7 +83,7 @@
                     android:text="@string/travel_destination" />
 
                 <EditText
-                    android:id="@+id/etEmailSignUp"
+                    android:id="@+id/etTravelDestination"
                     style="@style/field_edit_text"
                     tools:text="Bertioga, São Paulo" />
 
@@ -96,7 +96,7 @@
                     android:text="@string/travel_date_start" />
 
                 <EditText
-                    android:id="@+id/etConfirmEmailSignUp"
+                    android:id="@+id/etDateStartTravel"
                     style="@style/field_edit_text"
                     tools:text="15/08/2020" />
 
@@ -109,18 +109,18 @@
                     android:text="@string/travel_date_end" />
 
                 <EditText
-                    android:id="@+id/etPhoneSignUp"
+                    android:id="@+id/etDateFinishTravel"
                     style="@style/field_edit_text"
                     tools:text="16/08/2020" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/btCreateAccount"
+                android:id="@+id/btCreateTravel"
                 android:text="@string/button_create_travel"
                 style="@style/button"/>
 
             <TextView
-                android:id="@+id/tvLoginSignUp"
+                android:id="@+id/tvCancel"
                 style="@style/link"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
