@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
@@ -15,9 +16,12 @@ import androidx.navigation.fragment.findNavController
 
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
+import com.example.escapetrapp.base.auth.NAVIGATION_KEY
 import com.example.escapetrapp.exceptions.EmailInvalidException
 import com.example.escapetrapp.exceptions.PasswordInvalidException
 import com.example.escapetrapp.models.RequestState
+import com.example.escapetrapp.ui.home.HomeViewModel
+import com.example.escapetrapp.ui.singUp.SignUpViewModel
 
 class LoginFragment : BaseFragment() {
 
@@ -26,6 +30,7 @@ class LoginFragment : BaseFragment() {
     private lateinit var etPasswordLogin: EditText
     private lateinit var tvResetPassword: TextView
     private lateinit var tvNewAccount: TextView
+    private val homeViewModel: HomeViewModel by viewModels()
 
     private val loginViewModel: LoginViewModel by viewModels()
 
@@ -34,7 +39,9 @@ class LoginFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
+        homeViewModel.createMenu()
         registerObserver()
+        registerBackPressedAction()
     }
 
     private fun registerObserver() {
@@ -64,7 +71,12 @@ class LoginFragment : BaseFragment() {
 
     private fun showSuccess() {
         hideLoading()
-        NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_main_nav_graph)
+        val navIdFromArguments = arguments?.getInt(NAVIGATION_KEY)
+        if (navIdFromArguments == null) {
+            findNavController().navigate(R.id.main_nav_graph)
+        } else {
+            findNavController().popBackStack(navIdFromArguments, false)
+        }
     }
 
     private fun setUpView(view:View) {
@@ -88,6 +100,15 @@ class LoginFragment : BaseFragment() {
         tvNewAccount.setOnClickListener{
             findNavController().navigate(R.id.action_loginFragment_to_singUpFragment)
         }
+    }
+
+    private fun registerBackPressedAction() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
 }

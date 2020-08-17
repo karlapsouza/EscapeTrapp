@@ -78,7 +78,7 @@ class SingUpFragment : BaseFragment() {
             etConfirmPasswordSignUp.text.toString())
         }
         tvLoginSignUp.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_singUpFragment_to_loginFragment)
+            NavHostFragment.findNavController(this) .navigate(R.id.main_nav_graph)
         }
         setUpCheckboxListener()
     }

@@ -11,13 +11,6 @@
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_loginFragment_to_main_nav_graph"
-            app:destination="@id/main_nav_graph"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
-        <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -32,7 +25,6 @@
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
-    <include app:graph="@navigation/main_nav_graph" />
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.example.escapetrapp.ui.forgotPassword.ForgotPasswordFragment"
@@ -40,11 +32,7 @@
         tools:layout="@layout/fragment_forgot_password">
         <action
             android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/singUpFragment"
