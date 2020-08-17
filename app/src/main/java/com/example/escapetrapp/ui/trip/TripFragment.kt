@@ -9,12 +9,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
+import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.models.RequestState
 import com.example.escapetrapp.models.Trip
 
 
-class TripFragment : BaseFragment() {
+class TripFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_travel
 
     private lateinit var etTravelName: EditText
