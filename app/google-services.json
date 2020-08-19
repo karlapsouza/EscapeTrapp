@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "763983282103",
+    "firebase_url": "https://escape-trapp.firebaseio.com",
+    "project_id": "escape-trapp",
+    "storage_bucket": "escape-trapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763983282103:android:18da75fdeb0e557bacf232",
+        "android_client_info": {
+          "package_name": "com.example.escapetrapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763983282103-4rtsd7h43eua6rvj0apfi52971p46gb7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.escapetrapp",
+            "certificate_hash": "2dc186cd6d868c7dfdc450260c8655c2ce267751"
+          }
+        },
+        {
+          "client_id": "763983282103-ou6h4dfdvohnhebdbsprdo7hb1enud78.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr8IomyrcbOLOg3EdeGb6RtG-ZdrIKzxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763983282103-ou6h4dfdvohnhebdbsprdo7hb1enud78.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
