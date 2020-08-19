@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.startDeeplink
 import com.example.escapetrapp.models.RequestState
 import com.example.escapetrapp.models.dashboardmenu.DashboardItem
+import com.example.escapetrapp.utils.EscapeTrappTracker
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseAuthFragment() {
@@ -88,6 +90,11 @@ class HomeFragment : BaseAuthFragment() {
         item.onDisabledListener.let {
             it?.invoke(requireContext())
         }
+
+        EscapeTrappTracker.trackEvent(requireActivity(),
+            bundleOf("feature" to item.feature)
+        )
+
         if (item.onDisabledListener == null) {
             when (item.feature) {
                 "SIGN_OUT" -> {
