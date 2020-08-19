@@ -13,8 +13,9 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 class EscapeTrappFCMService : FirebaseMessagingService() {
+
     override fun onMessageReceived(p0: RemoteMessage) {
-        sendNotification(p0)
+        //sendNotification(p0)
     }
 
     private fun sendNotification(intent: Intent, title: String?, message: String?) {
