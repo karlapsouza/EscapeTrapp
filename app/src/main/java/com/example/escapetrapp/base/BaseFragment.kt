@@ -20,13 +20,21 @@ abstract class BaseFragment : Fragment() {
     abstract val layout: Int
     private lateinit var loadingView: View
 
+    private lateinit var flavourView: View
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val screenRootView = FrameLayout(requireContext())
         val screenView = inflater.inflate(layout, container, false)
 
+        val flavourScreen = inflater.inflate(R.layout.include_flavour, container, false)
+        flavourView = flavourScreen.findViewById(R.id.flavourScreen)
+        // TODO VER ONDE QUE A CONFIGURAÇÃO DO ENVIRONMENT É CRIADA! REALMENTE NÃO TEM NOS SLIDES
+        //configureEnvironment(flavourScreen.findViewById(R.id.tvEnvironment) as TextView)
+
         loadingView = inflater.inflate(R.layout.include_loading, container, false)
         screenRootView.addView(screenView)
         screenRootView.addView(loadingView)
+        screenRootView.addView(flavourView)
 
         return screenRootView
     }
