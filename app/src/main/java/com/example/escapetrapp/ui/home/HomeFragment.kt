@@ -100,7 +100,7 @@ class HomeFragment : BaseAuthFragment() {
                 "SIGN_OUT" -> {
                  homeViewModel.signOut()
                 }else -> {
-                startDeeplink(item.action.deeplink)
+                    startDeeplink(item.action.deeplink)
                 }
             }
         }

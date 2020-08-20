@@ -36,7 +36,7 @@
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Carregando</string>
 
-    <string name="travel_subtitle">Preencha as informações da viagem</string>
+    <string name="travel_subtitle">Preencha os dados da viagem</string>
     <string name="travel_name">Nome</string>
     <string name="travel_destination">Destino</string>
     <string name="travel_date_start">Data início</string>

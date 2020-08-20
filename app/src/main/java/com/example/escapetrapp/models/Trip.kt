@@ -4,7 +4,7 @@ import com.google.firebase.Timestamp
 
 data class Trip(
     val name: String? = null,
-    val destination: String? = null
-//    val initialDate: Timestamp,
-//    val endDate: Timestamp
+    val destination: String? = null,
+    val initialDate: String? = null,
+    val endDate: String? = null
 )
