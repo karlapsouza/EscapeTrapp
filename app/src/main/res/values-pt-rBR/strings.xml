@@ -45,6 +45,7 @@
     <string name="button_cancel">Cancelar</string>
     <string name="button_add_travel">+</string>
     <string name="your_trips">Suas viagens</string>
+    <string name="checkbox_keep_data">Lembrar meus dados</string>
 
     <string name="old_version">Você está usando uma versão muito antiga do app. É necessário atualizar para continuar utilizando</string>
     <string name="update_app">Atualizar aplicativo</string>

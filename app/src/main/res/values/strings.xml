@@ -2,54 +2,57 @@
     <string name="app_name">escape trapp</string>
 
     <string name="menu_home_home">Home</string>
-    <string name="menu_home_profile">Perfil</string>
+    <string name="menu_home_profile">Profile</string>
 
-    <string name="home_select_options">Vamos planejar sua viagem?</string>
+    <string name="home_select_options">Let\'s plan your trip?</string>
 
-    <string name="label_username">Nome</string>
-    <string name="label_phone">Telefone</string>
+    <string name="label_username">Name</string>
+    <string name="label_phone">Phone</string>
     <string name="label_email">E-mail</string>
-    <string name="label_confirm_email">Confirme seu e-mail</string>
-    <string name="label_password">Senha</string>
-    <string name="label_confirm_password">Confirme sua senha</string>
-    <string name="label_accept_terms">Li e aceitos os termos</string>
-    <string name="label_about">Sobre o app</string>
-    <string name="label_terms">Termos de uso</string>
+    <string name="label_confirm_email">Confirm your e-mail</string>
+    <string name="label_password">Password</string>
+    <string name="label_confirm_password">Confirm your password</string>
+    <string name="label_accept_terms">I have read and accept the terms</string>
+    <string name="label_about">About the app</string>
+    <string name="label_terms">Terms of use</string>
 
-    <string name="label_create_account">Criar conta</string>
-    <string name="label_reset_password">Esqueci minha senha</string>
-    <string name="label_back">Voltar a tela de login</string>
+    <string name="label_create_account">Create account</string>
+    <string name="label_reset_password">Forgot my password</string>
+    <string name="label_back">Back</string>
 
     <string name="logo_app_content_desc">Logo app</string>
-    <string name="button_login">Entrar</string>
-    <string name="button_send_email">Enviar</string>
-    <string name="button_create_account">Criar conta</string>
-    <string name="button_i_have_account">Já tenho conta</string>
+    <string name="button_login">Log in</string>
+    <string name="button_send_email">Send</string>
+    <string name="button_create_account">Create account</string>
+    <string name="button_i_have_account">I already have an account</string>
 
-    <string name="login_subtitle">Faça o login para continuar</string>
-    <string name="forgot_subtitle">Informe o email para troca de senha</string>
+    <string name="login_subtitle">Log in to continue</string>
+    <string name="forgot_subtitle">Enter your email addressa</string>
 
-    <string name="signup_subtitle">Preencha os dados da sua conta</string>
+    <string name="signup_subtitle">Fill in your account details</string>
 
-    <string name="about">Sobre nosso time: Bruna, Karla, Tatiane e Victor</string>
-    <string name="text_terms">Texto em construção</string>
+    <string name="about">About our team: Bruna, Karla, Tatiane e Victor</string>
+    <string name="text_terms">Text in building</string>
     <string name="version">versão: 1.0</string>
-    <string name="loading_message_processing">Carregando</string>
+    <string name="loading_message_processing">Loading</string>
 
-    <string name="travel_subtitle">Preencha os dados da viagem</string>
-    <string name="travel_name">Nome</string>
-    <string name="travel_destination">Destino</string>
-    <string name="travel_date_start">Data início</string>
-    <string name="travel_date_end">Data fim</string>
-    <string name="button_create_travel">Criar viagem</string>
-    <string name="button_cancel">Cancelar</string>
+    <string name="travel_subtitle">Fill in the trip details</string>
+    <string name="travel_name">Name</string>
+    <string name="travel_destination">Destination</string>
+    <string name="travel_date_start">Start date</string>
+    <string name="travel_date_end">End date</string>
+    <string name="button_create_travel">Create trip</string>
+    <string name="button_cancel">Cancel</string>
     <string name="button_add_travel">+</string>
-    <string name="your_trips">Suas viagens</string>
+    <string name="your_trips">Your trips</string>
+    <string name="checkbox_keep_data">Keep my data</string>
 
-    <string name="old_version">Você está usando uma versão muito antiga do app. É necessário atualizar para continuar utilizando</string>
-    <string name="update_app">Atualizar aplicativo</string>
-    <string name="update_later">Atualizar depois</string>
-    <string name="update_version_app_text">Atualize o app</string>
+    <string name="old_version">You are using a very old version of the app.
+        You need to update to continue using
+    </string>
+    <string name="update_app">Update app</string>
+    <string name="update_later">Update later</string>
+    <string name="update_version_app_text">Update the app</string>
 
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>

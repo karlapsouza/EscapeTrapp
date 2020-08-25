@@ -76,7 +76,7 @@
             android:id="@+id/cbUserSaveLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="manter dados salvos"
+            android:text="@string/checkbox_keep_data"
             android:textColor="@color/primaryTextColor"/>
 
         <Button
