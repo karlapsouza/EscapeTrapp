@@ -18,7 +18,11 @@
         <action
             android:id="@+id/action_splashFragment_to_update_nav_graph"
             app:destination="@id/update_nav_graph" />
+        <action
+            android:id="@+id/action_splashFragment_to_main_nav_graph"
+            app:destination="@id/main_nav_graph" />
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
     <include app:graph="@navigation/update_nav_graph" />
+    <include app:graph="@navigation/main_nav_graph" />
 </navigation>

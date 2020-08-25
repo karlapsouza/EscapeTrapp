@@ -41,6 +41,6 @@ class SplashFragment : BaseFragment() {
 
     private fun nextScreen() {
         val extras = FragmentNavigatorExtras( ivLogoApp to "logoApp")
-       // NavHostFragment.findNavController(this).navigate(R.id.action_splashFragment_to_login_nav_graph, null, null, extras)
+       NavHostFragment.findNavController(this).navigate(R.id.action_splashFragment_to_login_nav_graph, null, null, extras)
     }
 }

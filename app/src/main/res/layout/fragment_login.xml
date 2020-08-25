@@ -72,9 +72,17 @@
                 tools:text="heiderlopes@apps.com.br" />
         </LinearLayout>
 
+        <CheckBox
+            android:id="@+id/cbUserSaveLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="manter dados salvos"
+            android:textColor="@color/primaryTextColor"/>
+
         <Button
             android:id="@+id/btAcessLogin"
             android:text="@string/button_login"
+            android:layout_marginTop="16dp"
             style="@style/button"/>
 
     </LinearLayout>
