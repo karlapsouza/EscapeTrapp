@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.example.escapetrapp.ui.update.UpdateFragment"
+        android:name="com.example.escapetrapp.views.UpdateFragment"
         android:label="UpdateFragment"
         tools:layout="@layout/fragment_update"/>
 </navigation>

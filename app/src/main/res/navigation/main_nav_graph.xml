@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.escapetrapp.ui.home.HomeFragment"
+        android:name="com.example.escapetrapp.views.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
@@ -14,24 +14,24 @@
     </fragment>
     <fragment
         android:id="@+id/travelListFragment"
-        android:name="com.example.escapetrapp.ui.trip.TripListFragment"
+        android:name="com.example.escapetrapp.views.TripListFragment"
         android:label="fragment_travel_list"
         tools:layout="@layout/fragment_travel_list">
-        <deepLink
-            android:id="@+id/deepLink2"
-            app:uri="https://www.escapetrapp.com.br/tripList" />
         <action
             android:id="@+id/action_travelListFragment_to_travelFragment"
             app:destination="@id/travelFragment" />
     </fragment>
     <fragment
         android:id="@+id/travelFragment"
-        android:name="com.example.escapetrapp.ui.trip.TripFragment"
+        android:name="com.example.escapetrapp.views.TripFragment"
         android:label="fragment_travel"
         tools:layout="@layout/fragment_travel">
         <deepLink
             android:id="@+id/deepLink"
             app:uri="https://www.escapetrapp.com.br/trip" />
+        <action
+            android:id="@+id/action_travelFragment_to_travelListFragment"
+            app:destination="@id/travelListFragment" />
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
 </navigation>

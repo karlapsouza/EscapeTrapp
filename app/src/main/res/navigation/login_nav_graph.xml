@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.escapetrapp.ui.login.LoginFragment"
+        android:name="com.example.escapetrapp.views.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.escapetrapp.ui.forgotPassword.ForgotPasswordFragment"
+        android:name="com.example.escapetrapp.views.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment"
         tools:layout="@layout/fragment_forgot_password">
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/singUpFragment"
-        android:name="com.example.escapetrapp.ui.singUp.SingUpFragment"
+        android:name="com.example.escapetrapp.views.SingUpFragment"
         android:label="SingUpFragment"
         tools:layout="@layout/fragment_sign_up">
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/termsFragment"
-        android:name="com.example.escapetrapp.ui.terms.TermsFragment"
+        android:name="com.example.escapetrapp.views.TermsFragment"
         android:label="TermsFragment"
         tools:layout="@layout/fragment_terms"/>
 

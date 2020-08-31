@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
-import com.example.escapetrapp.models.RequestState
+import com.example.escapetrapp.services.models.RequestState
 
 const val NAVIGATION_KEY = "NAV_KEY"
 abstract class BaseAuthFragment : BaseFragment() {

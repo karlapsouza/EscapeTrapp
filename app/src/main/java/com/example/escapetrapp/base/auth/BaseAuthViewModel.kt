@@ -2,7 +2,7 @@ package com.example.escapetrapp.base.auth
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.escapetrapp.models.RequestState
+import com.example.escapetrapp.services.models.RequestState
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
