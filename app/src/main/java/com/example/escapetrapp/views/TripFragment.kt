@@ -93,7 +93,6 @@ class TripFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                 is RequestState.Error -> {
                     hideLoading()
                     showMessage(it.trowable.message)
-                    NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
                 }
                 is RequestState.Loading -> showLoading("Realizando cadastro da viagem") }
 

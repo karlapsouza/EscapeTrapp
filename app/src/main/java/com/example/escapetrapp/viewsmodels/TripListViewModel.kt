@@ -14,6 +14,7 @@ class TripListViewModel(application: Application) : AndroidViewModel(application
     val tripList: LiveData<List<Trip>> = mTripList
 
     fun load(){
-        mTripList.value = mTripRepository.getAllTrips()
+        val list = mTripRepository.getAllTrips()
+        mTripList.value = list
     }
 }

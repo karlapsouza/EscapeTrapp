@@ -25,15 +25,10 @@ class TripListFragment : BaseAuthFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
-    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
         allTripViewModel = ViewModelProvider(this).get(TripListViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_travel_list, container, false)
-
         //Obtendo a recycler
-        val recycler = root.findViewById<RecyclerView>(R.id.recycler_all_trips)
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_trips)
         //Definindo um layout, como recycler se comporta na tela
         recycler.layoutManager = LinearLayoutManager(context)
         //Definindo um adapter
@@ -41,7 +36,6 @@ class TripListFragment : BaseAuthFragment() {
         observer()
         allTripViewModel.load()
 
-        return root
     }
 
     private fun setUpView(view: View) {
