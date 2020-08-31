@@ -7,15 +7,20 @@ import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
+import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.viewsmodels.TripViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,6 +33,7 @@ class TripFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var etDateStartTravel: EditText
     private lateinit var etDateFinishTravel: EditText
     private lateinit var btCreateTravel: Button
+    private lateinit var tvCancel: TextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val tripViewModel: TripViewModel by viewModels()
 
@@ -46,6 +52,7 @@ class TripFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         etDateStartTravel = view.findViewById(R.id.etDateStartTravel)
         etDateFinishTravel = view.findViewById(R.id.etDateFinishTravel)
         btCreateTravel = view.findViewById(R.id.btCreateTravel)
+        tvCancel = view.findViewById(R.id.tvCancel)
 
         setUpListener(context)
         registerObserver()
@@ -70,7 +77,9 @@ class TripFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
             hideKeyboard()
             showDatePicker(context)
         }
-
+        tvCancel.setOnClickListener {
+            findNavController().navigate(R.id.action_travelFragment_to_travelListFragment)
+        }
     }
 
     private fun showDatePicker(context: Context){
@@ -109,7 +118,5 @@ class TripFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
             etDateFinishTravel.setText(str)
         }
     }
-
-
 
 }

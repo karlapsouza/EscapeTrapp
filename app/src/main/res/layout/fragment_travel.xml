@@ -125,6 +125,8 @@
             <TextView
                 android:id="@+id/tvCancel"
                 style="@style/link"
+                android:layout_width="wrap_content"
+                android:layout_height="2dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:text="@string/button_cancel" />

@@ -6,10 +6,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.services.models.Trip
+import com.example.escapetrapp.views.listener.TripListener
 
 //Guarda as referências dos elementos de layout
 
-class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class TripViewHolder(itemView: View, private val listener: TripListener) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(trip: Trip){
         val tripName = itemView.findViewById<TextView>(R.id.tvNameTrip)
@@ -23,5 +24,11 @@ class TripViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val tripEndDate = itemView.findViewById<TextView>(R.id.tvEndDateTrip)
         tripEndDate.text = trip.endDate
+
+        tripName.setOnClickListener {
+            listener.onClick(trip.id)
+        }
     }
+
+
 }

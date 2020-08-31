@@ -1,5 +1,6 @@
 package com.example.escapetrapp.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
+import com.example.escapetrapp.services.constants.DataBaseConstants
+import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.views.adapter.TripAdapter
+import com.example.escapetrapp.views.listener.TripListener
 import com.example.escapetrapp.viewsmodels.TripListViewModel
 
 class TripListFragment : BaseAuthFragment() {
@@ -21,6 +25,7 @@ class TripListFragment : BaseAuthFragment() {
     private lateinit var btAddTrip: Button
     private lateinit var allTripViewModel: TripListViewModel
     private val mAdapter: TripAdapter = TripAdapter()
+    private lateinit var mListener: TripListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,6 +38,21 @@ class TripListFragment : BaseAuthFragment() {
         recycler.layoutManager = LinearLayoutManager(context)
         //Definindo um adapter
         recycler.adapter = mAdapter
+
+        mListener = object : TripListener() {
+            override fun onClick(id: Int){
+                val intent = Intent(context, TripListFragment::class.java)
+
+                val bundle = Bundle()
+                bundle.putInt(TripConstants.TRIPID, id)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+        }
+
+
+        mAdapter.attachListener(mListener)
         observer()
         allTripViewModel.load()
 
@@ -47,6 +67,8 @@ class TripListFragment : BaseAuthFragment() {
         btAddTrip.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_travelFragment)
         }
+
+
     }
 
     private fun observer(){
