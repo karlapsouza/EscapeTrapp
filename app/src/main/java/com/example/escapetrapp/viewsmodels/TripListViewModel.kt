@@ -17,4 +17,8 @@ class TripListViewModel(application: Application) : AndroidViewModel(application
         val list = mTripRepository.getAllTrips()
         mTripList.value = list
     }
+
+    fun delete(id: Int){
+        mTripRepository.delete(id)
+    }
 }

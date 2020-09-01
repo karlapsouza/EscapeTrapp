@@ -16,14 +16,14 @@ import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.services.constants.DataBaseConstants
 import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.views.adapter.TripAdapter
-import com.example.escapetrapp.views.listener.TripListener
 import com.example.escapetrapp.viewsmodels.TripListViewModel
+import com.example.escapetrapp.views.listener.TripListener as TripListener
 
 class TripListFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_travel_list
 
     private lateinit var btAddTrip: Button
-    private lateinit var allTripViewModel: TripListViewModel
+    private lateinit var mViewModel: TripListViewModel
     private val mAdapter: TripAdapter = TripAdapter()
     private lateinit var mListener: TripListener
 
@@ -31,7 +31,7 @@ class TripListFragment : BaseAuthFragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
 
-        allTripViewModel = ViewModelProvider(this).get(TripListViewModel::class.java)
+        mViewModel = ViewModelProvider(this).get(TripListViewModel::class.java)
         //Obtendo a recycler
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_trips)
         //Definindo um layout, como recycler se comporta na tela
@@ -39,22 +39,26 @@ class TripListFragment : BaseAuthFragment() {
         //Definindo um adapter
         recycler.adapter = mAdapter
 
-        mListener = object : TripListener() {
+        mListener = object:TripListener {
             override fun onClick(id: Int){
                 val intent = Intent(context, TripListFragment::class.java)
 
+                //para passar dados na intent
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
                 intent.putExtras(bundle)
                 startActivity(intent)
             }
+            override fun onDelete(id: Int){
+                mViewModel.delete(id)
+                mViewModel.load()
+            }
 
         }
 
-
         mAdapter.attachListener(mListener)
         observer()
-        allTripViewModel.load()
+        mViewModel.load()
 
     }
 
@@ -72,7 +76,7 @@ class TripListFragment : BaseAuthFragment() {
     }
 
     private fun observer(){
-        allTripViewModel.tripList.observe(viewLifecycleOwner, Observer {
+        mViewModel.tripList.observe(viewLifecycleOwner, Observer {
             mAdapter.updateTrips(it)
         })
     }

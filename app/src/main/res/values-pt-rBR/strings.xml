@@ -52,6 +52,10 @@
     <string name="update_later">Atualizar depois</string>
     <string name="update_version_app_text">Atualize o app</string>
 
+    <string name="message_delete_trip">Você tem certeza que deseja excluir a viagem?</string>
+    <string name="title_delete_trip">Excluir viagem</string>
+    <string name="yes">Sim</string>
+
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>
 

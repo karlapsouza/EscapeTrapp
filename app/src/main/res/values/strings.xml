@@ -54,7 +54,14 @@
     <string name="update_later">Update later</string>
     <string name="update_version_app_text">Update the app</string>
 
+    <string name="message_delete_trip">Are you sure you want to delete the trip?</string>
+    <string name="title_delete_trip">Delete trip</string>
+    <string name="yes">Yes</string>
+
+
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>
+
+
 
 </resources>

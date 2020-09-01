@@ -1,7 +1,11 @@
 package com.example.escapetrapp.views.listener
 
-open class TripListener {
-    open fun onClick(id: Int){
+interface TripListener {
+    fun onClick(id: Int){
+
+    }
+
+    fun onDelete(id: Int){
 
     }
 }

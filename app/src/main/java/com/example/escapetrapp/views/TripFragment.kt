@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class TripFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
+class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     override val layout = R.layout.fragment_travel
 
     private lateinit var etTravelName: EditText
@@ -118,5 +118,7 @@ class TripFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
             etDateFinishTravel.setText(str)
         }
     }
+
+
 
 }
