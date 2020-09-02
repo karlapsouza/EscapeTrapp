@@ -15,7 +15,7 @@
 
     <color name="headerTextColor">#FFF</color>
 
-    <color name="home_navigation_background">#214966</color>
+    <color name="home_navigation_background">#E49C0C</color>
     <color name="home_navigation_item">#FFF</color>
 
     <color name="linkTextColor">@color/primaryTextColor</color>
