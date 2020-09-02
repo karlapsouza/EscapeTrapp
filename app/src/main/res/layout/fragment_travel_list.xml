@@ -16,46 +16,65 @@
             android:layout_height="wrap_content">
 
 
-            <Button
-                android:id="@+id/btAddTrip"
-                style="@style/button"
-                android:layout_width="72dp"
-                android:layout_height="74dp"
-                android:layout_gravity="end"
-                android:shadowRadius="0.5"
-                android:text="@string/button_add_travel"
-                app:layout_constraintBaseline_toBaselineOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_all_trips"
                 android:layout_width="0dp"
-                android:padding="16dp"
                 android:layout_height="wrap_content"
+                android:padding="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLabelTrip"/>
+                tools:layout_editor_absoluteY="98dp" />
 
 
-            <TextView
-                android:id="@+id/tvLabelTrip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="68dp"
-                android:paddingBottom="26dp"
-                android:fontFamily="@font/helvetica_neue"
-                android:text="@string/your_trips"
-                android:textColor="@color/primaryTextColor"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/btAddTrip"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:background="@drawable/shape_header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvHomeTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="28dp"
+                    android:fontFamily="@font/helvetica_neue"
+                    android:text="@string/your_trips"
+                    android:textColor="#FFF"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btAddTrip"
+                    style="@style/button_icon"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="155dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:padding="0sp"
+                    android:paddingStart="0sp"
+                    android:paddingTop="0sp"
+                    android:paddingEnd="0sp"
+                    android:paddingBottom="0sp"
+                    android:shadowRadius="0.5"
+                    android:text="@string/button_add_travel"
+                    android:textColor="#1CCCFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tvHomeTitle"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

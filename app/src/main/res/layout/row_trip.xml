@@ -25,7 +25,8 @@
         android:paddingStart="120dp"
         android:paddingTop="6dp"
         android:text="@string/travel_name"
-        android:textSize="16sp"
+        android:textColor="#5586AD"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
@@ -53,7 +54,7 @@
         android:layout_marginTop="6dp"
         android:paddingStart="120dp"
         android:text="@string/travel_date_start"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDestinationTrip" />
@@ -66,17 +67,31 @@
         android:paddingStart="120dp"
         android:paddingTop="6dp"
         android:text="@string/travel_date_end"
-        android:textSize="16sp"
+        android:textSize="14sp"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStartDateTrip"  />
+        app:layout_constraintTop_toBottomOf="@+id/tvStartDateTrip" />
+
+    <ImageButton
+        android:id="@+id/btDelete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:background="#ffffff"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintLeft_toRightOf="@+id/btEdit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDestinationTrip" />
 
     <ImageButton
         android:id="@+id/btTouristSpots"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="68dp"
         android:background="#ffffff"
         android:src="@drawable/ic_spots"
         app:layout_constraintRight_toRightOf="parent"
@@ -86,21 +101,11 @@
         android:id="@+id/btEdit"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="52dp"
         android:background="#ffffff"
         android:src="@drawable/ic_edit"
         app:layout_constraintRight_toRightOf="@+id/btTouristSpots"
-        app:layout_constraintTop_toTopOf="@+id/tvDestinationTrip" />
-
-    <ImageButton
-        android:id="@+id/btDelete"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:background="#ffffff"
-        android:src="@drawable/ic_delete"
-        app:layout_constraintLeft_toRightOf="@+id/btEdit"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvDestinationTrip" />
 
 
