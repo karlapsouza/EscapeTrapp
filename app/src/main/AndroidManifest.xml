@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCf65xxlVi3h7Wr2WPxZ5yoFvVO1paYCtQ"/>
         <activity android:name=".MainActivity">
             <nav-graph android:value="@navigation/main_nav_graph" />
             <intent-filter>

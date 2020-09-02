@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -23,6 +24,7 @@ class TripListFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_travel_list
 
     private lateinit var btAddTrip: Button
+    private lateinit var ibBackTripList: ImageButton
     private lateinit var mViewModel: TripListViewModel
     private val mAdapter: TripAdapter = TripAdapter()
     private lateinit var mListener: TripListener
@@ -64,12 +66,16 @@ class TripListFragment : BaseAuthFragment() {
 
     private fun setUpView(view: View) {
         btAddTrip = view.findViewById(R.id.btAddTrip)
+        ibBackTripList = view.findViewById(R.id.ibBackTripList)
         setUpListener()
     }
 
     private fun setUpListener() {
         btAddTrip.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_travelFragment)
+        }
+        ibBackTripList.setOnClickListener {
+            NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_homeFragment)
         }
 
 
