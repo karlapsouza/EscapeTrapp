@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_travelFragment_to_travelListFragment"
             app:destination="@id/travelListFragment" />
+        <action
+            android:id="@+id/action_travelFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
     <fragment
@@ -57,4 +60,9 @@
         android:name="com.example.escapetrapp.views.SpendingFragment"
         android:label="SpendingFragment"
         tools:layout="@layout/fragment_spending"/>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.escapetrapp.MapsActivity"
+        android:label="activity_maps"
+        tools:layout="@layout/activity_maps" />
 </navigation>

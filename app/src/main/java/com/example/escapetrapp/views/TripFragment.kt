@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
@@ -35,6 +36,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var etDateFinishTravel: EditText
     private lateinit var btCreateTravel: Button
     private lateinit var tvCancel: TextView
+    private lateinit var tvSpots: TextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val tripViewModel: TripViewModel by viewModels()
 
@@ -55,6 +57,9 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         etDateFinishTravel = view.findViewById(R.id.etDateFinishTravel)
         btCreateTravel = view.findViewById(R.id.btCreateTravel)
         tvCancel = view.findViewById(R.id.tvCancel)
+        tvSpots = view.findViewById(R.id.tvSpots)
+        tvSpots.isClickable = false
+        tvSpots.isVisible = false
 
         setUpListener(context)
         registerObserver()
@@ -82,6 +87,9 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         tvCancel.setOnClickListener {
             findNavController().navigate(R.id.action_travelFragment_to_travelListFragment)
         }
+        tvSpots.setOnClickListener {
+            findNavController().navigate(R.id.action_travelFragment_to_mapsActivity)
+        }
     }
 
     private fun showDatePicker(context: Context){
@@ -92,13 +100,20 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         DatePickerDialog(context,this,  year, month, day).show()
     }
 
+    private fun changeEdit(){
+        btCreateTravel.setText(R.string.button_edit_travel)
+        tvSpots.isClickable = true
+        tvSpots.isVisible = true
+    }
+
     private fun registerObserver() {
         this.tripViewModel.tripState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Viagem cadastrada com sucesso!")
-                    NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
+                    //NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
+                    changeEdit()
 
                 }
                 is RequestState.Error -> {
