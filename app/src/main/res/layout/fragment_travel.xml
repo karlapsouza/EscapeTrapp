@@ -120,7 +120,9 @@
             <Button
                 android:id="@+id/btCreateTravel"
                 android:text="@string/button_create_travel"
-                style="@style/button"/>
+                style="@style/button"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"/>
 
             <TextView
                 android:id="@+id/tvCancel"

@@ -61,6 +61,13 @@
     <string name="currency">Moeda:</string>
     <string name="total">Total:</string>
 
+    <string name="spot_text">Suas atividades</string>
+    <string name="spot_place">Local:</string>
+    <string name="start_time">Horário inicial:</string>
+    <string name="end_time">Horário final:</string>
+    <string name="text_activity">Roteiro</string>
+    <string name="add_spot">Adicionar</string>
+
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>
 
