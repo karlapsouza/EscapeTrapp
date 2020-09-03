@@ -17,6 +17,7 @@ class TripViewHolder(itemView: View, private val listener: TripListener) : Recyc
     fun bind(trip: Trip){
         val btEdit = itemView.findViewById<ImageButton>(R.id.btEdit)
         val btDelete = itemView.findViewById<ImageButton>(R.id.btDelete)
+        val btSpot = itemView.findViewById<ImageButton>(R.id.btTouristSpots)
 
         val tripName = itemView.findViewById<TextView>(R.id.tvNameTrip)
         tripName.text = trip.name
@@ -43,6 +44,10 @@ class TripViewHolder(itemView: View, private val listener: TripListener) : Recyc
                 }
                 .setNeutralButton(R.string.button_cancel, null)
                 .show()
+        }
+
+        btSpot.setOnClickListener {
+            listener.onClick(trip.id)
         }
     }
 

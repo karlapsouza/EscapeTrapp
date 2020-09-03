@@ -21,4 +21,5 @@ class TripListViewModel(application: Application) : AndroidViewModel(application
     fun delete(id: Int){
         mTripRepository.delete(id)
     }
+
 }

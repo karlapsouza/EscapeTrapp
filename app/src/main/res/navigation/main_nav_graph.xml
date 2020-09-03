@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_homeFragment_to_travelListFragment"
             app:destination="@id/travelListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_spendingFragment"
+            app:destination="@id/spendingFragment" />
     </fragment>
     <fragment
         android:id="@+id/travelListFragment"
@@ -23,6 +26,9 @@
         <action
             android:id="@+id/action_travelListFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_travelListFragment_to_spotsFragment"
+            app:destination="@id/spotsFragment" />
     </fragment>
     <fragment
         android:id="@+id/travelFragment"
@@ -37,4 +43,18 @@
             app:destination="@id/travelListFragment" />
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
+    <fragment
+        android:id="@+id/spotsFragment"
+        android:name="com.example.escapetrapp.views.SpotsFragment"
+        android:label="SpotsFragment"
+        tools:layout="@layout/fragment_spots">
+        <action
+            android:id="@+id/action_spotsFragment_to_travelListFragment"
+            app:destination="@id/travelListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/spendingFragment"
+        android:name="com.example.escapetrapp.views.SpendingFragment"
+        android:label="SpendingFragment"
+        tools:layout="@layout/fragment_spending"/>
 </navigation>

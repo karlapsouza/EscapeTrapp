@@ -79,8 +79,6 @@ class TripListFragment : BaseAuthFragment() {
         ibBackTripList.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_homeFragment)
         }
-
-
     }
 
     private fun observer(){
