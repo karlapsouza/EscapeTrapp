@@ -58,6 +58,11 @@
     <string name="title_delete_trip">Delete trip</string>
     <string name="yes">Yes</string>
 
+    <string name="spending_text">Your spending</string>
+    <string name="spending_value">Value</string>
+    <string name="currency">Currency:</string>
+    <string name="total">Total:</string>
+
 
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>

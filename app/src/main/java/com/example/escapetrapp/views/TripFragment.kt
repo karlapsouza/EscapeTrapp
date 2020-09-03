@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -42,6 +43,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         super.onViewCreated(view, savedInstanceState)
 
         setUpView(view)
+        registerBackPressedAction()
     }
 
     private fun setUpView(view: View) {
@@ -118,6 +120,16 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
             etDateFinishTravel.setText(str)
         }
     }
+
+    private fun registerBackPressedAction() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+    }
+
 
 
 

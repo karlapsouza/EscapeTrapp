@@ -56,6 +56,11 @@
     <string name="title_delete_trip">Excluir viagem</string>
     <string name="yes">Sim</string>
 
+    <string name="spending_text">Seus gastos</string>
+    <string name="spending_value">Valor:</string>
+    <string name="currency">Moeda:</string>
+    <string name="total">Total:</string>
+
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>
 
