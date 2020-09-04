@@ -41,11 +41,14 @@
     <string name="travel_destination">Destination</string>
     <string name="travel_date_start">Start date</string>
     <string name="travel_date_end">End date</string>
-    <string name="button_create_travel">Create trip</string>
+    <string name="button_create_travel">Create</string>
+    <string name="button_edit_travel">Edit</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_add_travel">+</string>
     <string name="your_trips">Your trips</string>
     <string name="checkbox_keep_data">Keep my data</string>
+    <string name="tvSpots">View tourist attractions</string>
+
 
     <string name="old_version">You are using a very old version of the app.
         You need to update to continue using

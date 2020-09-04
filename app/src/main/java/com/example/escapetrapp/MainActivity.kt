@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         fullScreen()
         setContentView(R.layout.activity_main)
+
     }
 
     private fun fullScreen() {

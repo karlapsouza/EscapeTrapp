@@ -3,6 +3,7 @@
     package="com.example.escapetrapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".EscapeTrappApplication"
@@ -14,7 +15,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCf65xxlVi3h7Wr2WPxZ5yoFvVO1paYCtQ"/>
+            android:value="AIzaSyCjHl0CJjj92jZ24pzFbGGwrjQMQy1wTv0"/>
         <activity android:name=".MainActivity">
             <nav-graph android:value="@navigation/main_nav_graph" />
             <intent-filter>
@@ -22,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".MapsActivity"/>
         <service
             android:name=".fcm.EscapeTrappFCMService"
             android:exported="false">
