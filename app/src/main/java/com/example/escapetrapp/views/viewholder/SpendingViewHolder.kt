@@ -21,8 +21,8 @@ class SpendingViewHolder (itemView: View, private val listener: SpendingListener
         val spendingValue = itemView.findViewById<TextView>(R.id.tvSpendingValue)
         spendingValue.text = spending.value.toString()
 
-        val tripInitialDate = itemView.findViewById<TextView>(R.id.tvStartDateTrip)
-        tripInitialDate.text = spending.date
+        val spendingDate = itemView.findViewById<TextView>(R.id.tvSpendingDate)
+        spendingDate.text = spending.date
 
 
         btEdit.setOnClickListener {

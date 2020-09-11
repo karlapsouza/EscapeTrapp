@@ -37,6 +37,7 @@
     <string name="loading_message_processing">Carregando</string>
 
     <string name="travel_subtitle">Preencha os dados da viagem</string>
+    <string name="travel_text">Viagem</string>
     <string name="travel_name">Nome</string>
     <string name="travel_destination">Destino</string>
     <string name="travel_date_start">Data início</string>
@@ -67,7 +68,8 @@
     <string name="spending_date">Data:</string>
     <string name="total">Total:</string>
 
-    <string name="spot_text">suas atividades</string>
+    <string name="spot_text">atividades</string>
+    <string name="spot_list_text">suas atividades</string>
     <string name="spot_place">Local:</string>
     <string name="start_time">Horário inicial:</string>
     <string name="end_time">Horário final:</string>

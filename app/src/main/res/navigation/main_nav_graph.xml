@@ -52,7 +52,7 @@
         android:id="@+id/spotsFragment"
         android:name="com.example.escapetrapp.views.SpotsFragment"
         android:label="SpotsFragment"
-        tools:layout="@layout/fragment_spots">
+        tools:layout="@layout/fragment_spot">
         <action
             android:id="@+id/action_spotsFragment_to_travelListFragment"
             app:destination="@id/travelListFragment" />
