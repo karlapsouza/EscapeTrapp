@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".views.TripListFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/tvSpendingDescription"
@@ -29,7 +21,7 @@
         <EditText
             android:id="@+id/etSpendingDescription"
             style="@style/label_edit_text"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="42dp"
             android:layout_marginTop="16dp"
@@ -54,10 +46,10 @@
         <EditText
             android:id="@+id/etSpending"
             style="@style/label_edit_text"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="42dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:inputType="numberDecimal"
             android:background="@drawable/shape_edit_text"
             app:layout_constraintHorizontal_bias="0.0"
@@ -80,7 +72,7 @@
         <EditText
             android:id="@+id/etSpendingDate"
             style="@style/label_edit_text"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/shape_edit_text"
@@ -97,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="30dp"
             android:text="@string/currency"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -106,7 +98,7 @@
 
         <Spinner
             android:id="@+id/sCurrency"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:entries="@array/spinner_values"
             android:background="@drawable/shape_edit_text"
@@ -120,7 +112,7 @@
             android:id="@+id/btAddSpending"
             style="@style/button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="40dp"
             android:layout_marginRight="40dp"
@@ -167,39 +159,29 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vSpending" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_all_spending"
-            tools:listitem="@layout/row_spending"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            android:padding="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/nvSpending"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTotal" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nvSpending"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground"
-            android:backgroundTint="@color/home_navigation_background"
-            app:itemBackground="@color/home_navigation_background"
-            app:itemIconTint="@color/home_navigation_item"
-            app:itemTextColor="@color/home_navigation_item"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            app:menu="@menu/home_menu" />
+            android:orientation="vertical"
+            tools:context=".views.SpendingFragment"
+            app:layout_constraintTop_toBottomOf="@id/tvTotal">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_all_spending"
+                tools:listitem="@layout/row_spending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/nvSpending"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/shape_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_bias="0.0"
@@ -236,5 +218,26 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/nvSpending"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/windowBackground"
+                android:backgroundTint="@color/home_navigation_background"
+                app:itemBackground="@color/home_navigation_background"
+                app:itemIconTint="@color/home_navigation_item"
+                app:itemTextColor="@color/home_navigation_item"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:menu="@menu/home_menu" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
