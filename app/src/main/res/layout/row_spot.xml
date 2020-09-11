@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvSpotName"
+        style="@style/label_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="6dp"
+        android:text="@string/spot_place"
+        android:textColor="#5586AD"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSpotStartTime"
+        style="@style/label_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="6dp"
+        android:text="@string/start_time"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSpotName" />
+
+    <TextView
+        android:id="@+id/tvSpotEndTime"
+        style="@style/label_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:paddingStart="16dp"
+        android:text="@string/end_time"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSpotStartTime" />
+
+
+    <ImageButton
+        android:id="@+id/btDeleteSpot"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#ffffff"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintLeft_toRightOf="@+id/btEdit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvSpotStartTime" />
+
+
+    <ImageButton
+        android:id="@+id/btEditSpot"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="52dp"
+        android:background="#ffffff"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintRight_toRightOf="@+id/btDeleteSpot"
+        app:layout_constraintTop_toTopOf="@+id/tvSpotStartTime" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

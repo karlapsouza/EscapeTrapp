@@ -19,12 +19,13 @@ import com.example.escapetrapp.services.constants.DataBaseConstants
 import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.views.adapter.TripAdapter
 import com.example.escapetrapp.viewsmodels.TripListViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.example.escapetrapp.views.listener.TripListener as TripListener
 
 class TripListFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_travel_list
 
-    private lateinit var btAddTrip: Button
+    private lateinit var btAddTrip: FloatingActionButton
     private lateinit var ibBackTripList: ImageButton
     private lateinit var mViewModel: TripListViewModel
     private val mAdapter: TripAdapter = TripAdapter()

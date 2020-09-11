@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()  {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fullScreen()
         setContentView(R.layout.activity_main)
-
     }
+
 
     private fun fullScreen() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE); supportActionBar?.hide()
@@ -20,4 +21,5 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
     }
+
 }

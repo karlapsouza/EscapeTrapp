@@ -35,7 +35,7 @@ class EscapeTrappFCMService : FirebaseMessagingService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
                 channel,
-                "CALCULA FLEX AVISOS",
+                "ESCAPE TRAPP AVISOS",
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(notificationChannel)

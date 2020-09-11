@@ -1,5 +1,6 @@
 package com.example.escapetrapp.views
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -17,12 +18,14 @@ import com.example.escapetrapp.services.models.dashboardmenu.DashboardItem
 import com.example.escapetrapp.utils.EscapeTrappTracker
 import com.example.escapetrapp.views.adapter.HomeListAdapter
 import com.example.escapetrapp.viewsmodels.HomeViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_home
     private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var rvHomeDashboard: RecyclerView
+    private lateinit var btSpending: BottomNavigationItemView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,9 +37,18 @@ class HomeFragment : BaseAuthFragment() {
 
     private fun setUpView(view: View) {
         rvHomeDashboard = view.findViewById(R.id.rvHomeDashboard)
+        btSpending = view.findViewById(R.id.navigation_spending)
+        setUpListener()
     }
 
-    private fun registerObserver() {
+    private fun setUpListener(){
+        btSpending.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_spendingFragment)
+        }
+    }
+
+
+private fun registerObserver() {
         homeViewModel.menuState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is RequestState.Loading -> {
@@ -123,6 +135,7 @@ class HomeFragment : BaseAuthFragment() {
             }
         }
     }
+
 
     private fun registerBackPressedAction() {
         val callback = object : OnBackPressedCallback(true) {

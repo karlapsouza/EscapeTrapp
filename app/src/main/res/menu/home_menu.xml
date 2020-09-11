@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_songs"
+        android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
         android:title="@string/menu_home_home"/>
 
     <item
-        android:id="@+id/navigation_albums"
-        android:icon="@drawable/ic_home_profile"
-        android:title="@string/menu_home_profile"/>
+        android:id="@+id/navigation_spending"
+        android:icon="@drawable/ic_money"
+        android:title="@string/menu_home_spending"/>
 
 </menu>

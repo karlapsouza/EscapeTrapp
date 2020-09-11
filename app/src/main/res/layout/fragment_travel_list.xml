@@ -18,6 +18,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_all_trips"
+                tools:listitem="@layout/row_trip"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
@@ -29,7 +30,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="0dp"
-                android:layout_height="110dp"
+                android:layout_height="100dp"
                 android:background="@drawable/shape_header"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -38,9 +39,8 @@
 
                 <TextView
                     android:id="@+id/tvHomeTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="28dp"
                     android:fontFamily="@font/helvetica_neue"
@@ -48,6 +48,7 @@
                     android:textColor="#FFF"
                     android:textSize="32sp"
                     android:textStyle="bold"
+                    android:textAlignment="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -63,26 +64,19 @@
                     android:background="@color/secondaryBackground"
                     app:layout_constraintHorizontal_bias="0.0"/>
 
-                <Button
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btAddTrip"
-                    style="@style/button_icon"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:layout_marginStart="155dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="175dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_add2"
                     android:backgroundTint="#FFFFFF"
-                    android:padding="0sp"
-                    android:paddingStart="0sp"
-                    android:paddingTop="0sp"
-                    android:paddingEnd="0sp"
-                    android:paddingBottom="0sp"
-                    android:shadowRadius="0.5"
-                    android:text="@string/button_add_travel"
-                    android:textColor="#1CCCFF"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvHomeTitle"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintStart_toEndOf="@+id/ibBackTripList"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

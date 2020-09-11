@@ -26,11 +26,11 @@
             android:id="@+id/action_travelListFragment_to_travelFragment"
             app:destination="@id/travelFragment" />
         <action
-            android:id="@+id/action_travelListFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
             android:id="@+id/action_travelListFragment_to_spotsFragment"
             app:destination="@id/spotsFragment" />
+        <action
+            android:id="@+id/action_travelListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/travelFragment"
@@ -52,7 +52,7 @@
         android:id="@+id/spotsFragment"
         android:name="com.example.escapetrapp.views.SpotsFragment"
         android:label="SpotsFragment"
-        tools:layout="@layout/fragment_spots">
+        tools:layout="@layout/fragment_spot">
         <action
             android:id="@+id/action_spotsFragment_to_travelListFragment"
             app:destination="@id/travelListFragment" />
@@ -61,7 +61,11 @@
         android:id="@+id/spendingFragment"
         android:name="com.example.escapetrapp.views.SpendingFragment"
         android:label="SpendingFragment"
-        tools:layout="@layout/fragment_spending"/>
+        tools:layout="@layout/fragment_spending">
+        <action
+            android:id="@+id/action_spendingFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <activity
         android:id="@+id/mapsActivity"
         android:name="com.example.escapetrapp.MapsActivity"
