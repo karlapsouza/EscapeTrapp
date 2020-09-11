@@ -8,6 +8,7 @@ import com.example.escapetrapp.services.constants.DataBaseConstants
 //Classe usada para acessar o banco
 
 class TripDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
+
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE_TRIP)
     }

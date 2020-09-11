@@ -130,8 +130,10 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         calendar.set(year,month, dayOfMonth)
         val str = mDateFormat.format(calendar.time)
         if(etDateStartTravel.hasFocus()) {
+            hideKeyboard()
             etDateStartTravel.setText(str)
         }else if(etDateFinishTravel.hasFocus()){
+            hideKeyboard()
             etDateFinishTravel.setText(str)
         }
     }

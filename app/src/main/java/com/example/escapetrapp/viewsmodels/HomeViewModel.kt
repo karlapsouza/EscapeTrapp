@@ -23,6 +23,7 @@ class HomeViewModel : ViewModel() {
     val userNameState = MutableLiveData<RequestState<String>>()
     val logoutState = MutableLiveData<RequestState<String>>()
     val tripState = MutableLiveData<RequestState<String>>()
+    val spandingState = MutableLiveData<RequestState<String>>()
 
     private fun getUser() {
         userNameState.value = RequestState.Loading

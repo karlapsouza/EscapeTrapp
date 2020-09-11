@@ -12,4 +12,15 @@ class DataBaseConstants {
             const val END_DATE = "endDate"
         }
     }
+    object SPENDING{
+        const val TABLE_NAME = "Spending"
+
+        object COLUMNS{
+            const val ID = "id"
+            const val DESCRIPTION = "description"
+            const val VALUE = "value"
+            const val DATE = "date"
+            const val CURRENCY = "currency"
+        }
+    }
 }

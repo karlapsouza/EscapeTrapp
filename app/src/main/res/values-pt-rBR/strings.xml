@@ -2,7 +2,7 @@
     <string name="app_name">escape trapp</string>
 
     <string name="menu_home_home">Home</string>
-    <string name="menu_home_profile">Perfil</string>
+    <string name="menu_home_spending">Gastos</string>
 
     <string name="home_select_options">Vamos planejar sua viagem?</string>
 
@@ -45,7 +45,7 @@
     <string name="button_edit_travel">Editar</string>
     <string name="button_cancel">Cancelar</string>
     <string name="button_add_travel">+</string>
-    <string name="your_trips">Suas viagens</string>
+    <string name="your_trips">suas viagens</string>
     <string name="checkbox_keep_data">Lembrar meus dados</string>
     <string name="tvSpots">Visualizar pontos turísticos</string>
 
@@ -56,14 +56,18 @@
 
     <string name="message_delete_trip">Você tem certeza que deseja excluir a viagem?</string>
     <string name="title_delete_trip">Excluir viagem</string>
+    <string name="message_delete_spending">Você tem certeza que deseja excluir essa despesa?</string>
+    <string name="title_delete_spending">Excluir despesa</string>
     <string name="yes">Sim</string>
 
-    <string name="spending_text">Seus gastos</string>
+    <string name="spending_text">seus gastos</string>
+    <string name="spending_description">Descrição</string>
     <string name="spending_value">Valor:</string>
     <string name="currency">Moeda:</string>
+    <string name="spending_date">Data:</string>
     <string name="total">Total:</string>
 
-    <string name="spot_text">Suas atividades</string>
+    <string name="spot_text">suas atividades</string>
     <string name="spot_place">Local:</string>
     <string name="start_time">Horário inicial:</string>
     <string name="end_time">Horário final:</string>
@@ -72,5 +76,13 @@
 
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>
-
+    <string-array name="spinner_values">
+        <item>Real</item>
+        <item>Dólar turismo</item>
+        <item>Dólar canadense</item>
+        <item>Dólar australiano</item>
+        <item>Euro</item>
+        <item>Libra esterlina</item>
+        <item>Peso argentino</item>
+    </string-array>
 </resources>
