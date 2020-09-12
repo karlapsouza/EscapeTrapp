@@ -48,7 +48,6 @@
     <string name="button_add_travel">+</string>
     <string name="your_trips">suas viagens</string>
     <string name="checkbox_keep_data">Lembrar meus dados</string>
-    <string name="tvSpots">Visualizar pontos turísticos</string>
 
     <string name="old_version">Você está usando uma versão muito antiga do app. É necessário atualizar para continuar utilizando</string>
     <string name="update_app">Atualizar aplicativo</string>
@@ -59,6 +58,8 @@
     <string name="title_delete_trip">Excluir viagem</string>
     <string name="message_delete_spending">Você tem certeza que deseja excluir essa despesa?</string>
     <string name="title_delete_spending">Excluir despesa</string>
+    <string name="message_delete_spot">Você tem certeza que deseja excluir essa atividade?</string>
+    <string name="title_delete_spot">Excluir atividade</string>
     <string name="yes">Sim</string>
 
     <string name="spending_text">seus gastos</string>

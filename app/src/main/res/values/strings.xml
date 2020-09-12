@@ -48,7 +48,6 @@
     <string name="button_add_travel">+</string>
     <string name="your_trips">your trips</string>
     <string name="checkbox_keep_data">Keep my data</string>
-    <string name="tvSpots">View tourist attractions</string>
 
 
     <string name="old_version">You are using a very old version of the app.
@@ -62,6 +61,8 @@
     <string name="title_delete_trip">Delete trip</string>
     <string name="message_delete_spending">Are you sure you want to delete this spending?</string>
     <string name="title_delete_spending">Delete spending</string>
+    <string name="message_delete_spot">Are you sure you want to delete this activity?</string>
+    <string name="title_delete_spot">Delete activity</string>
     <string name="yes">Yes</string>
 
     <string name="spending_text">your spending</string>

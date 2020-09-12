@@ -23,7 +23,8 @@ class HomeViewModel : ViewModel() {
     val userNameState = MutableLiveData<RequestState<String>>()
     val logoutState = MutableLiveData<RequestState<String>>()
     val tripState = MutableLiveData<RequestState<String>>()
-    val spandingState = MutableLiveData<RequestState<String>>()
+    val mapsState = MutableLiveData<RequestState<String>>()
+    val spendingState = MutableLiveData<RequestState<String>>()
 
     private fun getUser() {
         userNameState.value = RequestState.Loading
@@ -82,6 +83,11 @@ class HomeViewModel : ViewModel() {
     fun listTrip() {
         tripState.value = RequestState.Loading
         tripState.value = RequestState.Success("")
+    }
+
+    fun maps() {
+        mapsState.value = RequestState.Loading
+        mapsState.value = RequestState.Success("")
     }
 
     private fun saveToken() {

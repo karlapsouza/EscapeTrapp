@@ -4,10 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -36,7 +33,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var etDateFinishTravel: EditText
     private lateinit var btCreateTravel: Button
     private lateinit var tvCancel: TextView
-    private lateinit var tvSpots: TextView
+    private lateinit var ibBackTrip: ImageButton
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val tripViewModel: TripViewModel by viewModels()
 
@@ -57,9 +54,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         etDateFinishTravel = view.findViewById(R.id.etDateFinishTravel)
         btCreateTravel = view.findViewById(R.id.btCreateTravel)
         tvCancel = view.findViewById(R.id.tvCancel)
-        tvSpots = view.findViewById(R.id.tvSpots)
-        tvSpots.isClickable = false
-        tvSpots.isVisible = false
+        ibBackTrip = view.findViewById(R.id.ibBackTrip)
 
         setUpListener(context)
         registerObserver()
@@ -87,8 +82,8 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         tvCancel.setOnClickListener {
             findNavController().navigate(R.id.action_travelFragment_to_travelListFragment)
         }
-        tvSpots.setOnClickListener {
-            findNavController().navigate(R.id.action_travelFragment_to_mapsActivity)
+        ibBackTrip.setOnClickListener {
+            findNavController().navigate(R.id.action_travelFragment_to_travelListFragment)
         }
     }
 
@@ -100,20 +95,13 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         DatePickerDialog(context,this,  year, month, day).show()
     }
 
-    private fun changeEdit(){
-        btCreateTravel.setText(R.string.button_edit_travel)
-        tvSpots.isClickable = true
-        tvSpots.isVisible = true
-    }
-
     private fun registerObserver() {
         this.tripViewModel.tripState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Viagem cadastrada com sucesso!")
-                    //NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
-                    changeEdit()
+                    NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
 
                 }
                 is RequestState.Error -> {

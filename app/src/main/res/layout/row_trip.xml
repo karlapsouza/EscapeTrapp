@@ -14,7 +14,7 @@
         android:src="@drawable/ic_world"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tvNameTrip"
+        app:layout_constraintRight_toLeftOf="@id/tvNameTrip"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:textColor="#5586AD"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
+        app:layout_constraintLeft_toRightOf="@id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/ivImageTrip" />
 
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameTrip" />
+        app:layout_constraintTop_toBottomOf="@id/tvNameTrip" />
 
     <TextView
         android:id="@+id/tvStartDateTrip"
@@ -55,9 +55,9 @@
         android:paddingStart="120dp"
         android:text="@string/travel_date_start"
         android:textSize="14sp"
-        app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
+        app:layout_constraintLeft_toRightOf="@id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDestinationTrip" />
+        app:layout_constraintTop_toBottomOf="@id/tvDestinationTrip" />
 
     <TextView
         android:id="@+id/tvEndDateTrip"
@@ -69,9 +69,9 @@
         android:text="@string/travel_date_end"
         android:textSize="14sp"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
+        app:layout_constraintLeft_toRightOf="@id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStartDateTrip" />
+        app:layout_constraintTop_toBottomOf="@id/tvStartDateTrip" />
 
     <ImageButton
         android:id="@+id/btDelete"
@@ -82,9 +82,9 @@
         android:background="#ffffff"
         android:src="@drawable/ic_delete"
         app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintLeft_toRightOf="@+id/btEdit"
+        app:layout_constraintLeft_toRightOf="@id/btEdit"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvDestinationTrip" />
+        app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
 
     <ImageButton
         android:id="@+id/btTouristSpots"
@@ -95,7 +95,7 @@
         android:background="#ffffff"
         android:src="@drawable/ic_spots"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvDestinationTrip" />
+        app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
 
     <ImageButton
         android:id="@+id/btEdit"
@@ -105,8 +105,8 @@
         android:layout_marginRight="52dp"
         android:background="#ffffff"
         android:src="@drawable/ic_edit"
-        app:layout_constraintRight_toRightOf="@+id/btTouristSpots"
-        app:layout_constraintTop_toTopOf="@+id/tvDestinationTrip" />
+        app:layout_constraintRight_toRightOf="@id/btTouristSpots"
+        app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

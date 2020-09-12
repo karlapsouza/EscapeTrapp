@@ -23,4 +23,18 @@ class DataBaseConstants {
             const val CURRENCY = "currency"
         }
     }
+    object SPOT{
+        const val TABLE_NAME = "Spot"
+
+        object COLUMNS{
+            const val ID = "id"
+            const val PLACE = "place"
+            const val STARTDATE = "stratDate"
+            const val ENDDATE = "endDate"
+            const val STARTTIME = "startTime"
+            const val ENDTIME = "endTime"
+            const val DESCRIPTION = "description"
+            const val IDTRIP = "idTrip"
+        }
+    }
 }

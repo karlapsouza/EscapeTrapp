@@ -69,7 +69,7 @@
                 android:id="@+id/etPasswordLogin"
                 style="@style/field_edit_text"
                 android:inputType="textPassword"
-                tools:text="heiderlopes@apps.com.br" />
+                tools:text="xxxxxx" />
         </LinearLayout>
 
         <CheckBox
@@ -96,8 +96,8 @@
         android:textColor="#9EB0BC"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tvAppName"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
+        app:layout_constraintStart_toStartOf="@id/tvAppName"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName" />
 
     <TextView
         android:id="@+id/tvResetPassword"
@@ -107,7 +107,7 @@
         android:layout_marginBottom="24dp"
         android:text="@string/label_reset_password"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
@@ -121,7 +121,7 @@
         android:text="@string/label_create_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"/>
+        app:layout_constraintStart_toStartOf="@id/guideline"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

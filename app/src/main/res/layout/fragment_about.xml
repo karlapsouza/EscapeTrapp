@@ -42,8 +42,8 @@
             android:textColor="#FFF"
             android:textSize="32sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/ivLogoApp"
-            app:layout_constraintTop_toTopOf="@+id/ivLogoApp"
+            app:layout_constraintStart_toStartOf="@id/ivLogoApp"
+            app:layout_constraintTop_toTopOf="@id/ivLogoApp"
             tools:layout_editor_absoluteY="16dp" />
 
         <TextView
@@ -52,8 +52,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            app:layout_constraintStart_toStartOf="@+id/tvTermsTitle"
-            app:layout_constraintTop_toBottomOf="@+id/tvTermsTitle" />
+            app:layout_constraintStart_toStartOf="@id/tvTermsTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvTermsTitle" />
 
         <TextView
             android:id="@+id/tvVersion"
@@ -62,8 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@string/version"
-            app:layout_constraintStart_toEndOf="@+id/ivLogoApp"
-            app:layout_constraintTop_toBottomOf="@+id/tvHomeSubTitle" />
+            app:layout_constraintStart_toEndOf="@id/ivLogoApp"
+            app:layout_constraintTop_toBottomOf="@id/tvHomeSubTitle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -79,6 +79,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

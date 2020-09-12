@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_spendingFragment"
             app:destination="@id/spendingFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/travelListFragment"
@@ -26,11 +29,11 @@
             android:id="@+id/action_travelListFragment_to_travelFragment"
             app:destination="@id/travelFragment" />
         <action
-            android:id="@+id/action_travelListFragment_to_spotsFragment"
-            app:destination="@id/spotsFragment" />
-        <action
             android:id="@+id/action_travelListFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_travelListFragment_to_spotListFragment"
+            app:destination="@id/spotListFragment" />
     </fragment>
     <fragment
         android:id="@+id/travelFragment"
@@ -50,13 +53,9 @@
     <include app:graph="@navigation/login_nav_graph" />
     <fragment
         android:id="@+id/spotsFragment"
-        android:name="com.example.escapetrapp.views.SpotsFragment"
+        android:name="com.example.escapetrapp.views.SpotFragment"
         android:label="SpotsFragment"
-        tools:layout="@layout/fragment_spot">
-        <action
-            android:id="@+id/action_spotsFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_spot"/>
     <fragment
         android:id="@+id/spendingFragment"
         android:name="com.example.escapetrapp.views.SpendingFragment"
@@ -71,4 +70,16 @@
         android:name="com.example.escapetrapp.MapsActivity"
         android:label="activity_maps"
         tools:layout="@layout/activity_maps" />
+    <fragment
+        android:id="@+id/spotListFragment"
+        android:name="com.example.escapetrapp.views.SpotListFragment"
+        android:label="SpotListFragment"
+        tools:layout="@layout/fragment_spot_list">
+        <action
+            android:id="@+id/action_spotListFragment_to_travelListFragment"
+            app:destination="@id/travelListFragment" />
+        <action
+            android:id="@+id/action_spotListFragment_to_spotsFragment"
+            app:destination="@id/spotsFragment" />
+    </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.example.escapetrapp.views
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -26,6 +27,7 @@ class LoginFragment : BaseFragment() {
     private lateinit var etPasswordLogin: EditText
     private lateinit var tvResetPassword: TextView
     private lateinit var tvNewAccount: TextView
+    private lateinit var cbUserSaveLogin: CheckBox
     private val homeViewModel: HomeViewModel by viewModels()
 
     private val loginViewModel: LoginViewModel by viewModels()
@@ -68,6 +70,7 @@ class LoginFragment : BaseFragment() {
     private fun showSuccess() {
         hideLoading()
         val navIdFromArguments = arguments?.getInt(NAVIGATION_KEY)
+        //if (navIdFromArguments == null && cbUserSaveLogin.isChecked) {
         if (navIdFromArguments == null) {
             findNavController().navigate(R.id.main_nav_graph)
         } else {
@@ -81,6 +84,7 @@ class LoginFragment : BaseFragment() {
         etPasswordLogin = view.findViewById(R.id.etPasswordLogin)
         tvResetPassword = view.findViewById(R.id.tvResetPassword)
         tvNewAccount = view.findViewById(R.id.tvNewAccount)
+        cbUserSaveLogin = view.findViewById(R.id.cbUserSaveLogin)
 
         btAcessLogin.setOnClickListener {
             loginViewModel.singIn(

@@ -103,6 +103,19 @@ private fun registerObserver() {
                     showMessage(it.trowable.message) }
             }
         })
+        homeViewModel.mapsState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_mapsActivity)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
     }
 
     private fun setUpMenu(items: List<DashboardItem>) {
@@ -129,6 +142,8 @@ private fun registerObserver() {
                 }
                 "VIAGEM" -> {
                     homeViewModel.listTrip()
+                }"PONTOS" -> {
+                    homeViewModel.maps()
                 }else -> {
                     startDeeplink(item.action.deeplink)
                }

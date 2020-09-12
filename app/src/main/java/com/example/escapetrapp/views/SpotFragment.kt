@@ -5,7 +5,7 @@ import android.view.View
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
 
-class SpotsFragment : BaseFragment() {
+class SpotFragment : BaseFragment() {
     override val layout = R.layout.fragment_splash
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
