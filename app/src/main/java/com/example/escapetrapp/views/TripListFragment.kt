@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -46,7 +47,7 @@ class TripListFragment : BaseAuthFragment() {
                 //para passar dados entre as fragments
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
-                findNavController().navigate(R.id.action_travelListFragment_to_spotListFragment, bundle)
+                findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle)
 
             }
 
@@ -54,19 +55,22 @@ class TripListFragment : BaseAuthFragment() {
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
                 findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle)
+//                var bundle2 = bundleOf("tripName" to "tripName")
+//                findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle2)
+                var teste = mViewModel.load(id)
                 mViewModel.update(trip)
             }
 
             override fun onDelete(id: Int){
                 mViewModel.delete(id)
-                mViewModel.load()
+                mViewModel.loadAll()
             }
 
         }
 
         mAdapter.attachListener(mListener)
         observer()
-        mViewModel.load()
+        mViewModel.loadAll()
 
     }
 
@@ -78,7 +82,7 @@ class TripListFragment : BaseAuthFragment() {
 
     private fun setUpListener() {
         btAddTrip.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_travelFragment)
+            NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_spotListFragment)
         }
         ibBackTripList.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_homeFragment)

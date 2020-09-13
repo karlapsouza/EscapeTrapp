@@ -8,13 +8,16 @@ import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
+import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Trip
+import com.example.escapetrapp.viewsmodels.TripListViewModel
 import com.example.escapetrapp.viewsmodels.TripViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -32,13 +35,28 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var ibBackTrip: ImageButton
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val tripViewModel: TripViewModel by viewModels()
+    private lateinit var mViewModel: TripViewModel
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mViewModel = ViewModelProvider(this).get(TripViewModel::class.java)
+        //loadData()
         setUpView(view)
         registerBackPressedAction()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val tripId = arguments?.getInt(TripConstants.TRIPID)
+        //val tripId = arguments?.getInt("tripId")
+        Toast.makeText(requireContext(), tripId.toString(), Toast.LENGTH_LONG).show()
+        if(tripId != 0 && tripId != null){
+            //carregando os dados
+            mViewModel.load(tripId)
+            loadData()
+        }
     }
 
     private fun setUpView(view: View) {
@@ -83,6 +101,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         }
     }
 
+
     private fun showDatePicker(context: Context){
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -106,6 +125,19 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                 }
                 is RequestState.Loading -> showLoading("Realizando cadastro da viagem") }
 
+        })
+    }
+
+    private fun loadData(){
+        this.tripViewModel.oneTrip.observe(viewLifecycleOwner, Observer {
+            print("valor retornado" +it?.name)
+            //etTravelName.text = it.name
+            var teste = arguments?.getString("tripName")
+            etTravelName.setText(teste)
+            etTravelName.setText(it?.name)
+            etTravelDestination.setText(it?.destination)
+            etDateStartTravel.setText(it?.initialDate)
+            etDateFinishTravel.setText(it?.endDate)
         })
     }
 

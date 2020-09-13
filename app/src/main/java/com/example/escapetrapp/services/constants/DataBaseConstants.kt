@@ -29,7 +29,7 @@ class DataBaseConstants {
         object COLUMNS{
             const val ID = "id"
             const val PLACE = "place"
-            const val STARTDATE = "stratDate"
+            const val STARTDATE = "startDate"
             const val ENDDATE = "endDate"
             const val STARTTIME = "startTime"
             const val ENDTIME = "endTime"

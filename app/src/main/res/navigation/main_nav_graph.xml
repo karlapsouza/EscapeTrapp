@@ -46,6 +46,12 @@
         <action
             android:id="@+id/action_travelFragment_to_travelListFragment"
             app:destination="@id/travelListFragment" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
+        <argument
+            android:name="tripName"
+            app:argType= "string"/>
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
     <fragment
@@ -56,6 +62,9 @@
         <action
             android:id="@+id/action_spotsFragment_to_spotListFragment"
             app:destination="@id/spotListFragment" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/spendingFragment"
@@ -82,5 +91,8 @@
         <action
             android:id="@+id/action_spotListFragment_to_spotsFragment"
             app:destination="@id/spotsFragment" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
     </fragment>
 </navigation>

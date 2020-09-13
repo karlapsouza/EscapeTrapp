@@ -2,6 +2,7 @@ package com.example.escapetrapp.viewsmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Trip
@@ -11,6 +12,8 @@ class TripViewModel(application: Application): AndroidViewModel(application){
     private val mContext = application.applicationContext
     private val mTripRepository : TripRepository = TripRepository.getInstance(mContext)
     val tripState = MutableLiveData<RequestState<String>>()
+    private val mTrip = MutableLiveData<Trip>()
+    val oneTrip: LiveData<Trip> = mTrip
 
     fun addTrip(newTrip: Trip) {
         tripState.value = RequestState.Loading
@@ -28,6 +31,10 @@ class TripViewModel(application: Application): AndroidViewModel(application){
         }else {
             tripState.value = RequestState.Error(Throwable())
         }
+    }
+
+    fun load(id: Int){
+        mTrip.value = mTripRepository.get(id)
     }
 
     private fun validateFields(trip: Trip): Boolean {

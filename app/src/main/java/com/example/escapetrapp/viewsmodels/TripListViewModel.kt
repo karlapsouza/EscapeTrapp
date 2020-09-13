@@ -13,9 +13,16 @@ class TripListViewModel(application: Application) : AndroidViewModel(application
     private val mTripList = MutableLiveData<List<Trip>>()
     val tripList: LiveData<List<Trip>> = mTripList
 
-    fun load(){
+    private val mTrip = MutableLiveData<Trip>()
+    val oneTrip: LiveData<Trip> = mTrip
+
+    fun loadAll(){
         val list = mTripRepository.getAllTrips()
         mTripList.value = list
+    }
+
+    fun load(id: Int){
+        mTrip.value = mTripRepository.get(id)
     }
 
     fun delete(id: Int){
