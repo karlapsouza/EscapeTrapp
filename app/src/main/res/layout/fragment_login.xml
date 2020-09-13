@@ -72,14 +72,6 @@
                 tools:text="xxxxxx" />
         </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/cbUserSaveLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/checkbox_keep_data"
-            android:backgroundTint="@color/secondaryTextColor"
-            android:textColor="@color/primaryTextColor"/>
-
         <Button
             android:id="@+id/btAcessLogin"
             android:text="@string/button_login"

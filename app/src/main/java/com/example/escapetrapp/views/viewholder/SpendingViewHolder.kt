@@ -21,7 +21,7 @@ class SpendingViewHolder (itemView: View, private val listener: SpendingListener
         val spendingValue = itemView.findViewById<TextView>(R.id.tvSpendingValue)
         spendingValue.text = spending.value.toString()
 
-        val spendingDate = itemView.findViewById<TextView>(R.id.tvSpendingDate)
+        val spendingDate = itemView.findViewById<TextView>(R.id.tvtDateSpending)
         spendingDate.text = spending.date
 
 

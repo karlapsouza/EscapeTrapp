@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
@@ -15,17 +13,15 @@ import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
-import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.viewsmodels.TripViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
-    override val layout = R.layout.fragment_travel
+    override val layout = R.layout.fragment_trip
 
     private lateinit var etTravelName: EditText
     private lateinit var etTravelDestination: EditText

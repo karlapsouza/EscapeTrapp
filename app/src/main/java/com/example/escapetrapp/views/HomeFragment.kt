@@ -48,7 +48,7 @@ class HomeFragment : BaseAuthFragment() {
     }
 
 
-private fun registerObserver() {
+    private fun registerObserver() {
         homeViewModel.menuState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is RequestState.Loading -> {

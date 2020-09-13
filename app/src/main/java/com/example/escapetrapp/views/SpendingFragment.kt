@@ -2,7 +2,6 @@ package com.example.escapetrapp.views
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
-import com.example.escapetrapp.services.constants.SpendingConstants
+import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.views.adapter.SpendingAdapter
 import com.example.escapetrapp.views.listener.SpendingListener
@@ -28,7 +27,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     override val layout = R.layout.fragment_spending
     private val spendingViewModel: SpendingViewModel by viewModels()
     private lateinit var mViewModel: SpendingViewModel
-    private val mAdapter: SpendingAdapter = SpendingAdapter()
+    private lateinit var mAdapter: SpendingAdapter
     private lateinit var mListener: SpendingListener
     private lateinit var btHome: BottomNavigationItemView
     private lateinit var btBack: ImageButton
@@ -49,19 +48,19 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_spending)
         //Definindo um layout, como recycler se comporta na tela
         recycler.layoutManager = LinearLayoutManager(context)
-        //Definindo um adapter
-        recycler.adapter = mAdapter
+
+        mViewModel.load()
 
         mListener = object : SpendingListener {
 
             override fun onClick(id: Int) {
-                val intent = Intent(context, SpendingFragment::class.java)
+//                val intent = Intent(context, SpendingFragment::class.java)
 
                 //para passar dados na intent
-                val bundle = Bundle()
-                bundle.putInt(SpendingConstants.SPENDINGID, id)
-                intent.putExtras(bundle)
-                startActivity(intent)
+//                val bundle = Bundle()
+//                bundle.putInt(SpendingConstants.SPENDINGID, id)
+//                intent.putExtras(bundle)
+//                startActivity(intent)
             }
 
             override fun onDelete(id: Int) {
@@ -70,6 +69,31 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
             }
 
         }
+        mAdapter = SpendingAdapter(mListener)
+        recycler.adapter = mAdapter
+
+        registerObserver()
+    }
+
+    private fun registerObserver() {
+        mViewModel.spendingState.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when (it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    showMessage(it.data)
+                    mViewModel.load()
+                    //Limpar os campos
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message)
+                }
+                is RequestState.Loading -> showLoading("Aguarde um momento") }
+        })
+
+        mViewModel.spendingList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            mAdapter.updateSpendings(it)
+        })
     }
 
     private fun setUpView(view: View) {

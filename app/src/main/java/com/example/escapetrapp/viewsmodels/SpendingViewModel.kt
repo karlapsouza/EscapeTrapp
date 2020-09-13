@@ -11,7 +11,7 @@ import com.example.escapetrapp.services.repositories.SpendingRepository
 
 class SpendingViewModel(application: Application) : AndroidViewModel(application){
 
-    private val spendingState = MutableLiveData<RequestState<String>>()
+    val spendingState = MutableLiveData<RequestState<String>>()
     private val mSpendingRepository = SpendingRepository.getInstance(application.applicationContext)
     private val mSpendingList = MutableLiveData<List<Spending>>()
     val spendingList: LiveData<List<Spending>> = mSpendingList

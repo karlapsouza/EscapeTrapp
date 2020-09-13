@@ -2,8 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+
+//apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'io.fabric'
-apply plugin: 'com.google.firebase.crashlytics'
+
+apply plugin: "androidx.navigation.safeargs"
+
 
 android {
     compileSdkVersion 29

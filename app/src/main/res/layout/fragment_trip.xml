@@ -31,10 +31,10 @@
                 android:id="@+id/tvTripTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="28dp"
                 android:fontFamily="@font/helvetica_neue"
-                android:text="@string/travel_text"
+                android:text="@string/trip_text"
                 android:textColor="#FFF"
                 android:textSize="32sp"
                 android:textStyle="bold"
@@ -47,6 +47,7 @@
                 android:id="@+id/ibBackTrip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:background="@color/secondaryBackground"
                 android:src="@drawable/ic_arrow_back"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -70,7 +71,7 @@
 
                 <TextView
                     style="@style/label_edit_text"
-                    android:text="@string/travel_name" />
+                    android:text="@string/trip_name" />
 
                 <EditText
                     android:id="@+id/etTravelName"
@@ -83,7 +84,7 @@
 
                 <TextView
                     style="@style/label_edit_text"
-                    android:text="@string/travel_destination" />
+                    android:text="@string/trip_destination" />
 
                 <EditText
                     android:id="@+id/etTravelDestination"
@@ -96,7 +97,7 @@
 
                 <TextView
                     style="@style/label_edit_text"
-                    android:text="@string/travel_date_start" />
+                    android:text="@string/trip_date_start" />
 
                 <EditText
                     android:id="@+id/etDateStartTravel"
@@ -111,7 +112,7 @@
 
                 <TextView
                     style="@style/label_edit_text"
-                    android:text="@string/travel_date_end" />
+                    android:text="@string/trip_date_end" />
 
                 <EditText
                     android:id="@+id/etDateFinishTravel"
@@ -122,7 +123,7 @@
 
             <Button
                 android:id="@+id/btCreateTravel"
-                android:text="@string/button_create_travel"
+                android:text="@string/button_create_trip"
                 style="@style/button" />
 
             <TextView

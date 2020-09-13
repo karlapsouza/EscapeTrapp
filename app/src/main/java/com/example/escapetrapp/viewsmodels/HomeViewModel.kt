@@ -47,31 +47,31 @@ class HomeViewModel : ViewModel() {
     }
 
     fun createMenu() {
-        val dashBoardItems = arrayListOf<DashboardItem>()
-        val itemsMenu = dashboardMenu?.items ?: listOf()
-        for (itemMenu in itemsMenu) {
-            FeatureToggleHelper().configureFeature(
-                itemMenu.feature, object : FeatureToggleListener {
-                    override fun onEnabled() {
-                        dashBoardItems.add(itemMenu)
-                    }
-                    override fun onInvisible() {
-                    }
-                    override fun onDisabled(clickListener: (Context) -> Unit) {
-                        itemMenu.onDisabledListener = clickListener
-                        dashBoardItems.add(itemMenu)
-                    }
-                })
-        }
         menuState.value = RequestState.Loading
         RemoteConfigUtils.fetchAndActivate().addOnCompleteListener {
             dashboardMenu = Gson().fromRemoteConfig(
                 RemoteConfigKeys.MENU_DASHBOARD,
                 DashboardMenu::class.java
             )
+            val dashBoardItems = arrayListOf<DashboardItem>()
+            val itemsMenu = dashboardMenu?.items ?: listOf()
+            for (itemMenu in itemsMenu) {
+                FeatureToggleHelper().configureFeature(
+                    itemMenu.feature, object : FeatureToggleListener {
+                        override fun onEnabled() {
+                            dashBoardItems.add(itemMenu)
+                        }
+                        override fun onInvisible() {
+                        }
+                        override fun onDisabled(clickListener: (Context) -> Unit) {
+                            itemMenu.onDisabledListener = clickListener
+                            dashBoardItems.add(itemMenu)
+                        }
+                    })
+            }
+            menuState.value = RequestState.Success(dashBoardItems)
             getUser()
         }
-        menuState.value = RequestState.Success(dashBoardItems)
     }
 
     fun signOut() {

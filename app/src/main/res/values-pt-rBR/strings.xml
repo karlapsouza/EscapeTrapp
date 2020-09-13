@@ -13,7 +13,7 @@
     <string name="label_password">Senha</string>
     <string name="label_confirm_password">Confirme sua senha</string>
     <string name="label_accept_terms">Li e aceitos os termos</string>
-    <string name="label_about">Sobre o app</string>
+    <string name="label_about">sobre o app</string>
     <string name="label_terms">Termos de uso</string>
 
     <string name="label_create_account">Criar conta</string>
@@ -36,18 +36,15 @@
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Carregando</string>
 
-    <string name="travel_subtitle">Preencha os dados da viagem</string>
-    <string name="travel_text">Viagem</string>
-    <string name="travel_name">Nome</string>
-    <string name="travel_destination">Destino</string>
-    <string name="travel_date_start">Data início</string>
-    <string name="travel_date_end">Data fim</string>
-    <string name="button_create_travel">Criar</string>
-    <string name="button_edit_travel">Editar</string>
+    <string name="trip_text">nova viagem</string>
+    <string name="trip_name">Nome</string>
+    <string name="trip_destination">Destino</string>
+    <string name="trip_date_start">Data início</string>
+    <string name="trip_date_end">Data fim</string>
+    <string name="button_create_trip">Criar</string>
+    <string name="button_edit_trip">Editar</string>
     <string name="button_cancel">Cancelar</string>
-    <string name="button_add_travel">+</string>
     <string name="your_trips">suas viagens</string>
-    <string name="checkbox_keep_data">Lembrar meus dados</string>
 
     <string name="old_version">Você está usando uma versão muito antiga do app. É necessário atualizar para continuar utilizando</string>
     <string name="update_app">Atualizar aplicativo</string>
@@ -69,11 +66,14 @@
     <string name="spending_date">Data:</string>
     <string name="total">Total:</string>
 
-    <string name="spot_text">atividades</string>
+    <string name="spot_text">nova atividade</string>
     <string name="spot_list_text">suas atividades</string>
     <string name="spot_place">Local:</string>
+    <string name="start_date">Data inicial:</string>
+    <string name="end_date">Data final:</string>
     <string name="start_time">Horário inicial:</string>
     <string name="end_time">Horário final:</string>
+    <string name="spot_description">Descrição:</string>
     <string name="text_activity">Roteiro</string>
     <string name="add_spot">Adicionar</string>
 

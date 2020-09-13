@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: br.com.concrete:canarinho:2.0.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/16fc395e684491c516248c1a954a203e/jetified-canarinho-2.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/16fc395e684491c516248c1a954a203e/jetified-canarinho-2.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/16fc395e684491c516248c1a954a203e/jetified-canarinho-2.0.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/br.com.concrete/canarinho/2.0.1/aac0a2c0c5e12d07745b5fd1018b11eec4a5d23d/canarinho-2.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/br.com.concrete/canarinho/2.0.1/8fa9fa9c7f11223868624ead7e5b3c128f9f6635/canarinho-2.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -2,28 +2,26 @@ package com.example.escapetrapp.views
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
-import com.example.escapetrapp.services.constants.DataBaseConstants
 import com.example.escapetrapp.services.constants.TripConstants
+import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.views.adapter.TripAdapter
 import com.example.escapetrapp.viewsmodels.TripListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.example.escapetrapp.views.listener.TripListener as TripListener
 
 class TripListFragment : BaseAuthFragment() {
-    override val layout = R.layout.fragment_travel_list
+    override val layout = R.layout.fragment_trip_list
 
     private lateinit var btAddTrip: FloatingActionButton
     private lateinit var ibBackTripList: ImageButton
@@ -34,7 +32,6 @@ class TripListFragment : BaseAuthFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
-        registerBackPressedAction()
 
         mViewModel = ViewModelProvider(this).get(TripListViewModel::class.java)
         //Obtendo a recycler
@@ -46,14 +43,20 @@ class TripListFragment : BaseAuthFragment() {
 
         mListener = object:TripListener {
             override fun onClick(id: Int){
-                val intent = Intent(context, TripListFragment::class.java)
-
-                //para passar dados na intent
+                //para passar dados entre as fragments
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
-                intent.putExtras(bundle)
-                startActivity(intent)
+                findNavController().navigate(R.id.action_travelListFragment_to_spotListFragment, bundle)
+
             }
+
+            override fun onUpdate(trip: Trip) {
+                val bundle = Bundle()
+                bundle.putInt(TripConstants.TRIPID, id)
+                findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle)
+                mViewModel.update(trip)
+            }
+
             override fun onDelete(id: Int){
                 mViewModel.delete(id)
                 mViewModel.load()
@@ -88,13 +91,5 @@ class TripListFragment : BaseAuthFragment() {
         })
     }
 
-    private fun registerBackPressedAction() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                activity?.finish()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-    }
 
 }
