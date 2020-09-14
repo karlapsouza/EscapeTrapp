@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
+import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.services.repositories.SpendingRepository
 
 
@@ -15,8 +16,14 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
     private val mSpendingRepository = SpendingRepository.getInstance(application.applicationContext)
     private val mSpendingList = MutableLiveData<List<Spending>>()
     val spendingList: LiveData<List<Spending>> = mSpendingList
+    private val mSpending = MutableLiveData<Spending>()
+    val oneSpending: LiveData<Spending> = mSpending
 
-    fun load(){
+    fun load(id: Int){
+        mSpending.value = mSpendingRepository.get(id)
+    }
+
+    fun loadAll(){
         val list = mSpendingRepository.getAllSpendings()
         mSpendingList.value = list
     }
@@ -29,6 +36,15 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
         spendingState.value = RequestState.Loading
         if(validateFields(newSpending)) {
             saveSpending(newSpending)
+        }else {
+            spendingState.value = RequestState.Error(Throwable())
+        }
+    }
+
+    fun updateSpending(spending: Spending) {
+        spendingState.value = RequestState.Loading
+        if(validateFields(spending)) {
+            updateSpend(spending)
         }else {
             spendingState.value = RequestState.Error(Throwable())
         }
@@ -57,6 +73,14 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
     fun saveSpending(newSpending: Spending){
         if(mSpendingRepository.saveSpending(newSpending)) {
             spendingState.value = RequestState.Success("Despesa cadastrada")
+        }else{
+            spendingState.value = RequestState.Error(Throwable("Não foi possível cadastrar a despesa"))
+        }
+    }
+
+    fun updateSpend(newSpending: Spending){
+        if(mSpendingRepository.saveSpending(newSpending)) {
+            spendingState.value = RequestState.Success("Despesa atualizada")
         }else{
             spendingState.value = RequestState.Error(Throwable("Não foi possível cadastrar a despesa"))
         }

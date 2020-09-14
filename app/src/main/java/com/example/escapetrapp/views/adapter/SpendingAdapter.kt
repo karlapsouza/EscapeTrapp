@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.views.listener.SpendingListener
+import com.example.escapetrapp.views.listener.TripListener
 import com.example.escapetrapp.views.viewholder.SpendingViewHolder
 
-class SpendingAdapter(private val mListener: SpendingListener) : RecyclerView.Adapter<SpendingViewHolder>(){
+class SpendingAdapter : RecyclerView.Adapter<SpendingViewHolder>(){
     private var mSpendingList: List<Spending> = arrayListOf()
+    private lateinit var mListener : SpendingListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpendingViewHolder {
         val item = LayoutInflater.from(parent.context).inflate(R.layout.row_spending,parent,false)
@@ -27,6 +29,10 @@ class SpendingAdapter(private val mListener: SpendingListener) : RecyclerView.Ad
     fun updateSpendings(list: List<Spending>){
         mSpendingList = list
         notifyDataSetChanged()
+    }
+
+    fun attachListener(listener: SpendingListener){
+        mListener = listener
     }
 
 }

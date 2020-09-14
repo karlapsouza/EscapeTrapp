@@ -17,7 +17,9 @@ import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Trip
-import com.example.escapetrapp.viewsmodels.TripListViewModel
+import com.example.escapetrapp.views.adapter.SpendingAdapter
+import com.example.escapetrapp.views.adapter.TripAdapter
+import com.example.escapetrapp.viewsmodels.SpendingViewModel
 import com.example.escapetrapp.viewsmodels.TripViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,13 +39,12 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val tripViewModel: TripViewModel by viewModels()
     private lateinit var mViewModel: TripViewModel
-
+    private lateinit var mAdapter: TripAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProvider(this).get(TripViewModel::class.java)
-        //loadData()
         setUpView(view)
         registerBackPressedAction()
     }
@@ -51,7 +52,6 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val tripId = arguments?.getInt(TripConstants.TRIPID)
-        //val tripId = arguments?.getInt("tripId")
         Toast.makeText(requireContext(), tripId.toString(), Toast.LENGTH_LONG).show()
         if(tripId != 0 && tripId != null){
             //carregando os dados
@@ -79,7 +79,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private fun setUpListener(context: Context){
         btCreateTravel.setOnClickListener {
             hideKeyboard()
-            if(it.id == 0){
+ //           if(it.id == 0){
                 val newTrip = Trip(0,
                     etTravelName.text.toString(),
                     etTravelDestination.text.toString(),
@@ -87,16 +87,16 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                     etDateFinishTravel.text.toString()
                 )
                 tripViewModel.addTrip(newTrip)
-            }else{
-                val tripId = arguments?.getInt(TripConstants.TRIPID)
-                val trip = Trip(tripId!!,
-                    etTravelName.text.toString(),
-                    etTravelDestination.text.toString(),
-                    etDateStartTravel.text.toString(),
-                    etDateFinishTravel.text.toString()
-                )
-                tripViewModel.updateTrip(trip)
-            }
+//            }else{
+//                val tripId = arguments?.getInt(TripConstants.TRIPID)
+//                val trip = Trip(tripId!!,
+//                    etTravelName.text.toString(),
+//                    etTravelDestination.text.toString(),
+//                    etDateStartTravel.text.toString(),
+//                    etDateFinishTravel.text.toString()
+//                )
+//                tripViewModel.updateTrip(trip)
+//            }
         }
         etDateStartTravel.setOnClickListener{
             hideKeyboard()
@@ -114,6 +114,17 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         }
     }
 
+    private fun loadData(){
+        this.tripViewModel.oneTrip.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            tvTripTitle.text = getString(R.string.trip_text_update)
+            btCreateTravel.text = getString(R.string.button_edit_trip)
+            etTravelName.setText(it?.name)
+            etTravelDestination.setText(it?.destination)
+            etDateStartTravel.setText(it?.initialDate)
+            etDateFinishTravel.setText(it?.endDate)
+
+        })
+    }
 
     private fun showDatePicker(context: Context){
         val c = Calendar.getInstance()
@@ -121,6 +132,20 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
         DatePickerDialog(context,this,  year, month, day).show()
+    }
+
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val calendar = Calendar.getInstance()
+        calendar.set(year,month, dayOfMonth)
+        val str = mDateFormat.format(calendar.time)
+        if(etDateStartTravel.hasFocus()) {
+            hideKeyboard()
+            etDateStartTravel.setText(str)
+        }else if(etDateFinishTravel.hasFocus()){
+            hideKeyboard()
+            etDateFinishTravel.setText(str)
+        }
     }
 
     private fun registerObserver() {
@@ -139,47 +164,11 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                 is RequestState.Loading -> showLoading("Realizando cadastro da viagem") }
 
         })
-        this.tripViewModel.tripStateUpdate.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is RequestState.Success -> {
-                    hideLoading()
-                    showMessage("Viagem atualizada com sucesso!")
-                    NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
-
-                }
-                is RequestState.Error -> {
-                    hideLoading()
-                    showMessage(it.trowable.message)
-                }
-                is RequestState.Loading -> showLoading("Realizando atualização da viagem") }
-
+        this.tripViewModel.tripList.observe(viewLifecycleOwner, Observer {
+            mAdapter.updateTrips(it)
         })
     }
 
-    private fun loadData(){
-        this.tripViewModel.oneTrip.observe(viewLifecycleOwner, Observer {
-            tvTripTitle.text = getString(R.string.trip_text_update)
-            btCreateTravel.text = getString(R.string.button_edit_trip)
-            etTravelName.setText(it?.name)
-            etTravelDestination.setText(it?.destination)
-            etDateStartTravel.setText(it?.initialDate)
-            etDateFinishTravel.setText(it?.endDate)
-
-        })
-    }
-
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-        val calendar = Calendar.getInstance()
-        calendar.set(year,month, dayOfMonth)
-        val str = mDateFormat.format(calendar.time)
-        if(etDateStartTravel.hasFocus()) {
-            hideKeyboard()
-            etDateStartTravel.setText(str)
-        }else if(etDateFinishTravel.hasFocus()){
-            hideKeyboard()
-            etDateFinishTravel.setText(str)
-        }
-    }
 
     private fun registerBackPressedAction() {
         val callback = object : OnBackPressedCallback(true) {

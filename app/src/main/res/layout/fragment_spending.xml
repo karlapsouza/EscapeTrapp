@@ -134,7 +134,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tvHomeTitle"
+                    android:id="@+id/tvSpendingTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -164,27 +164,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutBottom"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent">
-
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/nvSpending"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="?android:attr/windowBackground"
-                    android:backgroundTint="@color/home_navigation_background"
-                    app:itemBackground="@color/home_navigation_background"
-                    app:itemIconTint="@color/home_navigation_item"
-                    app:itemTextColor="@color/home_navigation_item"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:menu="@menu/home_menu" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.escapetrapp.services.models.RequestState
+import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.services.repositories.TripRepository
 
@@ -15,6 +16,8 @@ class TripViewModel(application: Application): AndroidViewModel(application){
     val tripStateUpdate = MutableLiveData<RequestState<String>>()
     private val mTrip = MutableLiveData<Trip>()
     val oneTrip: LiveData<Trip> = mTrip
+    private val mTripList = MutableLiveData<List<Trip>>()
+    val tripList: LiveData<List<Trip>> = mTripList
 
     fun addTrip(newTrip: Trip) {
         tripState.value = RequestState.Loading
@@ -34,8 +37,17 @@ class TripViewModel(application: Application): AndroidViewModel(application){
         }
     }
 
+    fun delete(id: Int){
+        mTripRepository.delete(id)
+    }
+
     fun load(id: Int){
         mTrip.value = mTripRepository.get(id)
+    }
+
+    fun loadAll(){
+        val list = mTripRepository.getAllTrips()
+        mTripList.value = list
     }
 
     private fun validateFields(trip: Trip): Boolean {

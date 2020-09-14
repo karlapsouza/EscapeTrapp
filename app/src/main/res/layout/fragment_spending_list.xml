@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,11 +11,42 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayoutRecycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/constraintLayoutTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTotal"
+            style="@style/field_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/total"
+            android:textSize="20sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/tvValueTotal"
+            style="@style/field_edit_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="20dp"
+            android:text="0.00"
+            android:textSize="20sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toRightOf="@id/tvTotal"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
         <View
             android:id="@+id/vSpending"
@@ -26,55 +57,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/constraintLayoutTotal" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_all_spending"
-            tools:listitem="@layout/row_spending"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayoutTotal"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutTotal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tvTotal"
-                style="@style/field_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/total"
-                android:textSize="20sp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
-
-            <TextView
-                android:id="@+id/tvValueTotal"
-                style="@style/field_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="20dp"
-                android:text="0.00"
-                android:textSize="20sp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@id/tvTotal"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -116,7 +98,7 @@
                 app:layout_constraintHorizontal_bias="0.0"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btAddSpending"
+                android:id="@+id/btAddSpendingList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -132,7 +114,53 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".views.SpendingListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayoutTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayoutRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_all_spending"
+                tools:listitem="@layout/row_spending"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:layout_marginTop="190dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nvHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        android:backgroundTint="@color/home_navigation_background"
+        app:itemBackground="@color/home_navigation_background"
+        app:itemIconTint="@color/home_navigation_item"
+        app:itemTextColor="@color/home_navigation_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/home_menu" />
+</androidx.constraintlayout.widget.ConstraintLayout>

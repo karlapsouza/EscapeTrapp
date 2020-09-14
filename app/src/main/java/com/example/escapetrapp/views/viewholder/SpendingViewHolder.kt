@@ -26,7 +26,7 @@ class SpendingViewHolder (itemView: View, private val listener: SpendingListener
 
 
         btEdit.setOnClickListener {
-            listener.onClick(spending?.id)
+            listener.onUpdate(spending?.id)
         }
 
         btDelete.setOnClickListener {

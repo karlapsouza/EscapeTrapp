@@ -1,11 +1,8 @@
 package com.example.escapetrapp.views
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
-import androidx.activity.OnBackPressedCallback
-import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -15,9 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.services.constants.TripConstants
-import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.views.adapter.TripAdapter
-import com.example.escapetrapp.viewsmodels.TripListViewModel
+import com.example.escapetrapp.viewsmodels.TripViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.example.escapetrapp.views.listener.TripListener as TripListener
 
@@ -26,7 +22,7 @@ class TripListFragment : BaseAuthFragment(){
 
     private lateinit var btAddTrip: FloatingActionButton
     private lateinit var ibBackTripList: ImageButton
-    private lateinit var mViewModel: TripListViewModel
+    private lateinit var mViewModel: TripViewModel
     private val mAdapter: TripAdapter = TripAdapter()
     private lateinit var mListener: TripListener
 
@@ -34,7 +30,7 @@ class TripListFragment : BaseAuthFragment(){
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
 
-        mViewModel = ViewModelProvider(this).get(TripListViewModel::class.java)
+        mViewModel = ViewModelProvider(this).get(TripViewModel::class.java)
         //Obtendo a recycler
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_trips)
         //Definindo um layout, como recycler se comporta na tela
@@ -62,7 +58,6 @@ class TripListFragment : BaseAuthFragment(){
             }
 
         }
-
         mAdapter.attachListener(mListener)
         observer()
         mViewModel.loadAll()
