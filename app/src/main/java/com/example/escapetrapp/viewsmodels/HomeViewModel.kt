@@ -24,6 +24,7 @@ class HomeViewModel : ViewModel() {
     val logoutState = MutableLiveData<RequestState<String>>()
     val tripState = MutableLiveData<RequestState<String>>()
     val mapsState = MutableLiveData<RequestState<String>>()
+    val aboutState = MutableLiveData<RequestState<String>>()
     val spendingState = MutableLiveData<RequestState<String>>()
 
     private fun getUser() {
@@ -88,6 +89,11 @@ class HomeViewModel : ViewModel() {
     fun maps() {
         mapsState.value = RequestState.Loading
         mapsState.value = RequestState.Success("")
+    }
+
+    fun about() {
+        aboutState.value = RequestState.Loading
+        aboutState.value = RequestState.Success("")
     }
 
     private fun saveToken() {

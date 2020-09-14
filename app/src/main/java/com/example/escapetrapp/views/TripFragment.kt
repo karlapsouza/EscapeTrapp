@@ -17,9 +17,7 @@ import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Trip
-import com.example.escapetrapp.views.adapter.SpendingAdapter
 import com.example.escapetrapp.views.adapter.TripAdapter
-import com.example.escapetrapp.viewsmodels.SpendingViewModel
 import com.example.escapetrapp.viewsmodels.TripViewModel
 import java.text.SimpleDateFormat
 import java.util.*

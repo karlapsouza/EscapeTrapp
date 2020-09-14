@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
-import com.example.escapetrapp.base.BaseFragment
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.services.constants.SpendingConstants
 import com.example.escapetrapp.views.adapter.SpendingAdapter
@@ -40,7 +39,7 @@ class SpendingListFragment : BaseAuthFragment() {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_spending)
         //Definindo um layout, como recycler se comporta na tela
         recycler.layoutManager = LinearLayoutManager(context)
-
+        //Definindo um adapter
         recycler.adapter = mAdapter
 
         mListener = object : SpendingListener {
@@ -80,7 +79,7 @@ class SpendingListFragment : BaseAuthFragment() {
             findNavController().navigate(R.id.main_nav_graph)
         }
         ibBackSpendingList.setOnClickListener {
-            findNavController().navigate(R.id.action_spendingFragment_to_spendingListFragment)
+            findNavController().navigate(R.id.action_spendingListFragment_to_homeFragment)
         }
         btAddSpendingList.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_spendingListFragment_to_spendingFragment)

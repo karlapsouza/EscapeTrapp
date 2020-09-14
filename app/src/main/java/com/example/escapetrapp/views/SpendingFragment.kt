@@ -27,7 +27,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     private val spendingViewModel: SpendingViewModel by viewModels()
     private lateinit var mViewModel: SpendingViewModel
     private lateinit var mAdapter: SpendingAdapter
-    private lateinit var btBack: ImageButton
+    private lateinit var ibBackSpending: ImageButton
     private lateinit var etSpending: EditText
     private lateinit var sCurrency: Spinner
     private lateinit var btAddSpending: Button
@@ -53,41 +53,23 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         }
     }
 
-    private fun registerObserver() {
-        this.spendingViewModel.spendingState.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
-            when (it) {
-                is RequestState.Success -> {
-                    hideLoading()
-                    showMessage("Despesa cadastrada com sucesso!")
-                    NavHostFragment.findNavController(this).navigate(R.id.action_spendingFragment_to_spendingListFragment)
-                    //Limpar os campos
-                }
-                is RequestState.Error -> {
-                    hideLoading()
-                    showMessage(it.trowable.message)
-                }
-                is RequestState.Loading -> showLoading("Aguarde um momento") }
-        })
-        this.spendingViewModel.spendingList.observe(viewLifecycleOwner, Observer {
-            mAdapter.updateSpendings(it)
-        })
-    }
-
     private fun setUpView(view: View) {
         val context = view.getContext()
-        btBack = view.findViewById(R.id.ibBackHome)
+
+        ibBackSpending = view.findViewById(R.id.ibBackSpending)
         etSpending = view.findViewById(R.id.etSpending)
         sCurrency = view.findViewById(R.id.sCurrency)
         btAddSpending = view.findViewById(R.id.btAddSpending)
         etSpendingDate = view.findViewById(R.id.etSpendingDate)
         etSpendingDescription = view.findViewById(R.id.etSpendingDescription)
         tvSpendingTitle = view.findViewById(R.id.tvSpendingTitle)
+
         setUpListener(context)
         registerObserver()
     }
 
     private fun setUpListener(context: Context){
-        btBack.setOnClickListener {
+        ibBackSpending.setOnClickListener {
             findNavController().navigate(R.id.action_spendingFragment_to_spendingListFragment)
         }
         btAddSpending.setOnClickListener {
@@ -138,6 +120,25 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         DatePickerDialog(context,this,  year, month, day).show()
     }
 
+    private fun registerObserver() {
+        this.spendingViewModel.spendingState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    showMessage("Despesa cadastrada com sucesso!")
+                    NavHostFragment.findNavController(this).navigate(R.id.action_spendingFragment_to_spendingListFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message)
+                }
+                is RequestState.Loading -> showLoading("Aguarde um momento") }
+        })
+        this.spendingViewModel.spendingList.observe(viewLifecycleOwner, Observer {
+            mAdapter.updateSpendings(it)
+        })
+    }
+
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val calendar = Calendar.getInstance()
         calendar.set(year,month, dayOfMonth)
@@ -146,12 +147,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
             hideKeyboard()
             etSpendingDate.setText(str)
         }
-    }
-
-    private fun observer(){
-        mViewModel.spendingList.observe(viewLifecycleOwner, Observer {
-            mAdapter.updateSpendings(it)
-        })
     }
 
 

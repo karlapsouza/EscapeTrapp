@@ -14,7 +14,7 @@
     <string name="label_confirm_password">Confirme sua senha</string>
     <string name="label_accept_terms">Li e aceitos os termos</string>
     <string name="label_about">sobre o app</string>
-    <string name="label_terms">Termos de uso</string>
+    <string name="label_terms">termos de uso</string>
 
     <string name="label_create_account">Criar conta</string>
     <string name="label_reset_password">Esqueci minha senha</string>
@@ -31,7 +31,11 @@
 
     <string name="signup_subtitle">Preencha os dados da sua conta</string>
 
-    <string name="about">Sobre nosso time: Bruna, Karla, Tatiane e Victor</string>
+    <string name="about">Sobre nosso time:</string>
+    <string name="about_bru">Bruna: Formada em arquitetura e urbanismo, atua na área de marketing digital e desenvolvimento de sistemas web e aplicativos há dois anos, em agência própria.</string>
+    <string name="about_ka">Karla: Analista de teste atuando há 10 anos na área com testes web, mobile e acessibilidade em projetos do setor de comunicação, bancário e governamental.</string>
+    <string name="about_tati">Tatiane: Analista de sistemas, já atuou no mercado de design durante 2 anos e atualmente está na parte de desenvolvimento há 2 anos como front-end, com foco em web e mobile.</string>
+    <string name="about_vi">Victor: Possui 17 anos de experiência em desenvolvimento de software. Prática com metodologias tradicionais e ágeis, gestão de projetos, gestão orçamentária e de fornecedores.</string>
     <string name="text_terms">Texto em construção</string>
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Carregando</string>

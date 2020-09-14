@@ -116,6 +116,32 @@ class HomeFragment : BaseAuthFragment() {
                     showMessage(it.trowable.message) }
             }
         })
+        homeViewModel.aboutState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_aboutFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
+        homeViewModel.spendingState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_spendingListFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
     }
 
     private fun setUpMenu(items: List<DashboardItem>) {
@@ -143,7 +169,9 @@ class HomeFragment : BaseAuthFragment() {
                 "VIAGEM" -> {
                     homeViewModel.listTrip()
                 }"PONTOS" -> {
-                    homeViewModel.maps()
+                homeViewModel.maps()
+                }"SOBRE" -> {
+                    homeViewModel.about()
                 }else -> {
                     startDeeplink(item.action.deeplink)
                }
