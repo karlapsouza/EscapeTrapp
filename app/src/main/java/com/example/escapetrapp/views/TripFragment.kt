@@ -77,7 +77,8 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private fun setUpListener(context: Context){
         btCreateTravel.setOnClickListener {
             hideKeyboard()
- //           if(it.id == 0){
+            val tripId = arguments?.getInt(TripConstants.TRIPID)
+            if(tripId == 0){
                 val newTrip = Trip(0,
                     etTravelName.text.toString(),
                     etTravelDestination.text.toString(),
@@ -85,16 +86,15 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                     etDateFinishTravel.text.toString()
                 )
                 tripViewModel.addTrip(newTrip)
-//            }else{
-//                val tripId = arguments?.getInt(TripConstants.TRIPID)
-//                val trip = Trip(tripId!!,
-//                    etTravelName.text.toString(),
-//                    etTravelDestination.text.toString(),
-//                    etDateStartTravel.text.toString(),
-//                    etDateFinishTravel.text.toString()
-//                )
-//                tripViewModel.updateTrip(trip)
-//            }
+            }else{
+                val trip = Trip(tripId!!,
+                    etTravelName.text.toString(),
+                    etTravelDestination.text.toString(),
+                    etDateStartTravel.text.toString(),
+                    etDateFinishTravel.text.toString()
+                )
+                tripViewModel.updateTrip(trip)
+            }
         }
         etDateStartTravel.setOnClickListener{
             hideKeyboard()
