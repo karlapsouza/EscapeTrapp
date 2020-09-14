@@ -12,14 +12,18 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
+import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
+import com.example.escapetrapp.services.constants.SpotConstants
+import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spot
 import com.example.escapetrapp.viewsmodels.SpotViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SpotFragment : BaseFragment(), DatePickerDialog.OnDateSetListener,
+class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener {
     override val layout = R.layout.fragment_spot
 
@@ -63,8 +67,9 @@ class SpotFragment : BaseFragment(), DatePickerDialog.OnDateSetListener,
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Atividade cadastrada com sucesso!")
-                    NavHostFragment.findNavController(this).navigate(R.id.action_spotsFragment_to_spotListFragment)
-
+                    //findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)
+                    NavHostFragment.findNavController(this)
+                        .navigate(R.id.action_spotFragment_to_spotListFragment)
                 }
                 is RequestState.Error -> {
                     hideLoading()
@@ -78,16 +83,31 @@ class SpotFragment : BaseFragment(), DatePickerDialog.OnDateSetListener,
     private fun setUpListener(context: Context) {
         btAddSpot.setOnClickListener {
             hideKeyboard()
-            val newSpot = Spot(0,
-                etPlace.text.toString(),
-                etStartDateSpot.text.toString(),
-                etEndDateSpot.text.toString(),
-                etStartTimeSpot.text.toString(),
-                etEndTimeSpot.text.toString(),
-                etDescriptionSpot.text.toString(),
-                0
-            )
-            spotViewModel.addSpot(newSpot)
+            val spotId = arguments?.getInt(SpotConstants.SPOTID)
+            val tripId = arguments?.getInt(TripConstants.TRIPID)
+            if(spotId == 0){
+                val newSpot = Spot(0,
+                    etPlace.text.toString(),
+                    etStartDateSpot.text.toString(),
+                    etEndDateSpot.text.toString(),
+                    etStartTimeSpot.text.toString(),
+                    etEndTimeSpot.text.toString(),
+                    etDescriptionSpot.text.toString(),
+                    tripId!!
+                )
+                spotViewModel.addSpot(newSpot)
+            }else{
+                val spot = Spot(spotId!!,
+                    etPlace.text.toString(),
+                    etStartDateSpot.text.toString(),
+                    etEndDateSpot.text.toString(),
+                    etStartTimeSpot.text.toString(),
+                    etEndTimeSpot.text.toString(),
+                    etDescriptionSpot.text.toString(),
+                    tripId!!
+                )
+                spotViewModel.updateSpot(spot)
+            }
         }
         etStartDateSpot.setOnClickListener{
             hideKeyboard()
@@ -106,7 +126,7 @@ class SpotFragment : BaseFragment(), DatePickerDialog.OnDateSetListener,
             showTimePicker(context)
         }
         ibBackSpotList.setOnClickListener {
-            findNavController().navigate(R.id.action_spotsFragment_to_spotListFragment)
+            findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)
         }
     }
 

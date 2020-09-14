@@ -5,8 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.escapetrapp.services.constants.DataBaseConstants
 
-class SpotDataBaseHelper(context: Context) : SQLiteOpenHelper(context, SpotDataBaseHelper.DATABASE_NAME, null, SpotDataBaseHelper.DATABASE_VERSION
-) {
+class SpotDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE_SPOT)
     }
@@ -20,13 +19,14 @@ class SpotDataBaseHelper(context: Context) : SQLiteOpenHelper(context, SpotDataB
         private const val DATABASE_NAME = "Spot.db"
 
         private const val CREATE_TABLE_SPOT = (
-                "create table " + DataBaseConstants.TRIP.TABLE_NAME + "("
+                "create table " + DataBaseConstants.SPOT.TABLE_NAME + "("
                         + DataBaseConstants.SPOT.COLUMNS.ID + " integer primary key autoincrement, "
                         + DataBaseConstants.SPOT.COLUMNS.PLACE + " text, "
                         + DataBaseConstants.SPOT.COLUMNS.STARTDATE + " text, "
                         + DataBaseConstants.SPOT.COLUMNS.ENDDATE + " text, "
                         + DataBaseConstants.SPOT.COLUMNS.STARTTIME + " text, "
                         + DataBaseConstants.SPOT.COLUMNS.ENDTIME + " text, "
+                        + DataBaseConstants.SPOT.COLUMNS.DESCRIPTION + " text, "
                         + DataBaseConstants.SPOT.COLUMNS.IDTRIP + " integer); "
 
                 )

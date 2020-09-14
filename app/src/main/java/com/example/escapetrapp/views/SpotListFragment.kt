@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
+import com.example.escapetrapp.base.BaseFragment
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.services.constants.SpotConstants
 import com.example.escapetrapp.views.adapter.SpotAdapter
@@ -19,7 +20,7 @@ import com.example.escapetrapp.viewsmodels.SpotListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-class SpotListFragment : BaseAuthFragment() {
+class SpotListFragment : BaseFragment() {
     override val layout = R.layout.fragment_spot_list
 
     private lateinit var btAddSpot: FloatingActionButton
@@ -72,7 +73,7 @@ class SpotListFragment : BaseAuthFragment() {
 
     private fun setUpListener() {
         btAddSpot.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_spotsFragment)
+            NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_spotFragment)
         }
         ibBackSpotList.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_travelListFragment)

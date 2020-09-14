@@ -55,16 +55,16 @@
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
     <fragment
-        android:id="@+id/spotsFragment"
+        android:id="@+id/spotFragment"
         android:name="com.example.escapetrapp.views.SpotFragment"
-        android:label="SpotsFragment"
+        android:label="SpotFragment"
         tools:layout="@layout/fragment_spot">
-        <action
-            android:id="@+id/action_spotsFragment_to_spotListFragment"
-            app:destination="@id/spotListFragment" />
         <argument
             android:name="tripId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_spotFragment_to_spotListFragment"
+            app:destination="@id/spotListFragment" />
     </fragment>
     <fragment
         android:id="@+id/spendingFragment"
@@ -92,10 +92,13 @@
             android:id="@+id/action_spotListFragment_to_travelListFragment"
             app:destination="@id/travelListFragment" />
         <action
-            android:id="@+id/action_spotListFragment_to_spotsFragment"
-            app:destination="@id/spotsFragment" />
+            android:id="@+id/action_spotListFragment_to_spotFragment"
+            app:destination="@id/spotFragment" />
         <argument
             android:name="tripId"
+            app:argType="integer" />
+        <argument
+            android:name="spotId"
             app:argType="integer" />
     </fragment>
     <fragment

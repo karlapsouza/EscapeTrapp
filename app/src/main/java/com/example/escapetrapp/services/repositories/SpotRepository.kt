@@ -30,7 +30,7 @@ class SpotRepository private constructor(context: Context){
             contentValues.put(DataBaseConstants.SPOT.COLUMNS.STARTTIME, spot.startTime)
             contentValues.put(DataBaseConstants.SPOT.COLUMNS.ENDDATE, spot.endTime)
             contentValues.put(DataBaseConstants.SPOT.COLUMNS.DESCRIPTION, spot.description)
-            //contentValues.put(DataBaseConstants.SPOT.COLUMNS.IDTRIP, spot.endDate)
+            contentValues.put(DataBaseConstants.SPOT.COLUMNS.IDTRIP, spot.idTrip)
 
             db.insert(DataBaseConstants.SPOT.TABLE_NAME, null, contentValues)
             true
@@ -50,7 +50,7 @@ class SpotRepository private constructor(context: Context){
             contentValues.put(DataBaseConstants.SPOT.COLUMNS.STARTTIME, spot.startTime)
             contentValues.put(DataBaseConstants.SPOT.COLUMNS.ENDDATE, spot.endTime)
             contentValues.put(DataBaseConstants.SPOT.COLUMNS.DESCRIPTION, spot.description)
-            //contentValues.put(DataBaseConstants.SPOT.COLUMNS.IDTRIP, spot.endDate)
+            contentValues.put(DataBaseConstants.SPOT.COLUMNS.IDTRIP, spot.idTrip)
 
             val seletion = DataBaseConstants.SPOT.COLUMNS.ID + " = ?"
             var args = arrayOf(spot.id.toString())

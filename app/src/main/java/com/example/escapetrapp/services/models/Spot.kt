@@ -8,5 +8,5 @@ class Spot (
     var startTime: String? = null,
     var endTime: String? = null,
     var description: String? = null,
-    val idTrip: Int = 0
+    val idTrip: Int
 )
