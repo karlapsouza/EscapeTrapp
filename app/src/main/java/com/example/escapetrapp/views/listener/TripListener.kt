@@ -11,7 +11,7 @@ interface TripListener {
 
     }
 
-    fun onUpdate(trip: Trip){
+    fun onUpdate(id: Int){
 
     }
 }

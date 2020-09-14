@@ -23,7 +23,7 @@ class SpotListFragment : BaseAuthFragment() {
     override val layout = R.layout.fragment_spot_list
 
     private lateinit var btAddSpot: FloatingActionButton
-    private lateinit var ibBackTripListSpot: ImageButton
+    private lateinit var ibBackSpotList: ImageButton
     private lateinit var mViewModel: SpotListViewModel
     private val mAdapter: SpotAdapter = SpotAdapter()
     private lateinit var mListener: SpotListener
@@ -66,7 +66,7 @@ class SpotListFragment : BaseAuthFragment() {
 
     private fun setUpView(view: View) {
         btAddSpot = view.findViewById(R.id.btAddSpot)
-        ibBackTripListSpot = view.findViewById(R.id.ibBackTripListSpot)
+        ibBackSpotList = view.findViewById(R.id.ibBackSpotList)
         setUpListener()
     }
 
@@ -74,7 +74,7 @@ class SpotListFragment : BaseAuthFragment() {
         btAddSpot.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_spotsFragment)
         }
-        ibBackTripListSpot.setOnClickListener {
+        ibBackSpotList.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_travelListFragment)
         }
     }

@@ -43,7 +43,7 @@ class HomeFragment : BaseAuthFragment() {
 
     private fun setUpListener(){
         btSpending.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_spendingFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_spendingListFragment)
         }
     }
 

@@ -21,7 +21,7 @@ import com.example.escapetrapp.viewsmodels.TripListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.example.escapetrapp.views.listener.TripListener as TripListener
 
-class TripListFragment : BaseAuthFragment() {
+class TripListFragment : BaseAuthFragment(){
     override val layout = R.layout.fragment_trip_list
 
     private lateinit var btAddTrip: FloatingActionButton
@@ -43,22 +43,17 @@ class TripListFragment : BaseAuthFragment() {
         recycler.adapter = mAdapter
 
         mListener = object:TripListener {
+
             override fun onClick(id: Int){
-                //para passar dados entre as fragments
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
-                findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle)
-
+                findNavController().navigate(R.id.action_travelListFragment_to_spotListFragment, bundle)
             }
 
-            override fun onUpdate(trip: Trip) {
+            override fun onUpdate(id: Int) {
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
                 findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle)
-//                var bundle2 = bundleOf("tripName" to "tripName")
-//                findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle2)
-                var teste = mViewModel.load(id)
-                mViewModel.update(trip)
             }
 
             override fun onDelete(id: Int){
@@ -82,7 +77,7 @@ class TripListFragment : BaseAuthFragment() {
 
     private fun setUpListener() {
         btAddTrip.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_spotListFragment)
+            NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_travelFragment)
         }
         ibBackTripList.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_homeFragment)

@@ -34,7 +34,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     private lateinit var etSpending: EditText
     private lateinit var sCurrency: Spinner
     private lateinit var btAddSpending: Button
-    private lateinit var tvValueTotal: TextView
     private lateinit var etSpendingDate: EditText
     private lateinit var etSpendingDescription: EditText
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
@@ -103,7 +102,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         etSpending = view.findViewById(R.id.etSpending)
         sCurrency = view.findViewById(R.id.sCurrency)
         btAddSpending = view.findViewById(R.id.btAddSpending)
-        tvValueTotal = view.findViewById(R.id.tvValueTotal)
         etSpendingDate = view.findViewById(R.id.etSpendingDate)
         etSpendingDescription = view.findViewById(R.id.etSpendingDescription)
         setUpListener(context)
@@ -114,7 +112,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
             findNavController().navigate(R.id.main_nav_graph)
         }
         btBack.setOnClickListener {
-            findNavController().navigate(R.id.action_spendingFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_spendingFragment_to_spendingListFragment)
         }
         btAddSpending.setOnClickListener {
             hideKeyboard()

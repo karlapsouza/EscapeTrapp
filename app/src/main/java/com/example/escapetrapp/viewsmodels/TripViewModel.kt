@@ -12,6 +12,7 @@ class TripViewModel(application: Application): AndroidViewModel(application){
     private val mContext = application.applicationContext
     private val mTripRepository : TripRepository = TripRepository.getInstance(mContext)
     val tripState = MutableLiveData<RequestState<String>>()
+    val tripStateUpdate = MutableLiveData<RequestState<String>>()
     private val mTrip = MutableLiveData<Trip>()
     val oneTrip: LiveData<Trip> = mTrip
 

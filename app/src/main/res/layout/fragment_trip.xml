@@ -34,7 +34,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="28dp"
                 android:fontFamily="@font/helvetica_neue"
-                android:text="@string/trip_text"
+                android:text="@string/trip_text_create"
                 android:textColor="#FFF"
                 android:textSize="32sp"
                 android:textStyle="bold"

@@ -33,6 +33,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var btCreateTravel: Button
     private lateinit var tvCancel: TextView
     private lateinit var ibBackTrip: ImageButton
+    private lateinit var tvTripTitle: TextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val tripViewModel: TripViewModel by viewModels()
     private lateinit var mViewModel: TripViewModel
@@ -69,6 +70,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         btCreateTravel = view.findViewById(R.id.btCreateTravel)
         tvCancel = view.findViewById(R.id.tvCancel)
         ibBackTrip = view.findViewById(R.id.ibBackTrip)
+        tvTripTitle = view.findViewById(R.id.tvTripTitle)
 
         setUpListener(context)
         registerObserver()
@@ -77,13 +79,24 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private fun setUpListener(context: Context){
         btCreateTravel.setOnClickListener {
             hideKeyboard()
-            val newTrip = Trip(0,
-                etTravelName.text.toString(),
-                etTravelDestination.text.toString(),
-                etDateStartTravel.text.toString(),
-                etDateFinishTravel.text.toString()
-            )
-            tripViewModel.addTrip(newTrip)
+            if(it.id == 0){
+                val newTrip = Trip(0,
+                    etTravelName.text.toString(),
+                    etTravelDestination.text.toString(),
+                    etDateStartTravel.text.toString(),
+                    etDateFinishTravel.text.toString()
+                )
+                tripViewModel.addTrip(newTrip)
+            }else{
+                val tripId = arguments?.getInt(TripConstants.TRIPID)
+                val trip = Trip(tripId!!,
+                    etTravelName.text.toString(),
+                    etTravelDestination.text.toString(),
+                    etDateStartTravel.text.toString(),
+                    etDateFinishTravel.text.toString()
+                )
+                tripViewModel.updateTrip(trip)
+            }
         }
         etDateStartTravel.setOnClickListener{
             hideKeyboard()
@@ -126,18 +139,32 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                 is RequestState.Loading -> showLoading("Realizando cadastro da viagem") }
 
         })
+        this.tripViewModel.tripStateUpdate.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    showMessage("Viagem atualizada com sucesso!")
+                    NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
+
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message)
+                }
+                is RequestState.Loading -> showLoading("Realizando atualização da viagem") }
+
+        })
     }
 
     private fun loadData(){
         this.tripViewModel.oneTrip.observe(viewLifecycleOwner, Observer {
-            print("valor retornado" +it?.name)
-            //etTravelName.text = it.name
-            var teste = arguments?.getString("tripName")
-            etTravelName.setText(teste)
+            tvTripTitle.text = getString(R.string.trip_text_update)
+            btCreateTravel.text = getString(R.string.button_edit_trip)
             etTravelName.setText(it?.name)
             etTravelDestination.setText(it?.destination)
             etDateStartTravel.setText(it?.initialDate)
             etDateFinishTravel.setText(it?.endDate)
+
         })
     }
 

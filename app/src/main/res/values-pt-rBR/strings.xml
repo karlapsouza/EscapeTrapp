@@ -36,7 +36,8 @@
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Carregando</string>
 
-    <string name="trip_text">nova viagem</string>
+    <string name="trip_text_create">nova viagem</string>
+    <string name="trip_text_update">atualizar viagem</string>
     <string name="trip_name">Nome</string>
     <string name="trip_destination">Destino</string>
     <string name="trip_date_start">Data início</string>
@@ -59,12 +60,13 @@
     <string name="title_delete_spot">Excluir atividade</string>
     <string name="yes">Sim</string>
 
-    <string name="spending_text">seus gastos</string>
+    <string name="spending_text">novo gasto</string>
     <string name="spending_description">Descrição</string>
     <string name="spending_value">Valor:</string>
     <string name="currency">Moeda:</string>
     <string name="spending_date">Data:</string>
     <string name="total">Total:</string>
+    <string name="your_spending">seus gastos</string>
 
     <string name="spot_text">nova atividade</string>
     <string name="spot_list_text">suas atividades</string>

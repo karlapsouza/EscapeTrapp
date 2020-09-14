@@ -36,13 +36,14 @@
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Loading</string>
 
-    <string name="trip_text">new trip</string>
+    <string name="trip_text_create">new trip</string>
+    <string name="trip_text_update">update trip</string>
     <string name="trip_name">Name</string>
     <string name="trip_destination">Destination</string>
     <string name="trip_date_start">Start date</string>
     <string name="trip_date_end">End date</string>
     <string name="button_create_trip">Create</string>
-    <string name="button_edit_trip">Edit</string>
+    <string name="button_edit_trip">Update</string>
     <string name="button_cancel">Cancel</string>
     <string name="your_trips">your trips</string>
 
@@ -62,12 +63,13 @@
     <string name="title_delete_spot">Delete activity</string>
     <string name="yes">Yes</string>
 
-    <string name="spending_text">your spending</string>
+    <string name="spending_text">new spending</string>
     <string name="spending_description">Description</string>
     <string name="spending_value">Value</string>
     <string name="currency">Currency:</string>
     <string name="spending_date">Date:</string>
     <string name="total">Total:</string>
+    <string name="your_spending">your spending</string>
 
     <string name="spot_text">new activity</string>
     <string name="spot_list_text">your activities</string>
@@ -92,5 +94,6 @@
         <item>British Pound</item>
         <item>Argentinian peso</item>
     </string-array>
+
 
 </resources>

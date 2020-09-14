@@ -121,62 +121,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sCurrency" />
 
-        <View
-            android:id="@+id/vSpending"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_margin="24dp"
-            android:background="@color/backgroundButtonPressed"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btAddSpending" />
 
-        <TextView
-            android:id="@+id/tvTotal"
-            style="@style/field_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/total"
-            android:textSize="20sp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vSpending" />
-
-        <TextView
-            android:id="@+id/tvValueTotal"
-            style="@style/field_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="20dp"
-            android:text="0.00"
-            android:textSize="20sp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvTotal"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vSpending" />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".views.SpendingFragment"
-            app:layout_constraintTop_toBottomOf="@id/tvTotal">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_all_spending"
-                    tools:listitem="@layout/row_spending"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:padding="16dp"
-                    app:layout_constraintBottom_toTopOf="@id/nvSpending"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
-        </ScrollView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
