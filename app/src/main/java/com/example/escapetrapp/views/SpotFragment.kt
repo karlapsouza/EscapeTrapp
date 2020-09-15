@@ -35,6 +35,7 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
     private lateinit var etDescriptionSpot: EditText
     private lateinit var btAddSpot: Button
     private lateinit var ibBackSpotList: ImageButton
+    private lateinit var tvCancelSpot: TextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val mTimeFormat = SimpleDateFormat("HH:mm")
     private val spotViewModel: SpotViewModel by viewModels()
@@ -56,6 +57,7 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
         etDescriptionSpot = view.findViewById(R.id.etDescriptionSpot)
         btAddSpot = view.findViewById(R.id.btAddSpot)
         ibBackSpotList = view.findViewById(R.id.ibBackSpotList)
+        tvCancelSpot = view.findViewById(R.id.tvCancelSpot)
 
         setUpListener(context)
         registerObserver()
@@ -67,7 +69,7 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Atividade cadastrada com sucesso!")
-                    //findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)
+                    findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)
                     NavHostFragment.findNavController(this)
                         .navigate(R.id.action_spotFragment_to_spotListFragment)
                 }
@@ -128,6 +130,9 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
         ibBackSpotList.setOnClickListener {
             findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)
         }
+        tvCancelSpot.setOnClickListener {
+            findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)
+        }
     }
 
     private fun showDatePicker(context: Context){
@@ -160,6 +165,7 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         val calendar = Calendar.getInstance()
+
         calendar.set(hourOfDay, minute)
         val str = mTimeFormat.format(calendar.time)
         if(etStartTimeSpot.hasFocus()) {

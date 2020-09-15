@@ -34,6 +34,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     private lateinit var etSpendingDate: EditText
     private lateinit var etSpendingDescription: EditText
     private lateinit var tvSpendingTitle: TextView
+    private lateinit var tvCancelSpending: TextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,6 +64,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         etSpendingDate = view.findViewById(R.id.etSpendingDate)
         etSpendingDescription = view.findViewById(R.id.etSpendingDescription)
         tvSpendingTitle = view.findViewById(R.id.tvSpendingTitle)
+        tvCancelSpending = view.findViewById(R.id.tvCancelSpending)
 
         setUpListener(context)
         registerObserver()
@@ -98,6 +100,9 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         etSpendingDate.setOnClickListener{
             hideKeyboard()
             showDatePicker(context)
+        }
+        tvCancelSpending.setOnClickListener {
+            findNavController().navigate(R.id.action_spendingFragment_to_spendingListFragment)
         }
     }
 

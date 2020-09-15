@@ -1,222 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".views.SpotFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvSpendingDescription"
+        style="@style/field_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:text="@string/spending_description"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
+
+    <EditText
+        android:id="@+id/etSpendingDescription"
+        style="@style/label_edit_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/tvSpendingDescription"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/tvSpendingValue"
+        style="@style/field_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:text="@string/spending_value"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSpendingDescription" />
+
+    <EditText
+        android:id="@+id/etSpending"
+        style="@style/label_edit_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="20dp"
+        android:inputType="numberDecimal"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/tvSpendingDescription"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSpendingDescription" />
+
+    <TextView
+        android:id="@+id/tvSpendingDate"
+        style="@style/field_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:text="@string/spending_date"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSpendingValue" />
+
+    <EditText
+        android:id="@+id/etSpendingDate"
+        style="@style/label_edit_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shape_edit_text"
+        android:inputType="none"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/tvSpendingDate"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@id/etSpendingDescription"
+        app:layout_constraintTop_toBottomOf="@id/etSpending" />
+
+    <TextView
+        android:id="@+id/tvCurrency"
+        style="@style/field_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/currency"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSpendingDate" />
+
+    <Spinner
+        android:id="@+id/sCurrency"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/spinner_values"
+        android:background="@drawable/shape_edit_text"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toRightOf="@id/tvCurrency"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@id/etSpendingDescription"
+        app:layout_constraintTop_toTopOf="@id/tvCurrency" />
+
+    <Button
+        android:id="@+id/btAddSpending"
+        style="@style/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/add_spot"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sCurrency" />
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp"
+        android:background="@drawable/shape_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvPlace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/spot_place"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_margin="24dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etPlace"
-            android:layout_width="260dp"
-            android:background="@drawable/shape_edit_text"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@+id/tvPlace"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="42dp"/>
-
-        <TextView
-            android:id="@+id/tvStartDateSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_date"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPlace"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etStartDateSpot"
-            android:background="@drawable/shape_edit_text"
-            android:layout_width="260dp"
-            android:inputType="none"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvStartDateSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvStartDateSpot" />
-
-        <TextView
-            android:id="@+id/tvEndDateSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/end_date"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvStartDateSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etEndDateSpot"
-            android:background="@drawable/shape_edit_text"
-            android:inputType="none"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvEndDateSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvEndDateSpot" />
-
-        <TextView
-            android:id="@+id/tvStartTimeSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvEndDateSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etStartTimeSpot"
-            android:background="@drawable/shape_edit_text"
-            android:inputType="none"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvStartTimeSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvStartTimeSpot" />
-
-        <TextView
-            android:id="@+id/tvEndTimeSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/end_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvStartTimeSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etEndTimeSpot"
-            android:background="@drawable/shape_edit_text"
-            android:inputType="none"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvEndTimeSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvEndTimeSpot" />
-
-        <TextView
-            android:id="@+id/tvDescriptionSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/spot_description"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvEndTimeSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etDescriptionSpot"
-            android:background="@drawable/shape_edit_text"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvDescriptionSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvDescriptionSpot" />
-
-        <Button
-            android:id="@+id/btAddSpot"
+            android:id="@+id/tvSpendingTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etDescriptionSpot"
-            app:layout_constraintLeft_toRightOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:src="@drawable/ic_add"
-            android:text="@string/add_spot"
-            style="@style/button"/>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:background="@drawable/shape_header"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="28dp"
+            android:fontFamily="@font/helvetica_neue"
+            android:text="@string/spending_text"
+            android:textColor="#FFF"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tvSpotTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="28dp"
-                android:fontFamily="@font/helvetica_neue"
-                android:text="@string/spot_text"
-                android:textColor="#FFF"
-                android:textSize="32sp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/ibBackSpending"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/secondaryBackground"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:id="@+id/ibBackSpotList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@color/secondaryBackground"
-                android:src="@drawable/ic_arrow_back"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
