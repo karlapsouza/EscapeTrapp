@@ -124,7 +124,8 @@
             <Button
                 android:id="@+id/btCreateTravel"
                 android:text="@string/button_create_trip"
-                style="@style/button" />
+                style="@style/button"
+                android:layout_marginTop="20dp"/>
 
             <TextView
                 android:id="@+id/tvCancel"
