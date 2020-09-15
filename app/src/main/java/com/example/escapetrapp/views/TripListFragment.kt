@@ -43,13 +43,13 @@ class TripListFragment : BaseAuthFragment(){
             override fun onClick(id: Int){
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
-                findNavController().navigate(R.id.action_travelListFragment_to_spotListFragment, bundle)
+                findNavController().navigate(R.id.action_tripListFragment_to_spotListFragment, bundle)
             }
 
             override fun onUpdate(id: Int) {
                 val bundle = Bundle()
                 bundle.putInt(TripConstants.TRIPID, id)
-                findNavController().navigate(R.id.action_travelListFragment_to_travelFragment, bundle)
+                findNavController().navigate(R.id.action_tripListFragment_to_tripFragment, bundle)
             }
 
             override fun onDelete(id: Int){
@@ -72,10 +72,10 @@ class TripListFragment : BaseAuthFragment(){
 
     private fun setUpListener() {
         btAddTrip.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_travelFragment)
+            NavHostFragment.findNavController(this).navigate(R.id.action_tripListFragment_to_tripFragment)
         }
         ibBackTripList.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_travelListFragment_to_homeFragment)
+            NavHostFragment.findNavController(this).navigate(R.id.action_tripListFragment_to_homeFragment)
         }
     }
 

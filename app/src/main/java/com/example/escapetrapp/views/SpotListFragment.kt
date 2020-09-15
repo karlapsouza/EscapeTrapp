@@ -76,7 +76,7 @@ class SpotListFragment : BaseFragment() {
             NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_spotFragment)
         }
         ibBackSpotList.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_travelListFragment)
+            NavHostFragment.findNavController(this).navigate(R.id.action_spotListFragment_to_tripListFragment)
         }
     }
 

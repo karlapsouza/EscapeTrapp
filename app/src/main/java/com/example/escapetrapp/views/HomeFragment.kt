@@ -96,7 +96,7 @@ class HomeFragment : BaseAuthFragment() {
                     showLoading() }
                 is RequestState.Success -> {
                     hideLoading()
-                    findNavController().navigate(R.id.action_homeFragment_to_travelListFragment)
+                    findNavController().navigate(R.id.action_homeFragment_to_tripListFragment)
                 }
                 is RequestState.Error -> {
                     hideLoading()

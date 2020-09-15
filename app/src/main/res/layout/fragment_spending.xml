@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".views.SpendingFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.SpendingFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/shape_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvSpendingTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="@font/helvetica_neue"
+                android:text="@string/spending_text"
+                android:textColor="#FFF"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibBackSpending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/secondaryBackground"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <LinearLayout
-
+            android:layout_marginTop="32dp"
+            android:padding="32dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:background="@drawable/shape_header"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/tvSpendingTitle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="40dp"
-                            android:layout_marginBottom="28dp"
-                            android:fontFamily="@font/helvetica_neue"
-                            android:text="@string/spending_text"
-                            android:textColor="#FFF"
-                            android:textSize="32sp"
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout style="@style/container_edit_text">
 
-                        <ImageButton
-                            android:id="@+id/ibBackSpending"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:background="@color/secondaryBackground"
-                            android:src="@drawable/ic_arrow_back"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintRight_toRightOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tvSpendingDescription"
+                    style="@style/label_edit_text"
+                    android:text="@string/spending_description" />
 
+                <EditText
+                    android:id="@+id/etSpendingDescription"
+                    style="@style/field_edit_text"
+                    tools:text="Cinema" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
+            <LinearLayout style="@style/container_edit_text">
 
-                <LinearLayout
-                    android:layout_marginTop="32dp"
-                    android:padding="32dp"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvSpendingValue"
+                    style="@style/label_edit_text"
+                    android:text="@string/spending_value" />
+
+                <EditText
+                    android:id="@+id/etSpending"
+                    style="@style/field_edit_text"
+                    tools:text="50.00" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvSpendingDate"
+                    style="@style/label_edit_text"
+                    android:text="@string/spending_date" />
+
+                <EditText
+                    android:id="@+id/etSpendingDate"
+                    style="@style/field_edit_text"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:inputType="none"
+                    tools:text="15/08/2020" />
 
+            </LinearLayout>
 
-                        <LinearLayout style="@style/container_edit_text">
+            <LinearLayout style="@style/container_edit_text">
 
-                                <TextView
-                                    android:id="@+id/tvSpendingDescription"
-                                    style="@style/label_edit_text"
-                                    android:text="@string/spending_description" />
+                <TextView
+                    android:id="@+id/tvCurrency"
+                    style="@style/label_edit_text"
+                    android:text="@string/currency" />
 
-                                <EditText
-                                    android:id="@+id/etSpendingDescription"
-                                    style="@style/field_edit_text"
-                                    tools:text="Cinema" />
+                <Spinner
+                    android:id="@+id/etDateFinishTravel"
+                    style="@style/field_edit_text"
+                    android:entries="@array/spinner_values"
+                    android:inputType="none" />
+            </LinearLayout>
 
-                        </LinearLayout>
+            <Button
+                android:id="@+id/btAddSpending"
+                android:text="@string/add_spot"
+                style="@style/button"
+                android:layout_marginTop="20dp"/>
 
-                        <LinearLayout style="@style/container_edit_text">
-
-                                <TextView
-                                    android:id="@+id/tvSpendingValue"
-                                    style="@style/label_edit_text"
-                                    android:text="@string/spending_value" />
-
-                                <EditText
-                                    android:id="@+id/etSpending"
-                                    style="@style/field_edit_text"
-                                    tools:text="50.00" />
-
-                        </LinearLayout>
-
-                        <LinearLayout style="@style/container_edit_text">
-
-                                <TextView
-                                    android:id="@+id/tvSpendingDate"
-                                    style="@style/label_edit_text"
-                                    android:text="@string/spending_date" />
-
-                                <EditText
-                                    android:id="@+id/etSpendingDate"
-                                    style="@style/field_edit_text"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="none"
-                                    tools:text="15/08/2020" />
-
-                        </LinearLayout>
-
-                        <LinearLayout style="@style/container_edit_text">
-
-                                <TextView
-                                    android:id="@+id/tvCurrency"
-                                    style="@style/label_edit_text"
-                                    android:text="@string/currency" />
-
-                                <Spinner
-                                    android:id="@+id/etDateFinishTravel"
-                                    style="@style/field_edit_text"
-                                    android:entries="@array/spinner_values"
-                                    android:inputType="none" />
-                        </LinearLayout>
-
-                        <Button
-                            android:id="@+id/btAddSpending"
-                            android:text="@string/add_spot"
-                            style="@style/button"
-                            android:layout_marginTop="20dp"/>
-
-                        <TextView
-                            android:id="@+id/tvCancelSpending"
-                            style="@style/link"
-                            android:layout_width="wrap_content"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/button_cancel" />
-
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tvCancelSpending"
+                style="@style/link"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="@string/button_cancel" />
 
         </LinearLayout>
+
+    </LinearLayout>
 </ScrollView>

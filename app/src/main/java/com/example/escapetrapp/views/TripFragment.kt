@@ -105,10 +105,10 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
             showDatePicker(context)
         }
         tvCancel.setOnClickListener {
-            findNavController().navigate(R.id.action_travelFragment_to_travelListFragment)
+            findNavController().navigate(R.id.action_tripFragment_to_tripListFragment)
         }
         ibBackTrip.setOnClickListener {
-            findNavController().navigate(R.id.action_travelFragment_to_travelListFragment)
+            findNavController().navigate(R.id.action_tripFragment_to_tripListFragment)
         }
     }
 
@@ -152,7 +152,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                 is RequestState.Success -> {
                     hideLoading()
                     showMessage("Viagem cadastrada com sucesso!")
-                    NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
+                    NavHostFragment.findNavController(this).navigate(R.id.action_tripFragment_to_tripListFragment)
 
                 }
                 is RequestState.Error -> {

@@ -11,47 +11,17 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_mapsActivity"
             app:destination="@id/mapsActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
         <action
             android:id="@+id/action_homeFragment_to_spendingListFragment"
             app:destination="@id/spendingListFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/travelListFragment"
-        android:name="com.example.escapetrapp.views.TripListFragment"
-        android:label="fragment_travel_list"
-        tools:layout="@layout/fragment_trip_list">
-        <action
-            android:id="@+id/action_travelListFragment_to_travelFragment"
-            app:destination="@id/travelFragment" />
-        <action
-            android:id="@+id/action_travelListFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_travelListFragment_to_spotListFragment"
-            app:destination="@id/spotListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/travelFragment"
-        android:name="com.example.escapetrapp.views.TripFragment"
-        android:label="fragment_travel"
-        tools:layout="@layout/fragment_trip">
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="https://www.escapetrapp.com.br/trip" />
-        <action
-            android:id="@+id/action_travelFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
-        <argument
-            android:name="tripId"
-            app:argType="integer" />
+            android:id="@+id/action_homeFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
     <fragment
@@ -66,18 +36,6 @@
             android:id="@+id/action_spotFragment_to_spotListFragment"
             app:destination="@id/spotListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/spendingFragment"
-        android:name="com.example.escapetrapp.views.SpendingFragment"
-        android:label="SpendingFragment"
-        tools:layout="@layout/fragment_spending">
-        <action
-            android:id="@+id/action_spendingFragment_to_spendingListFragment"
-            app:destination="@id/spendingListFragment" />
-        <argument
-            android:name="spendingId"
-            app:argType="integer" />
-    </fragment>
     <activity
         android:id="@+id/mapsActivity"
         android:name="com.example.escapetrapp.MapsActivity"
@@ -89,9 +47,6 @@
         android:label="SpotListFragment"
         tools:layout="@layout/fragment_spot_list">
         <action
-            android:id="@+id/action_spotListFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
-        <action
             android:id="@+id/action_spotListFragment_to_spotFragment"
             app:destination="@id/spotFragment" />
         <argument
@@ -100,21 +55,9 @@
         <argument
             android:name="spotId"
             app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/spendingListFragment"
-        android:name="com.example.escapetrapp.views.SpendingListFragment"
-        android:label="fragment_spending_list"
-        tools:layout="@layout/fragment_spending_list">
         <action
-            android:id="@+id/action_spendingListFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_spendingListFragment_to_spendingFragment"
-            app:destination="@id/spendingFragment" />
-        <argument
-            android:name="valueSpending"
-            app:argType="string" />
+            android:id="@+id/action_spotListFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -124,5 +67,59 @@
         <action
             android:id="@+id/action_aboutFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/spendingListFragment"
+        android:name="com.example.escapetrapp.views.SpendingListFragment"
+        tools:layout="@layout/fragment_spending_list"
+        android:label="SpendingListFragment" >
+        <action
+            android:id="@+id/action_spendingListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_spendingListFragment_to_spendingFragment"
+            app:destination="@id/spendingFragment" />
+        <argument
+            android:name="spendingId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/spendingFragment"
+        android:name="SpendingFragment"
+        android:label="SpendingFragment"
+        tools:layout="@layout/fragment_spending">
+        <action
+            android:id="@+id/action_spendingFragment_to_spendingListFragment"
+            app:destination="@id/spendingListFragment" />
+        <argument
+            android:name="spendingId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripListFragment"
+        android:name="com.example.escapetrapp.views.TripListFragment"
+        android:label="fragment_trip_list"
+        tools:layout="@layout/fragment_trip_list" >
+        <action
+            android:id="@+id/action_tripListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_tripListFragment_to_spotListFragment"
+            app:destination="@id/spotListFragment" />
+        <action
+            android:id="@+id/action_tripListFragment_to_tripFragment"
+            app:destination="@id/tripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripFragment"
+        android:name="com.example.escapetrapp.views.TripFragment"
+        android:label="fragment_trip"
+        tools:layout="@layout/fragment_trip" >
+        <action
+            android:id="@+id/action_tripFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
     </fragment>
 </navigation>
