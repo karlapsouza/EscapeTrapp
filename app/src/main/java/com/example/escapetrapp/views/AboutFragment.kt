@@ -18,12 +18,13 @@ import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
 import com.example.escapetrapp.services.constants.TripConstants
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class AboutFragment : BaseFragment() {
     override val layout = R.layout.fragment_about
-    private lateinit var btShare: ImageButton
-    private lateinit var btCall: ImageButton
+    private lateinit var btShare: FloatingActionButton
+    private lateinit var btCall: FloatingActionButton
     private lateinit var ivBackAbout: ImageView
     private lateinit var tvAbout: TextView
     private lateinit var tvAboutBru: TextView
