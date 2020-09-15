@@ -81,7 +81,7 @@
         android:layout_marginTop="32dp"
         android:background="#ffffff"
         android:src="@drawable/ic_delete"
-        app:layout_constraintHorizontal_bias="0.75"
+        android:layout_marginRight="16dp"
         app:layout_constraintLeft_toRightOf="@id/btEdit"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
@@ -91,7 +91,8 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
-        android:layout_marginRight="68dp"
+        android:layout_marginRight="116dp"
+        android:visibility="invisible"
         android:background="#ffffff"
         android:src="@drawable/ic_spots"
         app:layout_constraintRight_toRightOf="parent"
@@ -105,7 +106,7 @@
         android:layout_marginRight="52dp"
         android:background="#ffffff"
         android:src="@drawable/ic_edit"
-        app:layout_constraintRight_toRightOf="@id/btTouristSpots"
+        app:layout_constraintRight_toRightOf="@id/btDelete"
         app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
 
 
