@@ -86,4 +86,8 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
+    fun getTotalSpending() : Double {
+        return mSpendingRepository.getSumSpendings()
+    }
+
 }

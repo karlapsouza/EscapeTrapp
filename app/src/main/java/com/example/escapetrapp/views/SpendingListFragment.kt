@@ -38,9 +38,9 @@ class SpendingListFragment : BaseAuthFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mViewModel = ViewModelProvider(this).get(SpendingViewModel::class.java)
         setUpView(view)
 
-        mViewModel = ViewModelProvider(this).get(SpendingViewModel::class.java)
         //Obtendo a recycler
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_spending)
         //Definindo um layout, como recycler se comporta na tela
@@ -60,6 +60,7 @@ class SpendingListFragment : BaseAuthFragment() {
             override fun onDelete(id: Int) {
                 mViewModel.delete(id)
                 mViewModel.loadAll()
+                total()
             }
 
             override fun onUpdate(id: Int) {
@@ -100,6 +101,7 @@ class SpendingListFragment : BaseAuthFragment() {
         ibBackSpendingList = view.findViewById(R.id.ibBackSpendingList)
         tvValueTotal = view.findViewById(R.id.tvValueTotal)
         btAddSpendingList = view.findViewById(R.id.btAddSpendingList)
+        total()
         setUpListener(context)
     }
 
@@ -114,6 +116,10 @@ class SpendingListFragment : BaseAuthFragment() {
             findNavController().navigate(R.id.main_nav_graph)
         }
 
+    }
+
+    private fun total(){
+        tvValueTotal.text = mViewModel.getTotalSpending().toString()
     }
 
 }

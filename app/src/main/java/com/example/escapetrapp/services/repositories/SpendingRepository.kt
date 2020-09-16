@@ -142,4 +142,40 @@ class SpendingRepository private constructor(context: Context){
             list
         }
     }
+
+    fun getSumSpendings(): Double {
+        var teste : Double = 0.0
+        return try {
+            val db = mSpendingDataBaseHelper.readableDatabase
+            val projection = arrayOf(
+                    DataBaseConstants.SPENDING.COLUMNS.ID,
+                DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
+                    DataBaseConstants.SPENDING.COLUMNS.VALUE,
+                    DataBaseConstants.SPENDING.COLUMNS.DATE,
+                    DataBaseConstants.SPENDING.COLUMNS.CURRENCY
+                        )
+
+            val cursor = db.query(
+                    DataBaseConstants.SPENDING.TABLE_NAME,
+                   projection, null, null, null, null, null
+                        )
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.ID))
+                       val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION))
+                        val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
+                        val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
+                        val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+
+                        val spending = Spending(id, description, value, date, currency)
+                        teste += spending.value!!
+                    }
+            }
+            cursor?.close()
+            teste
+       }catch (e: Exception) {
+            teste
+       }
+   }
+
 }
