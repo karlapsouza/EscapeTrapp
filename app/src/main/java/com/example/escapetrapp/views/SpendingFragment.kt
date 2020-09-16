@@ -1,23 +1,21 @@
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.services.constants.SpendingConstants
+import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.views.adapter.SpendingAdapter
 import com.example.escapetrapp.views.listener.SpendingListener
 import com.example.escapetrapp.viewsmodels.SpendingViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,84 +26,89 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     private lateinit var mViewModel: SpendingViewModel
     private lateinit var mAdapter: SpendingAdapter
     private lateinit var mListener: SpendingListener
-    private lateinit var btHome: BottomNavigationItemView
-    private lateinit var btBack: ImageButton
+    private lateinit var ibBackSpending: ImageButton
     private lateinit var etSpending: EditText
     private lateinit var sCurrency: Spinner
     private lateinit var btAddSpending: Button
-    private lateinit var tvValueTotal: TextView
     private lateinit var etSpendingDate: EditText
     private lateinit var etSpendingDescription: EditText
+    private lateinit var tvCancelSpending: TextView
+    private lateinit var tvSpendingTitle: TextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpView(view)
-
         mViewModel = ViewModelProvider(this).get(SpendingViewModel::class.java)
-        //Obtendo a recycler
-        val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_spending)
-        //Definindo um layout, como recycler se comporta na tela
-        recycler.layoutManager = LinearLayoutManager(context)
-        //Definindo um adapter
-        recycler.adapter = mAdapter
+        setUpView(view)
+    }
 
-        mListener = object : SpendingListener {
-
-            override fun onClick(id: Int) {
-                val intent = Intent(context, SpendingFragment::class.java)
-
-                //para passar dados na intent
-                val bundle = Bundle()
-                bundle.putInt(SpendingConstants.SPENDINGID, id)
-                intent.putExtras(bundle)
-                startActivity(intent)
-            }
-
-            override fun onDelete(id: Int) {
-                mViewModel.delete(id)
-                mViewModel.loadAll()
-            }
-
-            override fun onUpdate(id: Int) {
-                TODO("Not yet implemented")
-            }
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val spendingId = arguments?.getInt(SpendingConstants.SPENDINGID)
+        if(spendingId != 0 && spendingId != null){
+            //carregando os dados
+            mViewModel.load(spendingId)
+            loadData()
+            registerObserver()
         }
+    }
+
+    private fun loadData(){
+        this.spendingViewModel.oneSpending.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            tvSpendingTitle.text = getString(R.string.trip_text_update)
+            btAddSpending.text = getString(R.string.button_edit_trip)
+            etSpendingDescription.setText(it?.description)
+            etSpending.setText(it?.value.toString())
+            etSpendingDate.setText(it?.date)
+            sCurrency.setSelection(it?.currency!!)
+        })
     }
 
     private fun setUpView(view: View) {
         val context = view.getContext()
-        btHome = view.findViewById(R.id.navigation_home)
-        btBack = view.findViewById(R.id.ibBackHome)
+        ibBackSpending = view.findViewById(R.id.ibBackSpending)
         etSpending = view.findViewById(R.id.etSpending)
         sCurrency = view.findViewById(R.id.sCurrency)
         btAddSpending = view.findViewById(R.id.btAddSpending)
-        tvValueTotal = view.findViewById(R.id.tvValueTotal)
         etSpendingDate = view.findViewById(R.id.etSpendingDate)
         etSpendingDescription = view.findViewById(R.id.etSpendingDescription)
+        tvCancelSpending = view.findViewById(R.id.tvCancelSpending)
+        tvSpendingTitle = view.findViewById(R.id.tvSpendingTitle)
         setUpListener(context)
+        registerObserver()
     }
 
     private fun setUpListener(context: Context) {
-        btHome.setOnClickListener {
-            findNavController().navigate(R.id.main_nav_graph)
-        }
-        btBack.setOnClickListener {
+        ibBackSpending.setOnClickListener {
             findNavController().navigate(R.id.action_spendingFragment_to_spendingListFragment)
         }
         btAddSpending.setOnClickListener {
             hideKeyboard()
-            val newSpending = Spending(
-                0,
-                etSpendingDescription.text.toString(),
-                etSpending.text.toString().toDoubleOrNull(),
-                etSpendingDate.text.toString(),
-                sCurrency.selectedItemPosition
-            )
-            spendingViewModel.addSpending(newSpending)
+            val spendingId = arguments?.getInt(SpendingConstants.SPENDINGID)
+            if(spendingId == 0) {
+                val newSpending = Spending(
+                    0,
+                    etSpendingDescription.text.toString(),
+                    etSpending.text.toString().toDoubleOrNull(),
+                    etSpendingDate.text.toString(),
+                    sCurrency.selectedItemPosition
+                )
+                spendingViewModel.addSpending(newSpending)
+            }else {
+                val spending = Spending(
+                    spendingId!!,
+                    etSpendingDescription.text.toString(),
+                    etSpending.text.toString().toDoubleOrNull(),
+                    etSpendingDate.text.toString(),
+                    sCurrency.selectedItemPosition
+                )
+                spendingViewModel.updateSpending(spending)
+            }
         }
-        etSpendingDate.setOnClickListener {
+        tvCancelSpending.setOnClickListener {
+            findNavController().navigate(R.id.action_spendingFragment_to_spendingListFragment)
+        }
+        etSpendingDate.setOnClickListener{
             hideKeyboard()
             showDatePicker(context)
         }
@@ -129,10 +132,23 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         }
     }
 
-    private fun observer() {
-//        mViewModel.spendingList.observe(viewLifecycleOwner, Observer {
-//            mAdapter.updateSpendings(it)
-//        })
+    private fun registerObserver() {
+        this.spendingViewModel.spendingState.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            when (it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    showMessage("Despesa cadastrada/atualizada com sucesso!")
+                    NavHostFragment.findNavController(this).navigate(R.id.action_spendingFragment_to_spendingListFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message)
+                }
+                is RequestState.Loading -> showLoading("Aguarde um momento") }
+        })
+        this.spendingViewModel.spendingList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            mAdapter.updateSpendings(it)
+        })
     }
 
 }

@@ -50,7 +50,6 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val tripId = arguments?.getInt(TripConstants.TRIPID)
-        Toast.makeText(requireContext(), tripId.toString(), Toast.LENGTH_LONG).show()
         if(tripId != 0 && tripId != null){
             //carregando os dados
             mViewModel.load(tripId)
@@ -151,7 +150,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
             when (it) {
                 is RequestState.Success -> {
                     hideLoading()
-                    showMessage("Viagem cadastrada com sucesso!")
+                    showMessage("Viagem cadastrada/atualizada com sucesso!")
                     NavHostFragment.findNavController(this).navigate(R.id.action_tripFragment_to_tripListFragment)
 
                 }

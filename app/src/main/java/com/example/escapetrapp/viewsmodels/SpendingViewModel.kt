@@ -78,8 +78,8 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
         }
     }
 
-    fun updateSpend(newSpending: Spending){
-        if(mSpendingRepository.saveSpending(newSpending)) {
+    fun updateSpend(spending: Spending){
+        if(mSpendingRepository.update(spending)) {
             spendingState.value = RequestState.Success("Despesa atualizada")
         }else{
             spendingState.value = RequestState.Error(Throwable("Não foi possível cadastrar a despesa"))
