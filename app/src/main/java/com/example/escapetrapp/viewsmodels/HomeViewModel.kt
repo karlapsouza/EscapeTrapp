@@ -26,6 +26,7 @@ class HomeViewModel : ViewModel() {
     val mapsState = MutableLiveData<RequestState<String>>()
     val aboutState = MutableLiveData<RequestState<String>>()
     val spendingState = MutableLiveData<RequestState<String>>()
+    val currencyState = MutableLiveData<RequestState<String>>()
 
     private fun getUser() {
         userNameState.value = RequestState.Loading
@@ -84,6 +85,11 @@ class HomeViewModel : ViewModel() {
     fun listTrip() {
         tripState.value = RequestState.Loading
         tripState.value = RequestState.Success("")
+    }
+
+    fun converterCurrency() {
+        currencyState.value = RequestState.Loading
+        currencyState.value = RequestState.Success("")
     }
 
     fun maps() {

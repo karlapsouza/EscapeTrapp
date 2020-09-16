@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/shape_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvCurrencyTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="@font/helvetica_neue"
+                android:text="@string/currency_text"
+                android:textColor="#FFF"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibBackCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/secondaryBackground"
+                android:src="@drawable/ic_arrow_back"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="32dp"
+            android:padding="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvCurrencyValue"
+                    style="@style/label_edit_text"
+                    android:text="@string/spending_value" />
+
+                <EditText
+                    android:id="@+id/etCurrencyValue"
+                    style="@style/field_edit_text"
+                    tools:text="50.00" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvCurrencySpinner"
+                    style="@style/label_edit_text"
+                    android:text="@string/currency" />
+
+                <Spinner
+                    android:id="@+id/sCurrencySpinner"
+                    style="@style/field_edit_text"
+                    android:entries="@array/spinner_values"
+                    android:inputType="none" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvConvertedCurrencyValue"
+                style="@style/label_edit_text"
+                android:textSize="30sp"
+                android:layout_marginTop="30dp"
+                android:textAlignment="center"
+                android:text="R$ 0,00" />
+
+            <Button
+                android:id="@+id/btConverterCurrency"
+                android:text="@string/converter_button"
+                style="@style/button"
+                android:layout_marginTop="60dp"/>
+
+            <TextView
+                android:id="@+id/tvCancelCurrency"
+                style="@style/link"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="@string/button_cancel" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

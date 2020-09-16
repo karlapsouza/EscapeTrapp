@@ -83,6 +83,9 @@
     <string name="text_activity">Roteiro</string>
     <string name="add_spot">Adicionar</string>
 
+    <string name="currency_text">convensor de moeda</string>
+    <string name="converter_button">Converter</string>
+
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>
     <string-array name="spinner_values">

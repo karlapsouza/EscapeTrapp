@@ -14,7 +14,6 @@ import com.example.escapetrapp.services.constants.SpendingConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.views.adapter.SpendingAdapter
-import com.example.escapetrapp.views.listener.SpendingListener
 import com.example.escapetrapp.viewsmodels.SpendingViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,7 +24,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     private val spendingViewModel: SpendingViewModel by viewModels()
     private lateinit var mViewModel: SpendingViewModel
     private lateinit var mAdapter: SpendingAdapter
-    private lateinit var mListener: SpendingListener
     private lateinit var ibBackSpending: ImageButton
     private lateinit var etSpending: EditText
     private lateinit var sCurrency: Spinner

@@ -113,6 +113,7 @@ class SpendingListFragment : BaseAuthFragment() {
         btHome.setOnClickListener {
             findNavController().navigate(R.id.main_nav_graph)
         }
+
     }
 
 }

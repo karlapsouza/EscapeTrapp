@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_tripListFragment"
             app:destination="@id/tripListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_currencyFragment"
+            app:destination="@id/currencyFragment" />
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
     <fragment
@@ -121,5 +124,14 @@
         <argument
             android:name="tripId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/currencyFragment"
+        android:name="com.example.escapetrapp.views.CurrencyFragment"
+        android:label="CurrencyFragment"
+        tools:layout="@layout/fragment_currency">
+        <action
+            android:id="@+id/action_currencyFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

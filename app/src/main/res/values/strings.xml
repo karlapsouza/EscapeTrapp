@@ -86,6 +86,9 @@
     <string name="text_activity">Activities</string>
     <string name="add_spot">Add</string>
 
+    <string name="currency_text">currency converter</string>
+    <string name="converter_button">Convert</string>
+
 
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="com.crashlytics.useFirebaseAppId" translatable="false">true</string>

@@ -142,6 +142,19 @@ class HomeFragment : BaseAuthFragment() {
                     showMessage(it.trowable.message) }
             }
         })
+        homeViewModel.currencyState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_currencyFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
     }
 
     private fun setUpMenu(items: List<DashboardItem>) {
@@ -169,7 +182,9 @@ class HomeFragment : BaseAuthFragment() {
                 "VIAGEM" -> {
                     homeViewModel.listTrip()
                 }"PONTOS" -> {
-                homeViewModel.maps()
+                    homeViewModel.maps()
+                }"CONVERSOR" -> {
+                    homeViewModel.converterCurrency()
                 }"SOBRE" -> {
                     homeViewModel.about()
                 }else -> {
