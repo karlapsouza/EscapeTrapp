@@ -92,7 +92,6 @@
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
         android:layout_marginRight="116dp"
-        android:visibility="invisible"
         android:background="#ffffff"
         android:src="@drawable/ic_spots"
         app:layout_constraintRight_toRightOf="parent"

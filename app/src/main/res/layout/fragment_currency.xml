@@ -74,7 +74,8 @@
                 <EditText
                     android:id="@+id/etCurrencyValue"
                     style="@style/field_edit_text"
-                    tools:text="50.00" />
+                    tools:text="50.00"
+                    android:inputType="numberDecimal"/>
 
             </LinearLayout>
 

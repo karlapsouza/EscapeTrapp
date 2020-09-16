@@ -89,6 +89,7 @@
                 <EditText
                     android:id="@+id/etSpending"
                     style="@style/field_edit_text"
+                    android:inputType="numberDecimal"
                     tools:text="50.00" />
 
             </LinearLayout>
