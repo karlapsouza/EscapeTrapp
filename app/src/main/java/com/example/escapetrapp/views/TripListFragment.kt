@@ -3,6 +3,7 @@ package com.example.escapetrapp.views
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -29,6 +30,7 @@ class TripListFragment : BaseAuthFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
+        registerBackPressedAction()
 
         mViewModel = ViewModelProvider(this).get(TripViewModel::class.java)
         //Obtendo a recycler
@@ -83,6 +85,15 @@ class TripListFragment : BaseAuthFragment(){
         mViewModel.tripList.observe(viewLifecycleOwner, Observer {
             mAdapter.updateTrips(it)
         })
+    }
+
+    private fun registerBackPressedAction() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_tripListFragment_to_homeFragment)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
 

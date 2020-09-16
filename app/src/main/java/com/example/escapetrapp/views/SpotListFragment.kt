@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
@@ -58,9 +59,7 @@ class SpotListFragment : BaseFragment() {
             }
 
         }
-
         mAdapter.attachListener(mListener)
-        observer()
         mViewModel.load()
 
     }
@@ -80,16 +79,11 @@ class SpotListFragment : BaseFragment() {
         }
     }
 
-    private fun observer(){
-//        mViewModel.tripList.observe(viewLifecycleOwner, Observer {
-//            mAdapter.updateSpots(it)
-//        })
-    }
 
     private fun registerBackPressedAction() {
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                activity?.finish()
+                findNavController().navigate(R.id.action_spotListFragment_to_tripListFragment)
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)

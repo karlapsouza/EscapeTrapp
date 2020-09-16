@@ -170,7 +170,7 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private fun registerBackPressedAction() {
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                activity?.finish()
+                findNavController().navigate(R.id.action_tripFragment_to_tripListFragment)
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)

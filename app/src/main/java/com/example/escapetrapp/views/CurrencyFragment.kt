@@ -3,6 +3,7 @@ package com.example.escapetrapp.views
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
@@ -22,6 +23,7 @@ class CurrencyFragment : BaseAuthFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpView(view)
+        registerBackPressedAction()
     }
 
     private fun setUpView(view: View) {
@@ -61,6 +63,15 @@ class CurrencyFragment : BaseAuthFragment() {
         ibBackCurrency.setOnClickListener {
             findNavController().navigate(R.id.action_currencyFragment_to_homeFragment)
         }
+    }
+
+    private fun registerBackPressedAction() {
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_currencyFragment_to_homeFragment)
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 
 
