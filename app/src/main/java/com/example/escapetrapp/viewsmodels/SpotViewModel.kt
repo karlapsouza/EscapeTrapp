@@ -44,11 +44,11 @@ class SpotViewModel(application: Application) : AndroidViewModel(application) {
             return false
         }
         if(spot.startTime?.isEmpty() == true){
-            spotState.value = RequestState.Error(Throwable("Informe a hora inicial"))
+            spotState.value = RequestState.Error(Throwable("Informe a horário inicial"))
             return false
         }
         if(spot.endTime?.isEmpty() == true){
-            spotState.value = RequestState.Error(Throwable("Informe a hora final"))
+            spotState.value = RequestState.Error(Throwable("Informe a horário final"))
             return false
         }
         return true

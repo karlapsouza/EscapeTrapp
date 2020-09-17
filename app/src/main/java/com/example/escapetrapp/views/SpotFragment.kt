@@ -147,10 +147,11 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
 
     private fun showTimePicker(context: Context){
         val c = Calendar.getInstance()
-        val hour = c.get(Calendar.HOUR)
+        val hour = c.get(Calendar.HOUR_OF_DAY)
         val minute = c.get(Calendar.MINUTE)
         TimePickerDialog(context,this,hour, minute,true).show()
     }
+
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val calendar = Calendar.getInstance()
@@ -167,8 +168,9 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         val calendar = Calendar.getInstance()
-
-        calendar.set(hourOfDay, minute)
+        val hourStr = if (hourOfDay < 10) "0${hourOfDay}" else "${hourOfDay}"
+        val minuteStr = if (minute < 10) "0${minute}" else "${minute}"
+        calendar.set(hourStr.toInt(), minuteStr.toInt())
         val str = mTimeFormat.format(calendar.time)
         if(etStartTimeSpot.hasFocus()) {
             hideKeyboard()

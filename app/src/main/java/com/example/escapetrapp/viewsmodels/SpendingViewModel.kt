@@ -55,7 +55,7 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
             spendingState.value = RequestState.Error(Throwable("Informe uma descrição"))
             return false
         }
-        if(newSpending.value?.isNaN() == true){
+        if(newSpending.value == null){
             spendingState.value = RequestState.Error(Throwable("Informe o valor"))
             return false
         }
