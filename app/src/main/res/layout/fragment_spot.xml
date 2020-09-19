@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".views.TripListFragment"
+    tools:context=".views.SpotFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,176 +10,19 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tvPlace"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/spot_place"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_margin="24dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etPlace"
-            android:layout_width="260dp"
-            android:background="@drawable/shape_edit_text"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@+id/tvPlace"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="42dp"/>
-
-        <TextView
-            android:id="@+id/tvStartDateSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvPlace"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etStartDateSpot"
-            android:background="@drawable/shape_edit_text"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvStartDateSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvStartDateSpot" />
-
-        <TextView
-            android:id="@+id/tvEndDateSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvStartDateSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etEndDateSpot"
-            android:background="@drawable/shape_edit_text"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvEndDateSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvEndDateSpot" />
-
-        <TextView
-            android:id="@+id/tvStartTimeSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvEndDateSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/sStartTimeSpot"
-            android:background="@drawable/shape_edit_text"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvStartTimeSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvStartTimeSpot" />
-
-        <TextView
-            android:id="@+id/tvEndTimeSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvStartTimeSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etEndTimeSpot"
-            android:background="@drawable/shape_edit_text"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvEndTimeSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvEndTimeSpot" />
-
-        <TextView
-            android:id="@+id/tvDescriptionSpot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/start_time"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvEndTimeSpot"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"/>
-
-        <EditText
-            android:id="@+id/etDescriptionSpot"
-            android:background="@drawable/shape_edit_text"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@id/tvDescriptionSpot"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvDescriptionSpot" />
-
-        <Button
-            android:id="@+id/btAddSpot"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etDescriptionSpot"
-            app:layout_constraintLeft_toRightOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:src="@drawable/ic_add"
-            android:text="@string/add_spot"
-            style="@style/button"/>
-
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/shape_header"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -187,7 +30,7 @@
                 android:id="@+id/tvSpotTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="28dp"
                 android:fontFamily="@font/helvetica_neue"
                 android:text="@string/spot_text"
@@ -200,9 +43,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/ibBackTripList"
+                android:id="@+id/ibBackSpotList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:background="@color/secondaryBackground"
                 android:src="@drawable/ic_arrow_back"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -213,5 +57,117 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_marginTop="32dp"
+            android:padding="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvPlace"
+                    style="@style/label_edit_text"
+                    android:text="@string/spot_place" />
+
+                <EditText
+                    android:id="@+id/etPlace"
+                    style="@style/field_edit_text"
+                    tools:text="Praia Bertioga" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvStartDateSpot"
+                    style="@style/label_edit_text"
+                    android:text="@string/start_date" />
+
+                <EditText
+                    android:id="@+id/etStartDateSpot"
+                    style="@style/field_edit_text"
+                    tools:text="10/10/2020" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvEndDateSpot"
+                    style="@style/label_edit_text"
+                    android:text="@string/end_date" />
+
+                <EditText
+                    android:id="@+id/etEndDateSpot"
+                    style="@style/field_edit_text"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    tools:text="15/10/2020" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvStartTimeSpot"
+                    style="@style/label_edit_text"
+                    android:text="@string/start_time" />
+
+                <EditText
+                    android:id="@+id/etStartTimeSpot"
+                    style="@style/field_edit_text"
+                    android:inputType="none"
+                    tools:text="10:30" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvEndTimeSpot"
+                    style="@style/label_edit_text"
+                    android:text="@string/end_time" />
+
+                <EditText
+                    android:id="@+id/etEndTimeSpot"
+                    style="@style/field_edit_text"
+                    android:inputType="none"
+                    tools:text="14:30" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvDescriptionSpot"
+                    style="@style/label_edit_text"
+                    android:text="@string/spot_description" />
+
+                <EditText
+                    android:id="@+id/etDescriptionSpot"
+                    style="@style/field_edit_text"
+                    android:inputType="none"
+                    tools:text="Praia com muitas ondas" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btAddSpot"
+                android:text="@string/add_spot"
+                style="@style/button"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/tvCancelSpot"
+                style="@style/link"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="@string/button_cancel" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </ScrollView>

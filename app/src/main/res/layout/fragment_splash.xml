@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogoApp"
+        app:layout_constraintTop_toBottomOf="@id/ivLogoApp"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
@@ -41,8 +41,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="@+id/ivLogoApp"
-        app:layout_constraintTop_toTopOf="@+id/ivLogoApp"
+        app:layout_constraintStart_toStartOf="@id/ivLogoApp"
+        app:layout_constraintTop_toTopOf="@id/ivLogoApp"
         app:layout_constraintVertical_bias="0.024" />
 
     <ImageView
@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivTextEscape"
+        app:layout_constraintTop_toBottomOf="@id/ivTextEscape"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

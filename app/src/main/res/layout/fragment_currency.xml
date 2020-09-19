@@ -2,14 +2,12 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".views.TripFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/tvSubTitleSignUp">
+    app:layout_constraintStart_toStartOf="parent">
 
     <LinearLayout
 
@@ -28,13 +26,13 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tvTripTitle"
+                android:id="@+id/tvCurrencyTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="28dp"
                 android:fontFamily="@font/helvetica_neue"
-                android:text="@string/travel_text"
+                android:text="@string/currency_text"
                 android:textColor="#FFF"
                 android:textSize="32sp"
                 android:textStyle="bold"
@@ -44,9 +42,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
-                android:id="@+id/ibBackTripList"
+                android:id="@+id/ibBackCurrency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:background="@color/secondaryBackground"
                 android:src="@drawable/ic_arrow_back"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -65,83 +64,57 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
             <LinearLayout style="@style/container_edit_text">
 
                 <TextView
+                    android:id="@+id/tvCurrencyValue"
                     style="@style/label_edit_text"
-                    android:text="@string/travel_name" />
+                    android:text="@string/spending_value" />
 
                 <EditText
-                    android:id="@+id/etTravelName"
+                    android:id="@+id/etCurrencyValue"
                     style="@style/field_edit_text"
-                    tools:text="Bate e volta para Bertioga" />
+                    tools:text="50.00"
+                    android:inputType="numberDecimal"/>
 
             </LinearLayout>
 
             <LinearLayout style="@style/container_edit_text">
 
                 <TextView
+                    android:id="@+id/tvCurrencySpinner"
                     style="@style/label_edit_text"
-                    android:text="@string/travel_destination" />
+                    android:text="@string/currency" />
 
-                <EditText
-                    android:id="@+id/etTravelDestination"
+                <Spinner
+                    android:id="@+id/sCurrencySpinner"
                     style="@style/field_edit_text"
-                    tools:text="Bertioga, São Paulo" />
-
+                    android:entries="@array/spinner_values"
+                    android:inputType="none" />
             </LinearLayout>
-
-            <LinearLayout style="@style/container_edit_text">
-
-                <TextView
-                    style="@style/label_edit_text"
-                    android:text="@string/travel_date_start" />
-
-                <EditText
-                    android:id="@+id/etDateStartTravel"
-                    style="@style/field_edit_text"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    tools:text="15/08/2020" />
-
-            </LinearLayout>
-
-            <LinearLayout style="@style/container_edit_text">
-
-                <TextView
-                    style="@style/label_edit_text"
-                    android:text="@string/travel_date_end" />
-
-                <EditText
-                    android:id="@+id/etDateFinishTravel"
-                    style="@style/field_edit_text"
-                    android:inputType="none"
-                    tools:text="16/08/2020" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btCreateTravel"
-                android:text="@string/button_create_travel"
-                style="@style/button" />
 
             <TextView
-                android:id="@+id/tvCancel"
+                android:id="@+id/tvConvertedCurrencyValue"
+                style="@style/label_edit_text"
+                android:textSize="30sp"
+                android:layout_marginTop="30dp"
+                android:textAlignment="center"
+                android:text="R$ 0,00" />
+
+            <Button
+                android:id="@+id/btConverterCurrency"
+                android:text="@string/converter_button"
+                style="@style/button"
+                android:layout_marginTop="60dp"/>
+
+            <TextView
+                android:id="@+id/tvCancelCurrency"
                 style="@style/link"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:text="@string/button_cancel" />
-
-            <TextView
-                android:id="@+id/tvSpots"
-                style="@style/link"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:text="@string/tvSpots" />
 
         </LinearLayout>
 

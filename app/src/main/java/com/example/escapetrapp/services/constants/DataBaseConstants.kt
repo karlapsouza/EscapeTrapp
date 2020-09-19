@@ -21,6 +21,21 @@ class DataBaseConstants {
             const val VALUE = "value"
             const val DATE = "date"
             const val CURRENCY = "currency"
+            const val IDTRIP = "idTrip"
+        }
+    }
+    object SPOT{
+        const val TABLE_NAME = "Spot"
+
+        object COLUMNS{
+            const val ID = "id"
+            const val PLACE = "place"
+            const val STARTDATE = "startDate"
+            const val ENDDATE = "endDate"
+            const val STARTTIME = "startTime"
+            const val ENDTIME = "endTime"
+            const val DESCRIPTION = "description"
+            const val IDTRIP = "idTrip"
         }
     }
 }

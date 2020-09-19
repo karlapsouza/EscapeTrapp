@@ -13,10 +13,10 @@
         android:paddingStart="16dp"
         android:paddingTop="6dp"
         android:text="@string/spot_place"
+        android:singleLine="true"
         android:textColor="#5586AD"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/ivImageTrip"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSpotName" />
+        app:layout_constraintTop_toBottomOf="@id/tvSpotName" />
 
     <TextView
         android:id="@+id/tvSpotEndTime"
@@ -45,7 +45,7 @@
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSpotStartTime" />
+        app:layout_constraintTop_toBottomOf="@id/tvSpotStartTime" />
 
 
     <ImageButton
@@ -56,9 +56,9 @@
         android:layout_marginEnd="16dp"
         android:background="#ffffff"
         android:src="@drawable/ic_delete"
-        app:layout_constraintLeft_toRightOf="@+id/btEdit"
+        app:layout_constraintLeft_toRightOf="@id/btEditSpot"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSpotStartTime" />
+        app:layout_constraintTop_toTopOf="@id/tvSpotStartTime" />
 
 
     <ImageButton
@@ -68,8 +68,8 @@
         android:layout_marginEnd="52dp"
         android:background="#ffffff"
         android:src="@drawable/ic_edit"
-        app:layout_constraintRight_toRightOf="@+id/btDeleteSpot"
-        app:layout_constraintTop_toTopOf="@+id/tvSpotStartTime" />
+        app:layout_constraintRight_toRightOf="@id/btDeleteSpot"
+        app:layout_constraintTop_toTopOf="@id/tvSpotStartTime" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

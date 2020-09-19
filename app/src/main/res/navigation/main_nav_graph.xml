@@ -11,64 +11,127 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_spendingFragment"
-            app:destination="@id/spendingFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/travelListFragment"
-        android:name="com.example.escapetrapp.views.TripListFragment"
-        android:label="fragment_travel_list"
-        tools:layout="@layout/fragment_travel_list">
-        <action
-            android:id="@+id/action_travelListFragment_to_travelFragment"
-            app:destination="@id/travelFragment" />
-        <action
-            android:id="@+id/action_travelListFragment_to_spotsFragment"
-            app:destination="@id/spotsFragment" />
-        <action
-            android:id="@+id/action_travelListFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/travelFragment"
-        android:name="com.example.escapetrapp.views.TripFragment"
-        android:label="fragment_travel"
-        tools:layout="@layout/fragment_travel">
-        <deepLink
-            android:id="@+id/deepLink"
-            app:uri="https://www.escapetrapp.com.br/trip" />
-        <action
-            android:id="@+id/action_travelFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
-        <action
-            android:id="@+id/action_travelFragment_to_mapsActivity"
+            android:id="@+id/action_homeFragment_to_mapsActivity"
             app:destination="@id/mapsActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_spendingListFragment"
+            app:destination="@id/spendingListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_currencyFragment"
+            app:destination="@id/currencyFragment" />
     </fragment>
     <include app:graph="@navigation/login_nav_graph" />
     <fragment
-        android:id="@+id/spotsFragment"
-        android:name="com.example.escapetrapp.views.SpotsFragment"
-        android:label="SpotsFragment"
+        android:id="@+id/spotFragment"
+        android:name="com.example.escapetrapp.views.SpotFragment"
+        android:label="SpotFragment"
         tools:layout="@layout/fragment_spot">
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
         <action
-            android:id="@+id/action_spotsFragment_to_travelListFragment"
-            app:destination="@id/travelListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/spendingFragment"
-        android:name="com.example.escapetrapp.views.SpendingFragment"
-        android:label="SpendingFragment"
-        tools:layout="@layout/fragment_spending">
-        <action
-            android:id="@+id/action_spendingFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_spotFragment_to_spotListFragment"
+            app:destination="@id/spotListFragment" />
     </fragment>
     <activity
         android:id="@+id/mapsActivity"
         android:name="com.example.escapetrapp.MapsActivity"
         android:label="activity_maps"
         tools:layout="@layout/activity_maps" />
+    <fragment
+        android:id="@+id/spotListFragment"
+        android:name="com.example.escapetrapp.views.SpotListFragment"
+        android:label="SpotListFragment"
+        tools:layout="@layout/fragment_spot_list">
+        <action
+            android:id="@+id/action_spotListFragment_to_spotFragment"
+            app:destination="@id/spotFragment" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
+        <argument
+            android:name="spotId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_spotListFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.escapetrapp.views.AboutFragment"
+        tools:layout="@layout/fragment_about"
+        android:label="AboutFragment" >
+        <action
+            android:id="@+id/action_aboutFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/spendingListFragment"
+        android:name="com.example.escapetrapp.views.SpendingListFragment"
+        tools:layout="@layout/fragment_spending_list"
+        android:label="SpendingListFragment" >
+        <action
+            android:id="@+id/action_spendingListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_spendingListFragment_to_spendingFragment"
+            app:destination="@id/spendingFragment" />
+        <argument
+            android:name="spendingId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/spendingFragment"
+        android:name="SpendingFragment"
+        android:label="SpendingFragment"
+        tools:layout="@layout/fragment_spending">
+        <action
+            android:id="@+id/action_spendingFragment_to_spendingListFragment"
+            app:destination="@id/spendingListFragment" />
+        <argument
+            android:name="spendingId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripListFragment"
+        android:name="com.example.escapetrapp.views.TripListFragment"
+        android:label="fragment_trip_list"
+        tools:layout="@layout/fragment_trip_list" >
+        <action
+            android:id="@+id/action_tripListFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_tripListFragment_to_spotListFragment"
+            app:destination="@id/spotListFragment" />
+        <action
+            android:id="@+id/action_tripListFragment_to_tripFragment"
+            app:destination="@id/tripFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripFragment"
+        android:name="com.example.escapetrapp.views.TripFragment"
+        android:label="fragment_trip"
+        tools:layout="@layout/fragment_trip" >
+        <action
+            android:id="@+id/action_tripFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/currencyFragment"
+        android:name="com.example.escapetrapp.views.CurrencyFragment"
+        android:label="CurrencyFragment"
+        tools:layout="@layout/fragment_currency">
+        <action
+            android:id="@+id/action_currencyFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

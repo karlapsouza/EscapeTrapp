@@ -29,8 +29,8 @@
         android:textColor="@color/primaryTextColor"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/ivLogoApp"
-        app:layout_constraintTop_toTopOf="@+id/ivLogoApp" />
+        app:layout_constraintStart_toStartOf="@id/ivLogoApp"
+        app:layout_constraintTop_toTopOf="@id/ivLogoApp" />
 
 
     <LinearLayout
@@ -43,7 +43,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubTitleRemember">
+        app:layout_constraintTop_toBottomOf="@id/tvSubTitleRemember">
 
         <TextView
             android:layout_width="wrap_content"
@@ -79,8 +79,8 @@
         android:textColor="#9EB0BC"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tvAppName"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
+        app:layout_constraintStart_toStartOf="@id/tvAppName"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

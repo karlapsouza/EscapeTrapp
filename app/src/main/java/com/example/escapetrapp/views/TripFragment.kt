@@ -4,15 +4,11 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.escapetrapp.R
@@ -21,14 +17,14 @@ import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Trip
+import com.example.escapetrapp.views.adapter.TripAdapter
 import com.example.escapetrapp.viewsmodels.TripViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 
 class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
-    override val layout = R.layout.fragment_travel
+    override val layout = R.layout.fragment_trip
 
     private lateinit var etTravelName: EditText
     private lateinit var etTravelDestination: EditText
@@ -36,16 +32,29 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var etDateFinishTravel: EditText
     private lateinit var btCreateTravel: Button
     private lateinit var tvCancel: TextView
-    private lateinit var tvSpots: TextView
+    private lateinit var ibBackTrip: ImageButton
+    private lateinit var tvTripTitle: TextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
     private val tripViewModel: TripViewModel by viewModels()
+    private lateinit var mViewModel: TripViewModel
+    private lateinit var mAdapter: TripAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        mViewModel = ViewModelProvider(this).get(TripViewModel::class.java)
         setUpView(view)
         registerBackPressedAction()
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val tripId = arguments?.getInt(TripConstants.TRIPID)
+        if(tripId != 0 && tripId != null){
+            //carregando os dados
+            mViewModel.load(tripId)
+            loadData()
+        }
     }
 
     private fun setUpView(view: View) {
@@ -57,9 +66,8 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         etDateFinishTravel = view.findViewById(R.id.etDateFinishTravel)
         btCreateTravel = view.findViewById(R.id.btCreateTravel)
         tvCancel = view.findViewById(R.id.tvCancel)
-        tvSpots = view.findViewById(R.id.tvSpots)
-        tvSpots.isClickable = false
-        tvSpots.isVisible = false
+        ibBackTrip = view.findViewById(R.id.ibBackTrip)
+        tvTripTitle = view.findViewById(R.id.tvTripTitle)
 
         setUpListener(context)
         registerObserver()
@@ -68,13 +76,24 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
     private fun setUpListener(context: Context){
         btCreateTravel.setOnClickListener {
             hideKeyboard()
-            val newTrip = Trip(0,
-                etTravelName.text.toString(),
-                etTravelDestination.text.toString(),
-                etDateStartTravel.text.toString(),
-                etDateFinishTravel.text.toString()
-            )
-            tripViewModel.addTrip(newTrip)
+            val tripId = arguments?.getInt(TripConstants.TRIPID)
+            if(tripId == 0){
+                val newTrip = Trip(0,
+                    etTravelName.text.toString(),
+                    etTravelDestination.text.toString(),
+                    etDateStartTravel.text.toString(),
+                    etDateFinishTravel.text.toString()
+                )
+                tripViewModel.addTrip(newTrip)
+            }else{
+                val trip = Trip(tripId!!,
+                    etTravelName.text.toString(),
+                    etTravelDestination.text.toString(),
+                    etDateStartTravel.text.toString(),
+                    etDateFinishTravel.text.toString()
+                )
+                tripViewModel.updateTrip(trip)
+            }
         }
         etDateStartTravel.setOnClickListener{
             hideKeyboard()
@@ -85,11 +104,23 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
             showDatePicker(context)
         }
         tvCancel.setOnClickListener {
-            findNavController().navigate(R.id.action_travelFragment_to_travelListFragment)
+            findNavController().navigate(R.id.action_tripFragment_to_tripListFragment)
         }
-        tvSpots.setOnClickListener {
-            findNavController().navigate(R.id.action_travelFragment_to_mapsActivity)
+        ibBackTrip.setOnClickListener {
+            findNavController().navigate(R.id.action_tripFragment_to_tripListFragment)
         }
+    }
+
+    private fun loadData(){
+        this.tripViewModel.oneTrip.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            tvTripTitle.text = getString(R.string.trip_text_update)
+            btCreateTravel.text = getString(R.string.button_edit_trip)
+            etTravelName.setText(it?.name)
+            etTravelDestination.setText(it?.destination)
+            etDateStartTravel.setText(it?.initialDate)
+            etDateFinishTravel.setText(it?.endDate)
+
+        })
     }
 
     private fun showDatePicker(context: Context){
@@ -100,30 +131,6 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         DatePickerDialog(context,this,  year, month, day).show()
     }
 
-    private fun changeEdit(){
-        btCreateTravel.setText(R.string.button_edit_travel)
-        tvSpots.isClickable = true
-        tvSpots.isVisible = true
-    }
-
-    private fun registerObserver() {
-        this.tripViewModel.tripState.observe(viewLifecycleOwner, Observer {
-            when (it) {
-                is RequestState.Success -> {
-                    hideLoading()
-                    showMessage("Viagem cadastrada com sucesso!")
-                    //NavHostFragment.findNavController(this).navigate(R.id.action_travelFragment_to_travelListFragment)
-                    changeEdit()
-
-                }
-                is RequestState.Error -> {
-                    hideLoading()
-                    showMessage(it.trowable.message)
-                }
-                is RequestState.Loading -> showLoading("Realizando cadastro da viagem") }
-
-        })
-    }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val calendar = Calendar.getInstance()
@@ -138,10 +145,32 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
         }
     }
 
+    private fun registerObserver() {
+        this.tripViewModel.tripState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Success -> {
+                    hideLoading()
+                    showMessage("Viagem cadastrada/atualizada com sucesso!")
+                    NavHostFragment.findNavController(this).navigate(R.id.action_tripFragment_to_tripListFragment)
+
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message)
+                }
+                is RequestState.Loading -> showLoading("Realizando cadastro da viagem") }
+
+        })
+        this.tripViewModel.tripList.observe(viewLifecycleOwner, Observer {
+            mAdapter.updateTrips(it)
+        })
+    }
+
+
     private fun registerBackPressedAction() {
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                activity?.finish()
+                findNavController().navigate(R.id.action_tripFragment_to_tripListFragment)
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)

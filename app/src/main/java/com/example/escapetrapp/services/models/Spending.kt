@@ -5,5 +5,6 @@ class Spending (
     var description: String? = null,
     var value: Double? = null,
     var date: String? = null,
-    var currency: Int = 0
+    var currency: Int? = null,
+    var idTrip: Int? = null
 )

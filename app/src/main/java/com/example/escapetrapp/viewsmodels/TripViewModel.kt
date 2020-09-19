@@ -2,41 +2,68 @@ package com.example.escapetrapp.viewsmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.escapetrapp.services.models.RequestState
+import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.services.repositories.TripRepository
 
 class TripViewModel(application: Application): AndroidViewModel(application){
-    //private val db = FirebaseFirestore.getInstance()
     private val mContext = application.applicationContext
     private val mTripRepository : TripRepository = TripRepository.getInstance(mContext)
     val tripState = MutableLiveData<RequestState<String>>()
+    val tripStateUpdate = MutableLiveData<RequestState<String>>()
+    private val mTrip = MutableLiveData<Trip>()
+    val oneTrip: LiveData<Trip> = mTrip
+    private val mTripList = MutableLiveData<List<Trip>>()
+    val tripList: LiveData<List<Trip>> = mTripList
 
     fun addTrip(newTrip: Trip) {
         tripState.value = RequestState.Loading
         if(validateFields(newTrip)) {
             save(newTrip)
-            //saveInFirestore(newTrip)
         }else {
             tripState.value = RequestState.Error(Throwable())
         }
     }
 
-    private fun validateFields(newTrip: Trip): Boolean {
-        if(newTrip.name?.isEmpty() == true){
+    fun updateTrip(trip: Trip) {
+        tripState.value = RequestState.Loading
+        if(validateFields(trip)) {
+            update(trip)
+        }else {
+            tripState.value = RequestState.Error(Throwable())
+        }
+    }
+
+    fun delete(id: Int){
+        mTripRepository.delete(id)
+    }
+
+    fun load(id: Int){
+        mTrip.value = mTripRepository.get(id)
+    }
+
+    fun loadAll(){
+        val list = mTripRepository.getAllTrips()
+        mTripList.value = list
+    }
+
+    private fun validateFields(trip: Trip): Boolean {
+        if(trip.name?.isEmpty() == true){
             tripState.value = RequestState.Error(Throwable("Informe o nome da viagem"))
             return false
         }
-        if(newTrip.destination?.isEmpty() == true){
+        if(trip.destination?.isEmpty() == true){
             tripState.value = RequestState.Error(Throwable("Informe o destino"))
             return false
         }
-        if(newTrip.initialDate?.isEmpty()== true){
+        if(trip.initialDate?.isEmpty()== true){
             tripState.value = RequestState.Error(Throwable("Informe a data inicial"))
             return false
         }
-        if(newTrip.endDate?.isEmpty()== true){
+        if(trip.endDate?.isEmpty()== true){
             tripState.value = RequestState.Error(Throwable("Informe a data final"))
             return false
         }
@@ -51,11 +78,12 @@ class TripViewModel(application: Application): AndroidViewModel(application){
         }
     }
 
-    //#Usando Firestore para salvar usuário
-//    private fun save(newTrip: Trip) {
-//        db.collection("trip")
-//            .add(newTrip)
-//            .addOnSuccessListener { tripState.value = RequestState.Success("")}
-//            .addOnFailureListener { e -> tripState.value = RequestState.Error(Throwable(e.message) )}
-//    }
+    fun update(trip: Trip){
+        if(mTripRepository.update(trip) == true) {
+            tripState.value = RequestState.Success("Viagem atualizada")
+        }else{
+            tripState.value = RequestState.Error(Throwable("Não foi possível atualizar a viagem"))
+        }
+    }
+
 }

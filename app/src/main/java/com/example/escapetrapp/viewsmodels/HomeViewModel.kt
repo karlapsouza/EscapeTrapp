@@ -23,7 +23,10 @@ class HomeViewModel : ViewModel() {
     val userNameState = MutableLiveData<RequestState<String>>()
     val logoutState = MutableLiveData<RequestState<String>>()
     val tripState = MutableLiveData<RequestState<String>>()
-    val spandingState = MutableLiveData<RequestState<String>>()
+    val mapsState = MutableLiveData<RequestState<String>>()
+    val aboutState = MutableLiveData<RequestState<String>>()
+    val spendingState = MutableLiveData<RequestState<String>>()
+    val currencyState = MutableLiveData<RequestState<String>>()
 
     private fun getUser() {
         userNameState.value = RequestState.Loading
@@ -46,31 +49,31 @@ class HomeViewModel : ViewModel() {
     }
 
     fun createMenu() {
-        val dashBoardItems = arrayListOf<DashboardItem>()
-        val itemsMenu = dashboardMenu?.items ?: listOf()
-        for (itemMenu in itemsMenu) {
-            FeatureToggleHelper().configureFeature(
-                itemMenu.feature, object : FeatureToggleListener {
-                    override fun onEnabled() {
-                        dashBoardItems.add(itemMenu)
-                    }
-                    override fun onInvisible() {
-                    }
-                    override fun onDisabled(clickListener: (Context) -> Unit) {
-                        itemMenu.onDisabledListener = clickListener
-                        dashBoardItems.add(itemMenu)
-                    }
-                })
-        }
         menuState.value = RequestState.Loading
         RemoteConfigUtils.fetchAndActivate().addOnCompleteListener {
             dashboardMenu = Gson().fromRemoteConfig(
                 RemoteConfigKeys.MENU_DASHBOARD,
                 DashboardMenu::class.java
             )
+            val dashBoardItems = arrayListOf<DashboardItem>()
+            val itemsMenu = dashboardMenu?.items ?: listOf()
+            for (itemMenu in itemsMenu) {
+                FeatureToggleHelper().configureFeature(
+                    itemMenu.feature, object : FeatureToggleListener {
+                        override fun onEnabled() {
+                            dashBoardItems.add(itemMenu)
+                        }
+                        override fun onInvisible() {
+                        }
+                        override fun onDisabled(clickListener: (Context) -> Unit) {
+                            itemMenu.onDisabledListener = clickListener
+                            dashBoardItems.add(itemMenu)
+                        }
+                    })
+            }
+            menuState.value = RequestState.Success(dashBoardItems)
             getUser()
         }
-        menuState.value = RequestState.Success(dashBoardItems)
     }
 
     fun signOut() {
@@ -82,6 +85,21 @@ class HomeViewModel : ViewModel() {
     fun listTrip() {
         tripState.value = RequestState.Loading
         tripState.value = RequestState.Success("")
+    }
+
+    fun converterCurrency() {
+        currencyState.value = RequestState.Loading
+        currencyState.value = RequestState.Success("")
+    }
+
+    fun maps() {
+        mapsState.value = RequestState.Loading
+        mapsState.value = RequestState.Success("")
+    }
+
+    fun about() {
+        aboutState.value = RequestState.Loading
+        aboutState.value = RequestState.Success("")
     }
 
     private fun saveToken() {

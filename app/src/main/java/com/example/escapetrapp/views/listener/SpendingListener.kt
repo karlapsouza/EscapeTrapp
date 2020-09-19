@@ -8,4 +8,6 @@ interface SpendingListener {
     fun onDelete(id: Int){
 
     }
+
+    fun onUpdate(id: Int)
 }

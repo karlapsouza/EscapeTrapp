@@ -37,8 +37,8 @@
             android:textColor="#FFF"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tvHomeTitle"
-            app:layout_constraintStart_toStartOf="@+id/tvHomeTitle"
+            app:layout_constraintBottom_toTopOf="@id/tvHomeTitle"
+            app:layout_constraintStart_toStartOf="@id/tvHomeTitle"
             tools:text="Versão 2.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -49,10 +49,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/nvHome"
+        app:layout_constraintBottom_toTopOf="@id/nvHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
 
 
         <TextView
@@ -64,9 +64,9 @@
             android:textColor="#9EB0BC"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/tvHomeHelloUser"
-            app:layout_constraintStart_toStartOf="@+id/tvHomeHelloUser"
-            app:layout_constraintTop_toBottomOf="@+id/tvHomeHelloUser" />
+            app:layout_constraintEnd_toEndOf="@id/tvHomeHelloUser"
+            app:layout_constraintStart_toStartOf="@id/tvHomeHelloUser"
+            app:layout_constraintTop_toBottomOf="@id/tvHomeHelloUser" />
 
         <TextView
             android:id="@+id/tvHomeHelloUser"
@@ -92,7 +92,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSubTitleSignUp"
+            app:layout_constraintTop_toBottomOf="@id/tvSubTitleSignUp"
             app:spanCount="2"
             tools:listitem="@layout/dash_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,8 +13,8 @@
     <string name="label_password">Password</string>
     <string name="label_confirm_password">Confirm your password</string>
     <string name="label_accept_terms">I have read and accept the terms</string>
-    <string name="label_about">About us</string>
-    <string name="label_terms">Terms of use</string>
+    <string name="label_about">about us</string>
+    <string name="label_terms">terms of use</string>
 
     <string name="label_create_account">Create account</string>
     <string name="label_reset_password">Forgot my password</string>
@@ -31,24 +31,25 @@
 
     <string name="signup_subtitle">Fill in your account details</string>
 
-    <string name="about">About our team: Bruna, Karla, Tatiane e Victor</string>
+    <string name="about">About our team:</string>
+    <string name="about_bru">Bruna: Graduated in architecture and urbanism, she has been working in the digital marketing and development of web systems and applications for two years, in her own agency.</string>
+    <string name="about_ka">Karla: Quality assurance analyst working for 10 years in the area with web, mobile and accessibility tests in projects in the communication, banking and government sectors.</string>
+    <string name="about_tati">Tatiane: Systems analyst, has worked in the design market for 2 years and is currently in the development part for 2 years as a front-end, focusing on web and mobile.</string>
+    <string name="about_vi">Victor: He has 17 years of experience in software development. Practice with traditional and agile methodologies, project management, budget and supplier management.</string>
     <string name="text_terms">Text in building</string>
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Loading</string>
 
-    <string name="travel_subtitle">Fill in the trip details</string>
-    <string name="travel_text">Trip</string>
-    <string name="travel_name">Name</string>
-    <string name="travel_destination">Destination</string>
-    <string name="travel_date_start">Start date</string>
-    <string name="travel_date_end">End date</string>
-    <string name="button_create_travel">Create</string>
-    <string name="button_edit_travel">Edit</string>
+    <string name="trip_text_create">new trip</string>
+    <string name="trip_text_update">update trip</string>
+    <string name="trip_name">Name</string>
+    <string name="trip_destination">Destination</string>
+    <string name="trip_date_start">Start date</string>
+    <string name="trip_date_end">End date</string>
+    <string name="button_create_trip">Create</string>
+    <string name="button_edit_trip">Update</string>
     <string name="button_cancel">Cancel</string>
-    <string name="button_add_travel">+</string>
     <string name="your_trips">your trips</string>
-    <string name="checkbox_keep_data">Keep my data</string>
-    <string name="tvSpots">View tourist attractions</string>
 
 
     <string name="old_version">You are using a very old version of the app.
@@ -62,22 +63,32 @@
     <string name="title_delete_trip">Delete trip</string>
     <string name="message_delete_spending">Are you sure you want to delete this spending?</string>
     <string name="title_delete_spending">Delete spending</string>
+    <string name="message_delete_spot">Are you sure you want to delete this activity?</string>
+    <string name="title_delete_spot">Delete activity</string>
     <string name="yes">Yes</string>
 
-    <string name="spending_text">your spending</string>
+    <string name="spending_text">new spending</string>
     <string name="spending_description">Description</string>
     <string name="spending_value">Value</string>
-    <string name="currency">Currency:</string>
-    <string name="spending_date">Date:</string>
-    <string name="total">Total:</string>
+    <string name="spending_currency">Currency</string>
+    <string name="currency">Currency</string>
+    <string name="spending_date">Date</string>
+    <string name="total">Total</string>
+    <string name="your_spending">your spending</string>
 
-    <string name="spot_text">activity</string>
+    <string name="spot_text">new activity</string>
     <string name="spot_list_text">your activities</string>
     <string name="spot_place">Place</string>
-    <string name="start_time">Start time:</string>
-    <string name="end_time">End time:</string>
+    <string name="start_date">Start date</string>
+    <string name="end_date">End date</string>
+    <string name="start_time">Start time</string>
+    <string name="end_time">End time</string>
+    <string name="spot_description">Description</string>
     <string name="text_activity">Activities</string>
     <string name="add_spot">Add</string>
+
+    <string name="currency_text">currency converter</string>
+    <string name="converter_button">Convert</string>
 
 
     <string name="default_notification_channel_id">fcm_default_channel</string>
@@ -91,5 +102,9 @@
         <item>British Pound</item>
         <item>Argentinian peso</item>
     </string-array>
+
+    <string name="trip_spending">Trip name</string>
+    <string name="hint_trip">Type the trip name</string>
+
 
 </resources>

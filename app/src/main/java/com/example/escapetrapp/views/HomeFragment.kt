@@ -43,12 +43,12 @@ class HomeFragment : BaseAuthFragment() {
 
     private fun setUpListener(){
         btSpending.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_spendingFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_spendingListFragment)
         }
     }
 
 
-private fun registerObserver() {
+    private fun registerObserver() {
         homeViewModel.menuState.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is RequestState.Loading -> {
@@ -96,7 +96,59 @@ private fun registerObserver() {
                     showLoading() }
                 is RequestState.Success -> {
                     hideLoading()
-                    findNavController().navigate(R.id.action_homeFragment_to_travelListFragment)
+                    findNavController().navigate(R.id.action_homeFragment_to_tripListFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
+        homeViewModel.mapsState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_mapsActivity)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
+        homeViewModel.aboutState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_aboutFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
+        homeViewModel.spendingState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_spendingListFragment)
+                }
+                is RequestState.Error -> {
+                    hideLoading()
+                    showMessage(it.trowable.message) }
+            }
+        })
+        homeViewModel.currencyState.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is RequestState.Loading -> {
+                    showLoading() }
+                is RequestState.Success -> {
+                    hideLoading()
+                    findNavController().navigate(R.id.action_homeFragment_to_currencyFragment)
                 }
                 is RequestState.Error -> {
                     hideLoading()
@@ -129,6 +181,12 @@ private fun registerObserver() {
                 }
                 "VIAGEM" -> {
                     homeViewModel.listTrip()
+                }"PONTOS" -> {
+                    homeViewModel.maps()
+                }"CONVERSOR" -> {
+                    homeViewModel.converterCurrency()
+                }"SOBRE" -> {
+                    homeViewModel.about()
                 }else -> {
                     startDeeplink(item.action.deeplink)
                }

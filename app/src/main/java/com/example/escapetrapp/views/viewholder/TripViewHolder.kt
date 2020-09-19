@@ -32,7 +32,7 @@ class TripViewHolder(itemView: View, private val listener: TripListener) : Recyc
         tripEndDate.text = trip.endDate
 
         btEdit.setOnClickListener {
-            listener.onClick(trip.id)
+            listener.onUpdate(trip.id)
         }
 
         btDelete.setOnClickListener {
