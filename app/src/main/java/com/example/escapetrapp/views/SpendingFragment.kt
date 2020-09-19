@@ -13,10 +13,12 @@ import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.services.constants.SpendingConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
+import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.views.adapter.SpendingAdapter
 import com.example.escapetrapp.viewsmodels.SpendingViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
 
@@ -32,6 +34,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     private lateinit var etSpendingDescription: EditText
     private lateinit var tvCancelSpending: TextView
     private lateinit var tvSpendingTitle: TextView
+    private lateinit var autoTextView: AutoCompleteTextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,6 +75,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         etSpendingDescription = view.findViewById(R.id.etSpendingDescription)
         tvCancelSpending = view.findViewById(R.id.tvCancelSpending)
         tvSpendingTitle = view.findViewById(R.id.tvSpendingTitle)
+        autoTextView = view.findViewById(R.id.autoTextView)
         setUpListener(context)
         registerObserver()
     }
@@ -109,6 +113,11 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         etSpendingDate.setOnClickListener{
             hideKeyboard()
             showDatePicker(context)
+        }
+        autoTextView.setOnClickListener {
+            val tripList = mAdapter.getTrip(spendingViewModel.getTripList())
+            //val adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, tripList)
+            //autoTextView.setAdapter(adapter)
         }
     }
 

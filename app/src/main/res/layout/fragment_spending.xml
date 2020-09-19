@@ -123,6 +123,19 @@
                     android:entries="@array/spinner_values"
                     android:inputType="none" />
             </LinearLayout>
+            <LinearLayout style="@style/container_edit_text">
+
+                <TextView
+                    android:id="@+id/tvTripId"
+                    style="@style/label_edit_text"
+                    android:text="@string/trip_spending" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoTextView"
+                    style="@style/field_edit_text"
+                    android:hint="@string/hint_trip"
+                    android:completionThreshold="3"/>
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btAddSpending"

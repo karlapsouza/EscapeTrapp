@@ -32,10 +32,10 @@
     <string name="signup_subtitle">Fill in your account details</string>
 
     <string name="about">About our team:</string>
-    <string name="about_bru">Bruna: Formada em arquitetura e urbanismo, atua na área de marketing digital e desenvolvimento de sistemas web e aplicativos há dois anos, em agência própria.</string>
-    <string name="about_ka">Karla: Analista de teste atuando há 10 anos na área com testes web, mobile e acessibilidade em projetos do setor de comunicação, bancário e governamental.</string>
-    <string name="about_tati">Tatiane: Analista de sistemas, já atuou no mercado de design durante 2 anos e atualmente está na parte de desenvolvimento há 2 anos como front-end, com foco em web e mobile.</string>
-    <string name="about_vi">Victor: Possui 17 anos de experiência em desenvolvimento de software. Prática com metodologias tradicionais e ágeis, gestão de projetos, gestão orçamentária e de fornecedores.</string>
+    <string name="about_bru">Bruna: Graduated in architecture and urbanism, she has been working in the digital marketing and development of web systems and applications for two years, in her own agency.</string>
+    <string name="about_ka">Karla: Quality assurance analyst working for 10 years in the area with web, mobile and accessibility tests in projects in the communication, banking and government sectors.</string>
+    <string name="about_tati">Tatiane: Systems analyst, has worked in the design market for 2 years and is currently in the development part for 2 years as a front-end, focusing on web and mobile.</string>
+    <string name="about_vi">Victor: He has 17 years of experience in software development. Practice with traditional and agile methodologies, project management, budget and supplier management.</string>
     <string name="text_terms">Text in building</string>
     <string name="version">versão: 1.0</string>
     <string name="loading_message_processing">Loading</string>
@@ -70,19 +70,20 @@
     <string name="spending_text">new spending</string>
     <string name="spending_description">Description</string>
     <string name="spending_value">Value</string>
-    <string name="currency">Currency:</string>
-    <string name="spending_date">Date:</string>
-    <string name="total">Total:</string>
+    <string name="spending_currency">Currency</string>
+    <string name="currency">Currency</string>
+    <string name="spending_date">Date</string>
+    <string name="total">Total</string>
     <string name="your_spending">your spending</string>
 
     <string name="spot_text">new activity</string>
     <string name="spot_list_text">your activities</string>
     <string name="spot_place">Place</string>
-    <string name="start_date">Start date:</string>
-    <string name="end_date">End date:</string>
-    <string name="start_time">Start time:</string>
-    <string name="end_time">End time:</string>
-    <string name="spot_description">Description:</string>
+    <string name="start_date">Start date</string>
+    <string name="end_date">End date</string>
+    <string name="start_time">Start time</string>
+    <string name="end_time">End time</string>
+    <string name="spot_description">Description</string>
     <string name="text_activity">Activities</string>
     <string name="add_spot">Add</string>
 
@@ -101,8 +102,9 @@
         <item>British Pound</item>
         <item>Argentinian peso</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="trip_spending">Trip name</string>
+    <string name="hint_trip">Type the trip name</string>
 
 
 </resources>

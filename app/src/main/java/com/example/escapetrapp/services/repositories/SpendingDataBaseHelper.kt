@@ -25,7 +25,8 @@ class SpendingDataBaseHelper(context: Context) : SQLiteOpenHelper(context, DATAB
                         + DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION + " text, "
                         + DataBaseConstants.SPENDING.COLUMNS.VALUE + " text, "
                         + DataBaseConstants.SPENDING.COLUMNS.DATE + " text, "
-                        + DataBaseConstants.SPENDING.COLUMNS.CURRENCY + " integer); "
+                        + DataBaseConstants.SPENDING.COLUMNS.CURRENCY + " integer, "
+                        + DataBaseConstants.SPENDING.COLUMNS.IDTRIP + " integer); "
                 )
     }
 }

@@ -28,6 +28,7 @@ class SpendingRepository private constructor(context: Context){
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.VALUE, spending.value)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.DATE, spending.date)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.CURRENCY, spending.currency)
+            contentValues.put(DataBaseConstants.SPENDING.COLUMNS.IDTRIP, spending.idTrip)
 
             db.insert(DataBaseConstants.SPENDING.TABLE_NAME, null, contentValues)
             true
@@ -45,6 +46,7 @@ class SpendingRepository private constructor(context: Context){
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.VALUE, spending.value)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.DATE, spending.date)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.CURRENCY, spending.currency)
+            contentValues.put(DataBaseConstants.SPENDING.COLUMNS.IDTRIP, spending.idTrip)
 
             val seletion = DataBaseConstants.SPENDING.COLUMNS.ID + " = ?"
             var args = arrayOf(spending.id.toString())
@@ -79,7 +81,8 @@ class SpendingRepository private constructor(context: Context){
                 DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
                 DataBaseConstants.SPENDING.COLUMNS.VALUE,
                 DataBaseConstants.SPENDING.COLUMNS.DATE,
-                DataBaseConstants.SPENDING.COLUMNS.CURRENCY
+                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
+                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
             )
             val seletion = DataBaseConstants.SPENDING.COLUMNS.ID + " = ?"
             var args = arrayOf(id.toString())
@@ -98,8 +101,10 @@ class SpendingRepository private constructor(context: Context){
                     cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
                 val currency =
                     cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+                val idTrip =
+                    cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                spending = Spending(id, description, value, date, currency)
+                spending = Spending(id, description, value, date, currency, idTrip)
             }
             cursor?.close()
             spending
@@ -117,7 +122,8 @@ class SpendingRepository private constructor(context: Context){
                 DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
                 DataBaseConstants.SPENDING.COLUMNS.VALUE,
                 DataBaseConstants.SPENDING.COLUMNS.DATE,
-                DataBaseConstants.SPENDING.COLUMNS.CURRENCY
+                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
+                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
             )
 
             val cursor = db.query(
@@ -131,8 +137,9 @@ class SpendingRepository private constructor(context: Context){
                     val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
                     val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
                     val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                    val spending = Spending(id, description, value, date, currency)
+                    val spending = Spending(id, description, value, date, currency, idTrip)
                     list.add(spending)
                 }
             }
@@ -152,8 +159,9 @@ class SpendingRepository private constructor(context: Context){
                 DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
                     DataBaseConstants.SPENDING.COLUMNS.VALUE,
                     DataBaseConstants.SPENDING.COLUMNS.DATE,
-                    DataBaseConstants.SPENDING.COLUMNS.CURRENCY
-                        )
+                    DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
+                    DataBaseConstants.SPENDING.COLUMNS.IDTRIP
+            )
 
             val cursor = db.query(
                     DataBaseConstants.SPENDING.TABLE_NAME,
@@ -162,14 +170,15 @@ class SpendingRepository private constructor(context: Context){
             if (cursor != null && cursor.count > 0) {
                 while (cursor.moveToNext()) {
                     val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.ID))
-                       val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION))
-                        val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
-                        val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
-                        val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+                    val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION))
+                    val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
+                    val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
+                    val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                        val spending = Spending(id, description, value, date, currency)
-                        teste += spending.value!!
-                    }
+                    val spending = Spending(id, description, value, date, currency, idTrip)
+                    teste += spending.value!!
+                }
             }
             cursor?.close()
             teste
@@ -187,7 +196,8 @@ class SpendingRepository private constructor(context: Context){
                 DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
                 DataBaseConstants.SPENDING.COLUMNS.VALUE,
                 DataBaseConstants.SPENDING.COLUMNS.DATE,
-                DataBaseConstants.SPENDING.COLUMNS.CURRENCY
+                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
+                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
             )
 
             val cursor = db.query(
@@ -201,8 +211,9 @@ class SpendingRepository private constructor(context: Context){
                     val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
                     val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
                     val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                    val spending = Spending(id, description, value, date, currency)
+                    val spending = Spending(id, description, value, date, currency, idTrip)
                     if(currencyId == spending.currency) {
                         sum += spending.value!!
                     }

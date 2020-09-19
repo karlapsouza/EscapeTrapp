@@ -13,6 +13,7 @@
         android:paddingStart="16dp"
         android:paddingTop="6dp"
         android:text="@string/spot_place"
+        android:singleLine="true"
         android:textColor="#5586AD"
         android:textSize="18sp"
         app:layout_constraintLeft_toLeftOf="parent"

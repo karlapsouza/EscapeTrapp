@@ -21,6 +21,7 @@ class DataBaseConstants {
             const val VALUE = "value"
             const val DATE = "date"
             const val CURRENCY = "currency"
+            const val IDTRIP = "idTrip"
         }
     }
     object SPOT{

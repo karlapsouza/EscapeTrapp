@@ -66,20 +66,21 @@
 
     <string name="spending_text">novo gasto</string>
     <string name="spending_description">Descrição</string>
-    <string name="spending_value">Valor:</string>
-    <string name="currency">Moeda:</string>
-    <string name="spending_date">Data:</string>
-    <string name="total">Total:</string>
+    <string name="spending_value">Valor</string>
+    <string name="spending_currency">Currency</string>
+    <string name="currency">Moeda</string>
+    <string name="spending_date">Data</string>
+    <string name="total">Total</string>
     <string name="your_spending">seus gastos</string>
 
     <string name="spot_text">nova atividade</string>
     <string name="spot_list_text">suas atividades</string>
-    <string name="spot_place">Local:</string>
-    <string name="start_date">Data inicial:</string>
-    <string name="end_date">Data final:</string>
-    <string name="start_time">Horário inicial:</string>
-    <string name="end_time">Horário final:</string>
-    <string name="spot_description">Descrição:</string>
+    <string name="spot_place">Local</string>
+    <string name="start_date">Data inicial</string>
+    <string name="end_date">Data final</string>
+    <string name="start_time">Horário inicial</string>
+    <string name="end_time">Horário final</string>
+    <string name="spot_description">Descrição</string>
     <string name="text_activity">Roteiro</string>
     <string name="add_spot">Adicionar</string>
 
@@ -97,4 +98,7 @@
         <item>Libra esterlina</item>
         <item>Peso argentino</item>
     </string-array>
+
+    <string name="trip_spending">Nome da viagem</string>
+    <string name="hint_trip">Preencha o nome da viagem</string>
 </resources>

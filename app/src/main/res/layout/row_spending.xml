@@ -13,6 +13,7 @@
         android:paddingStart="16dp"
         android:paddingTop="6dp"
         android:text="@string/spending_description"
+        android:singleLine="true"
         android:textColor="#5586AD"
         android:textSize="18sp"
         android:layout_marginTop="16dp"
@@ -23,14 +24,29 @@
     <TextView
         android:id="@+id/tvSpendingValue"
         style="@style/label_edit_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
+        android:layout_marginStart="16dp"
         android:paddingTop="6dp"
         android:text="@string/spending_value"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvSpendingCurrency"
+        app:layout_constraintTop_toBottomOf="@id/tvSpendingDescription" />
+
+    <TextView
+        android:id="@+id/tvSpendingCurrency"
+        style="@style/label_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="46dp"
+        android:paddingTop="6dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/spending_value"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tvSpendingValue"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSpendingDescription" />
 
@@ -58,7 +74,7 @@
         android:src="@drawable/ic_delete"
         app:layout_constraintLeft_toRightOf="@id/btEditSpending"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvSpendingValue" />
+        app:layout_constraintTop_toTopOf="@id/tvSpendingCurrency" />
 
 
     <ImageButton
@@ -69,7 +85,7 @@
         android:background="#ffffff"
         android:src="@drawable/ic_edit"
         app:layout_constraintRight_toRightOf="@id/btDeleteSpending"
-        app:layout_constraintTop_toTopOf="@id/tvSpendingValue" />
+        app:layout_constraintTop_toTopOf="@id/tvSpendingCurrency" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

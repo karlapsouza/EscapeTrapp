@@ -8,12 +8,14 @@ import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.services.repositories.SpendingRepository
+import com.example.escapetrapp.services.repositories.TripRepository
 
 
 class SpendingViewModel(application: Application) : AndroidViewModel(application){
 
     val spendingState = MutableLiveData<RequestState<String>>()
     private val mSpendingRepository = SpendingRepository.getInstance(application.applicationContext)
+    private val mTripRepository = TripRepository.getInstance(application.applicationContext)
     private val mSpendingList = MutableLiveData<List<Spending>>()
     val spendingList: LiveData<List<Spending>> = mSpendingList
     private val mSpending = MutableLiveData<Spending>()
@@ -90,4 +92,7 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
         return mSpendingRepository.getSumSpendings()
     }
 
+    fun getTripList() : List<Trip> {
+        return mTripRepository.getAllTrips()
+    }
 }
