@@ -95,13 +95,17 @@ class TripFragment: BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
                 tripViewModel.updateTrip(trip)
             }
         }
-        etDateStartTravel.setOnClickListener{
-            hideKeyboard()
-            showDatePicker(context)
+        etDateStartTravel.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                hideKeyboard()
+                showDatePicker(context)
+            }
         }
-        etDateFinishTravel.setOnClickListener{
-            hideKeyboard()
-            showDatePicker(context)
+        etDateFinishTravel.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                hideKeyboard()
+                showDatePicker(context)
+            }
         }
         tvCancel.setOnClickListener {
             findNavController().navigate(R.id.action_tripFragment_to_tripListFragment)

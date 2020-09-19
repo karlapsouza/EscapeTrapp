@@ -6,4 +6,10 @@ data class Trip(
     var destination: String? = null,
     var initialDate: String? = null,
     var endDate: String? = null
-)
+){
+
+    override fun toString(): String {
+        return name ?: ""
+    }
+
+}

@@ -70,10 +70,10 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
             when(it) {
                 is RequestState.Success -> {
                     hideLoading()
-                    showMessage("Atividade cadastrada com sucesso!")
-                    findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)
-                    NavHostFragment.findNavController(this)
-                        .navigate(R.id.action_spotFragment_to_spotListFragment)
+                    showMessage("Atividade cadastrada/atualizada com sucesso!")
+                    val bundle = Bundle()
+                    bundle.putInt(TripConstants.TRIPID, id)
+                    findNavController().navigate(R.id.action_spotFragment_to_spotListFragment, bundle)
                 }
                 is RequestState.Error -> {
                     hideLoading()
@@ -113,21 +113,29 @@ class SpotFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener,
                 spotViewModel.updateSpot(spot)
             }
         }
-        etStartDateSpot.setOnClickListener{
-            hideKeyboard()
-            showDatePicker(context)
+        etStartDateSpot.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                hideKeyboard()
+                showDatePicker(context)
+            }
         }
-        etEndDateSpot.setOnClickListener{
-            hideKeyboard()
-            showDatePicker(context)
+        etEndDateSpot.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                hideKeyboard()
+                showDatePicker(context)
+            }
         }
-        etStartTimeSpot.setOnClickListener {
-            hideKeyboard()
-            showTimePicker(context)
+        etStartTimeSpot.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                hideKeyboard()
+                showTimePicker(context)
+            }
         }
-        etEndTimeSpot.setOnClickListener {
-            hideKeyboard()
-            showTimePicker(context)
+        etEndTimeSpot.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                hideKeyboard()
+                showTimePicker(context)
+            }
         }
         ibBackSpotList.setOnClickListener {
             findNavController().navigate(R.id.action_spotFragment_to_spotListFragment)

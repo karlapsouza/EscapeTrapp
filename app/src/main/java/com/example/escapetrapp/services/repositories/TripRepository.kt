@@ -110,7 +110,7 @@ class TripRepository private constructor(context: Context) {
     }
 
     fun getAllTrips(): List<Trip> {
-        val list: MutableList<Trip> = ArrayList()
+        val list: ArrayList<Trip> = ArrayList()
         return try {
             val db = mTripDataBaseHelper.readableDatabase
             val projection = arrayOf(

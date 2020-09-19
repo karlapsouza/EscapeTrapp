@@ -18,7 +18,6 @@ import com.example.escapetrapp.views.adapter.SpendingAdapter
 import com.example.escapetrapp.viewsmodels.SpendingViewModel
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener {
 
@@ -62,6 +61,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
             etSpending.setText(it?.value.toString())
             etSpendingDate.setText(it?.date)
             sCurrency.setSelection(it?.currency!!)
+            autoTextView.setSelection(it?.idTrip!!)
         })
     }
 
@@ -93,7 +93,8 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
                     etSpendingDescription.text.toString(),
                     etSpending.text.toString().toDoubleOrNull(),
                     etSpendingDate.text.toString(),
-                    sCurrency.selectedItemPosition
+                    sCurrency.selectedItemPosition,
+                    autoTextView.id
                 )
                 spendingViewModel.addSpending(newSpending)
             }else {
@@ -102,7 +103,8 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
                     etSpendingDescription.text.toString(),
                     etSpending.text.toString().toDoubleOrNull(),
                     etSpendingDate.text.toString(),
-                    sCurrency.selectedItemPosition
+                    sCurrency.selectedItemPosition,
+                    autoTextView.id
                 )
                 spendingViewModel.updateSpending(spending)
             }
@@ -110,15 +112,23 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         tvCancelSpending.setOnClickListener {
             findNavController().navigate(R.id.action_spendingFragment_to_spendingListFragment)
         }
-        etSpendingDate.setOnClickListener{
-            hideKeyboard()
-            showDatePicker(context)
+        etSpendingDate.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                hideKeyboard()
+                showDatePicker(context)
+            }
         }
-        autoTextView.setOnClickListener {
-            val tripList = mAdapter.getTrip(spendingViewModel.getTripList())
-            //val adapter = ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, tripList)
-            //autoTextView.setAdapter(adapter)
-        }
+
+        val tripList = spendingViewModel.getTripList()
+
+        val adapter =
+            ArrayAdapter<Trip>(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                tripList
+            )
+        autoTextView.setAdapter(adapter)
+
     }
 
     private fun showDatePicker(context: Context) {

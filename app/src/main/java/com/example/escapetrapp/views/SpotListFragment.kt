@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.escapetrapp.R
 import com.example.escapetrapp.base.BaseFragment
 import com.example.escapetrapp.base.auth.BaseAuthFragment
+import com.example.escapetrapp.services.constants.SpendingConstants
 import com.example.escapetrapp.services.constants.SpotConstants
+import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.views.adapter.SpotAdapter
 import com.example.escapetrapp.views.listener.SpotListener
 import com.example.escapetrapp.viewsmodels.SpotListViewModel
@@ -44,14 +46,11 @@ class SpotListFragment : BaseFragment() {
         recycler.adapter = mAdapter
 
         mListener = object: SpotListener {
-            override fun onClick(id: Int){
-                val intent = Intent(context, SpotListFragment::class.java)
-
-                //para passar dados na intent
+            override fun onClick(idSpot: Int, idTrip: Int){
                 val bundle = Bundle()
-                bundle.putInt(SpotConstants.SPOTID, id)
-                intent.putExtras(bundle)
-                startActivity(intent)
+                bundle.putInt(SpotConstants.SPOTID, idSpot)
+                bundle.putInt(TripConstants.TRIPID, idTrip)
+                findNavController().navigate(R.id.action_spotListFragment_to_spotFragment, bundle)
             }
             override fun onDelete(id: Int){
                 mViewModel.delete(id)

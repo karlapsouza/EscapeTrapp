@@ -5,6 +5,10 @@ interface SpotListener {
 
     }
 
+    fun onClick(idSpot: Int, idTrip: Int){
+
+    }
+
     fun onDelete(id: Int){
 
     }

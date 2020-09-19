@@ -95,4 +95,5 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
     fun getTripList() : List<Trip> {
         return mTripRepository.getAllTrips()
     }
+
 }
