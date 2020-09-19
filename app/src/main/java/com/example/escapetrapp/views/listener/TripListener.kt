@@ -14,4 +14,8 @@ interface TripListener {
     fun onUpdate(id: Int){
 
     }
+
+    fun onView(id: Int){
+
+    }
 }

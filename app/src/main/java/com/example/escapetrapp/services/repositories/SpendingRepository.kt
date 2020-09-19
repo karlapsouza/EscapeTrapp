@@ -150,6 +150,45 @@ class SpendingRepository private constructor(context: Context){
         }
     }
 
+    fun getAllSpendingsTrip(tripId: Int): List<Spending> {
+        val list: MutableList<Spending> = ArrayList()
+        return try {
+            val db = mSpendingDataBaseHelper.readableDatabase
+            val projection = arrayOf(
+                DataBaseConstants.SPENDING.COLUMNS.ID,
+                DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
+                DataBaseConstants.SPENDING.COLUMNS.VALUE,
+                DataBaseConstants.SPENDING.COLUMNS.DATE,
+                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
+                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
+            )
+
+            val cursor = db.query(
+                DataBaseConstants.SPENDING.TABLE_NAME,
+                projection, null, null, null, null, null
+            )
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.ID))
+                    val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION))
+                    val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
+                    val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
+                    val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
+
+                    val spending = Spending(id, description, value, date, currency, idTrip)
+                    if(tripId == spending.idTrip) {
+                        list.add(spending)
+                    }
+                }
+            }
+            cursor?.close()
+            list
+        }catch (e: Exception) {
+            list
+        }
+    }
+
     fun getSumSpendings(): Double {
         var teste : Double = 0.0
         return try {
@@ -186,6 +225,45 @@ class SpendingRepository private constructor(context: Context){
             teste
        }
    }
+
+    fun getSumSpendingTrip(tripId: Int): Double {
+        var sum : Double = 0.0
+        return try {
+            val db = mSpendingDataBaseHelper.readableDatabase
+            val projection = arrayOf(
+                DataBaseConstants.SPENDING.COLUMNS.ID,
+                DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
+                DataBaseConstants.SPENDING.COLUMNS.VALUE,
+                DataBaseConstants.SPENDING.COLUMNS.DATE,
+                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
+                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
+            )
+
+            val cursor = db.query(
+                DataBaseConstants.SPENDING.TABLE_NAME,
+                projection, null, null, null, null, null
+            )
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.ID))
+                    val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION))
+                    val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
+                    val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
+                    val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
+                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
+
+                    val spending = Spending(id, description, value, date, currency, idTrip)
+                    if(tripId == spending.idTrip) {
+                        sum += spending.value!!
+                    }
+                }
+            }
+            cursor?.close()
+            sum
+        }catch (e: Exception) {
+            sum
+        }
+    }
 
     fun getSumCurrency(currencyId: Int): Double {
         var sum : Double = 0.0

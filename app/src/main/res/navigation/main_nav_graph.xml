@@ -82,6 +82,12 @@
         <action
             android:id="@+id/action_spendingListFragment_to_spendingFragment"
             app:destination="@id/spendingFragment" />
+        <action
+            android:id="@+id/action_spendingListFragment_to_tripListFragment"
+            app:destination="@id/tripListFragment" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/spendingFragment"
@@ -109,6 +115,9 @@
         <action
             android:id="@+id/action_tripListFragment_to_tripFragment"
             app:destination="@id/tripFragment" />
+        <action
+            android:id="@+id/action_tripListFragment_to_spendingListFragment"
+            app:destination="@id/spendingListFragment" />
     </fragment>
     <fragment
         android:id="@+id/tripFragment"

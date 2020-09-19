@@ -77,34 +77,46 @@
 
     <ImageButton
         android:id="@+id/btDelete"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
         android:background="#ffffff"
         android:src="@drawable/ic_delete"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintLeft_toRightOf="@id/btEdit"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
 
     <ImageButton
         android:id="@+id/btTouristSpots"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginRight="116dp"
+        android:layout_marginRight="92dp"
         android:background="#ffffff"
         android:src="@drawable/ic_spots"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
 
     <ImageButton
-        android:id="@+id/btEdit"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:id="@+id/btSpending"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginRight="52dp"
+        android:layout_marginRight="130dp"
+        android:background="#ffffff"
+        android:tint="@color/secondaryTextColor"
+        android:src="@drawable/ic_money"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDestinationTrip" />
+
+    <ImageButton
+        android:id="@+id/btEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="40dp"
         android:background="#ffffff"
         android:src="@drawable/ic_edit"
         app:layout_constraintRight_toRightOf="@id/btDelete"

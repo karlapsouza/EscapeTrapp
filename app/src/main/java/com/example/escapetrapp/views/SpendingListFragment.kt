@@ -15,6 +15,7 @@ import com.example.escapetrapp.R
 import com.example.escapetrapp.base.auth.BaseAuthFragment
 import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.services.constants.SpendingConstants
+import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.views.adapter.SpendingAdapter
@@ -46,8 +47,13 @@ class SpendingListFragment : BaseAuthFragment() {
         //Definindo um layout, como recycler se comporta na tela
         recycler.layoutManager = LinearLayoutManager(context)
         //Definindo um adapter
-
-        mViewModel.loadAll()
+        val tripId = arguments?.getInt(TripConstants.TRIPID)
+        if(tripId != 0){
+            mViewModel.loadAllTrip(tripId!!)
+        }
+        else {
+            mViewModel.loadAll()
+        }
 
         mListener = object : SpendingListener {
 
@@ -101,13 +107,18 @@ class SpendingListFragment : BaseAuthFragment() {
         ibBackSpendingList = view.findViewById(R.id.ibBackSpendingList)
         tvValueTotal = view.findViewById(R.id.tvValueTotal)
         btAddSpendingList = view.findViewById(R.id.btAddSpendingList)
-        total()
         setUpListener(context)
+        total()
     }
 
     private fun setUpListener(context: Context) {
         ibBackSpendingList.setOnClickListener {
-            findNavController().navigate(R.id.main_nav_graph)
+            val tripId = arguments?.getInt(TripConstants.TRIPID)
+            if(tripId == 0) {
+                findNavController().navigate(R.id.main_nav_graph)
+            }else{
+                findNavController().navigate(R.id.action_spendingListFragment_to_tripListFragment)
+            }
         }
         btAddSpendingList.setOnClickListener {
             NavHostFragment.findNavController(this).navigate(R.id.action_spendingListFragment_to_spendingFragment)
@@ -119,7 +130,12 @@ class SpendingListFragment : BaseAuthFragment() {
     }
 
     private fun total(){
-        tvValueTotal.text = mViewModel.getTotalSpending().toString()
+        val tripId = arguments?.getInt(TripConstants.TRIPID)
+        if(tripId == 0) {
+            tvValueTotal.text = mViewModel.getTotalSpending().toString()
+        }else{
+            tvValueTotal.text = mViewModel.getTotalSpendingTrip(tripId!!).toString()
+        }
     }
 
 }

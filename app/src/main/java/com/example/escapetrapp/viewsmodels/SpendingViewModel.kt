@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.escapetrapp.services.constants.TripConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
 import com.example.escapetrapp.services.models.Trip
@@ -27,6 +28,11 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
 
     fun loadAll(){
         val list = mSpendingRepository.getAllSpendings()
+        mSpendingList.value = list
+    }
+
+    fun loadAllTrip(tripId: Int){
+        val list = mSpendingRepository.getAllSpendingsTrip(tripId)
         mSpendingList.value = list
     }
 
@@ -90,6 +96,10 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
 
     fun getTotalSpending() : Double {
         return mSpendingRepository.getSumSpendings()
+    }
+
+    fun getTotalSpendingTrip(tripId: Int) : Double {
+        return mSpendingRepository.getSumSpendingTrip(tripId)
     }
 
     fun getTripList() : List<Trip> {

@@ -59,6 +59,12 @@ class TripListFragment : BaseAuthFragment(){
                 mViewModel.loadAll()
             }
 
+            override fun onView(id: Int) {
+                val bundle = Bundle()
+                bundle.putInt(TripConstants.TRIPID, id)
+                findNavController().navigate(R.id.action_tripListFragment_to_spendingListFragment, bundle)
+            }
+
         }
         mAdapter.attachListener(mListener)
         observer()
