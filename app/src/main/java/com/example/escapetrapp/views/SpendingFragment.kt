@@ -13,7 +13,6 @@ import com.example.escapetrapp.extensions.hideKeyboard
 import com.example.escapetrapp.services.constants.SpendingConstants
 import com.example.escapetrapp.services.models.RequestState
 import com.example.escapetrapp.services.models.Spending
-import com.example.escapetrapp.services.models.Trip
 import com.example.escapetrapp.views.adapter.SpendingAdapter
 import com.example.escapetrapp.viewsmodels.SpendingViewModel
 import java.text.SimpleDateFormat
@@ -33,7 +32,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
     private lateinit var etSpendingDescription: EditText
     private lateinit var tvCancelSpending: TextView
     private lateinit var tvSpendingTitle: TextView
-    private lateinit var autoTextView: AutoCompleteTextView
     private val mDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,7 +59,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
             etSpending.setText(it?.value.toString())
             etSpendingDate.setText(it?.date)
             sCurrency.setSelection(it?.currency!!)
-            autoTextView.setSelection(it?.idTrip!!)
         })
     }
 
@@ -75,7 +72,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
         etSpendingDescription = view.findViewById(R.id.etSpendingDescription)
         tvCancelSpending = view.findViewById(R.id.tvCancelSpending)
         tvSpendingTitle = view.findViewById(R.id.tvSpendingTitle)
-        autoTextView = view.findViewById(R.id.autoTextView)
         setUpListener(context)
         registerObserver()
     }
@@ -93,8 +89,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
                     etSpendingDescription.text.toString(),
                     etSpending.text.toString().toDoubleOrNull(),
                     etSpendingDate.text.toString(),
-                    sCurrency.selectedItemPosition,
-                    autoTextView.id
+                    sCurrency.selectedItemPosition
                 )
                 spendingViewModel.addSpending(newSpending)
             }else {
@@ -103,8 +98,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
                     etSpendingDescription.text.toString(),
                     etSpending.text.toString().toDoubleOrNull(),
                     etSpendingDate.text.toString(),
-                    sCurrency.selectedItemPosition,
-                    autoTextView.id
+                    sCurrency.selectedItemPosition
                 )
                 spendingViewModel.updateSpending(spending)
             }
@@ -118,17 +112,6 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
                 showDatePicker(context)
             }
         }
-
-        val tripList = spendingViewModel.getTripList()
-
-        val adapter =
-            ArrayAdapter<Trip>(
-                requireContext(),
-                android.R.layout.simple_dropdown_item_1line,
-                tripList
-            )
-        autoTextView.setAdapter(adapter)
-
     }
 
     private fun showDatePicker(context: Context) {
@@ -154,7 +137,7 @@ class SpendingFragment : BaseAuthFragment(), DatePickerDialog.OnDateSetListener 
             when (it) {
                 is RequestState.Success -> {
                     hideLoading()
-                    showMessage("Despesa cadastrada/atualizada com sucesso!")
+                    showMessage("Despesa cadastrada com sucesso!")
                     NavHostFragment.findNavController(this).navigate(R.id.action_spendingFragment_to_spendingListFragment)
                 }
                 is RequestState.Error -> {

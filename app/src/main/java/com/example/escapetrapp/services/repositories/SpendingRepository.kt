@@ -28,7 +28,6 @@ class SpendingRepository private constructor(context: Context){
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.VALUE, spending.value)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.DATE, spending.date)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.CURRENCY, spending.currency)
-            contentValues.put(DataBaseConstants.SPENDING.COLUMNS.IDTRIP, spending.idTrip)
 
             db.insert(DataBaseConstants.SPENDING.TABLE_NAME, null, contentValues)
             true
@@ -46,7 +45,6 @@ class SpendingRepository private constructor(context: Context){
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.VALUE, spending.value)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.DATE, spending.date)
             contentValues.put(DataBaseConstants.SPENDING.COLUMNS.CURRENCY, spending.currency)
-            contentValues.put(DataBaseConstants.SPENDING.COLUMNS.IDTRIP, spending.idTrip)
 
             val seletion = DataBaseConstants.SPENDING.COLUMNS.ID + " = ?"
             var args = arrayOf(spending.id.toString())
@@ -81,8 +79,7 @@ class SpendingRepository private constructor(context: Context){
                 DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
                 DataBaseConstants.SPENDING.COLUMNS.VALUE,
                 DataBaseConstants.SPENDING.COLUMNS.DATE,
-                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
-                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
+                DataBaseConstants.SPENDING.COLUMNS.CURRENCY
             )
             val seletion = DataBaseConstants.SPENDING.COLUMNS.ID + " = ?"
             var args = arrayOf(id.toString())
@@ -101,10 +98,8 @@ class SpendingRepository private constructor(context: Context){
                     cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
                 val currency =
                     cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
-                val idTrip =
-                    cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                spending = Spending(id, description, value, date, currency, idTrip)
+                spending = Spending(id, description, value, date, currency)
             }
             cursor?.close()
             spending
@@ -122,8 +117,7 @@ class SpendingRepository private constructor(context: Context){
                 DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
                 DataBaseConstants.SPENDING.COLUMNS.VALUE,
                 DataBaseConstants.SPENDING.COLUMNS.DATE,
-                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
-                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
+                DataBaseConstants.SPENDING.COLUMNS.CURRENCY
             )
 
             val cursor = db.query(
@@ -137,9 +131,8 @@ class SpendingRepository private constructor(context: Context){
                     val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
                     val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
                     val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
-                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                    val spending = Spending(id, description, value, date, currency, idTrip)
+                    val spending = Spending(id, description, value, date, currency)
                     list.add(spending)
                 }
             }
@@ -150,44 +143,6 @@ class SpendingRepository private constructor(context: Context){
         }
     }
 
-    fun getAllSpendingsTrip(tripId: Int): List<Spending> {
-        val list: MutableList<Spending> = ArrayList()
-        return try {
-            val db = mSpendingDataBaseHelper.readableDatabase
-            val projection = arrayOf(
-                DataBaseConstants.SPENDING.COLUMNS.ID,
-                DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
-                DataBaseConstants.SPENDING.COLUMNS.VALUE,
-                DataBaseConstants.SPENDING.COLUMNS.DATE,
-                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
-                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
-            )
-
-            val cursor = db.query(
-                DataBaseConstants.SPENDING.TABLE_NAME,
-                projection, null, null, null, null, null
-            )
-            if (cursor != null && cursor.count > 0) {
-                while (cursor.moveToNext()) {
-                    val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.ID))
-                    val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION))
-                    val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
-                    val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
-                    val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
-                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
-
-                    val spending = Spending(id, description, value, date, currency, idTrip)
-                    if(tripId == spending.idTrip) {
-                        list.add(spending)
-                    }
-                }
-            }
-            cursor?.close()
-            list
-        }catch (e: Exception) {
-            list
-        }
-    }
 
     fun getSumSpendings(): Double {
         var teste : Double = 0.0
@@ -198,8 +153,7 @@ class SpendingRepository private constructor(context: Context){
                 DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
                     DataBaseConstants.SPENDING.COLUMNS.VALUE,
                     DataBaseConstants.SPENDING.COLUMNS.DATE,
-                    DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
-                    DataBaseConstants.SPENDING.COLUMNS.IDTRIP
+                    DataBaseConstants.SPENDING.COLUMNS.CURRENCY
             )
 
             val cursor = db.query(
@@ -213,9 +167,8 @@ class SpendingRepository private constructor(context: Context){
                     val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
                     val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
                     val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
-                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                    val spending = Spending(id, description, value, date, currency, idTrip)
+                    val spending = Spending(id, description, value, date, currency)
                     teste += spending.value!!
                 }
             }
@@ -226,44 +179,6 @@ class SpendingRepository private constructor(context: Context){
        }
    }
 
-    fun getSumSpendingTrip(tripId: Int): Double {
-        var sum : Double = 0.0
-        return try {
-            val db = mSpendingDataBaseHelper.readableDatabase
-            val projection = arrayOf(
-                DataBaseConstants.SPENDING.COLUMNS.ID,
-                DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION,
-                DataBaseConstants.SPENDING.COLUMNS.VALUE,
-                DataBaseConstants.SPENDING.COLUMNS.DATE,
-                DataBaseConstants.SPENDING.COLUMNS.CURRENCY,
-                DataBaseConstants.SPENDING.COLUMNS.IDTRIP
-            )
-
-            val cursor = db.query(
-                DataBaseConstants.SPENDING.TABLE_NAME,
-                projection, null, null, null, null, null
-            )
-            if (cursor != null && cursor.count > 0) {
-                while (cursor.moveToNext()) {
-                    val id = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.ID))
-                    val description = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DESCRIPTION))
-                    val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
-                    val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
-                    val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
-                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
-
-                    val spending = Spending(id, description, value, date, currency, idTrip)
-                    if(tripId == spending.idTrip) {
-                        sum += spending.value!!
-                    }
-                }
-            }
-            cursor?.close()
-            sum
-        }catch (e: Exception) {
-            sum
-        }
-    }
 
     fun getSumCurrency(currencyId: Int): Double {
         var sum : Double = 0.0
@@ -289,9 +204,8 @@ class SpendingRepository private constructor(context: Context){
                     val value = cursor.getDouble(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.VALUE))
                     val date = cursor.getString(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.DATE))
                     val currency = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.CURRENCY))
-                    val idTrip = cursor.getInt(cursor.getColumnIndex(DataBaseConstants.SPENDING.COLUMNS.IDTRIP))
 
-                    val spending = Spending(id, description, value, date, currency, idTrip)
+                    val spending = Spending(id, description, value, date, currency)
                     if(currencyId == spending.currency) {
                         sum += spending.value!!
                     }

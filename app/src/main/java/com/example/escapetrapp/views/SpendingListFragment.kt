@@ -46,14 +46,9 @@ class SpendingListFragment : BaseAuthFragment() {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_all_spending)
         //Definindo um layout, como recycler se comporta na tela
         recycler.layoutManager = LinearLayoutManager(context)
-        //Definindo um adapter
-        val tripId = arguments?.getInt(TripConstants.TRIPID)
-        if(tripId != 0){
-            mViewModel.loadAllTrip(tripId!!)
-        }
-        else {
-            mViewModel.loadAll()
-        }
+
+        mViewModel.loadAll()
+
 
         mListener = object : SpendingListener {
 
@@ -130,12 +125,7 @@ class SpendingListFragment : BaseAuthFragment() {
     }
 
     private fun total(){
-        val tripId = arguments?.getInt(TripConstants.TRIPID)
-        if(tripId == 0) {
-            tvValueTotal.text = mViewModel.getTotalSpending().toString()
-        }else{
-            tvValueTotal.text = mViewModel.getTotalSpendingTrip(tripId!!).toString()
-        }
+        tvValueTotal.text = mViewModel.getTotalSpending().toString()
     }
 
 }

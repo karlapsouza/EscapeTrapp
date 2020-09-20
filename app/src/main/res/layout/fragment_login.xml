@@ -98,6 +98,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginBottom="24dp"
         android:text="@string/label_reset_password"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"/>

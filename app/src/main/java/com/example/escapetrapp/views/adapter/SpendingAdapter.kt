@@ -31,9 +31,5 @@ class SpendingAdapter(private val mListener: SpendingListener) : RecyclerView.Ad
         notifyDataSetChanged()
     }
 
-    fun getTrip(list: List<Trip>) {
-        mTripList = list
-        notifyDataSetChanged()
-    }
 
 }

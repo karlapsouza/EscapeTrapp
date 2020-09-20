@@ -31,10 +31,6 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
         mSpendingList.value = list
     }
 
-    fun loadAllTrip(tripId: Int){
-        val list = mSpendingRepository.getAllSpendingsTrip(tripId)
-        mSpendingList.value = list
-    }
 
     fun delete(id: Int){
         mSpendingRepository.delete(id)
@@ -98,12 +94,5 @@ class SpendingViewModel(application: Application) : AndroidViewModel(application
         return mSpendingRepository.getSumSpendings()
     }
 
-    fun getTotalSpendingTrip(tripId: Int) : Double {
-        return mSpendingRepository.getSumSpendingTrip(tripId)
-    }
-
-    fun getTripList() : List<Trip> {
-        return mTripRepository.getAllTrips()
-    }
 
 }
